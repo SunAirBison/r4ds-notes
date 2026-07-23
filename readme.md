@@ -1,0 +1,32 @@
+# 📖 R for Data Science (2e) - Notebook 
+
+My personal notebook for following [*R for Data Science (2e)*][r4ds], tracking my progress through each chapter and exercise.
+
+## 📋 Goals
+
+- Write `.qmd` notebooks for each chapter that reproduce my findings.
+- Write clear code that follows the `tidyverse` style guide.
+- Use the `ggplot2` library and `tidyverse` set of packages to create production-ready visuals and adhere to the [tidyverse manifesto][tidy].
+- Use Quarto to organize and publish my progress on GitHub Pages.
+
+## 📈 Progress Tacker
+
+- [ ] Whole Game
+  - [ ] Data Visualization
+  - [ ] Workflow: basics
+  - [ ] Data transformation
+  - [ ] Workflow: code style
+  - [ ] Data tidying
+  - [ ] Workflow: scripts and projects
+  - [ ] Data Import
+  - [ ] Workflow: getting help
+- ... Further Sections
+
+## 📜 License & Attribution
+
+- **Code:** All original code, scripts, and Quarto solutions in this repository are licensed under the [MIT License](LICENSE).
+- **Text & Materials:** Concepts, dataset structures, and book references belong to Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund [*R for Data Science (2e)*][r4ds], used here under educational fair use / non-commercial reference.
+
+[r4ds]: <https://r4ds.hadley.nz/>
+[tidy]: <https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html>
+
