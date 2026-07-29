@@ -1,0 +1,175 @@
+---
+title: 1 - Data Visualization
+subtitle: Exercise Solutions
+---
+
+## [Section 1.2.5](<https://r4ds.hadley.nz/data-visualize.html#exercises>)
+
+``` {r}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(palmerpenguins)
+```
+ 
+### 1
+
+::: {.callout-note}
+How many row and columns are in `penguins`?
+:::
+
+``` {r}
+dim(penguins)
+```
+
+There are 344 rows and 8 columns in `penguins`.
+
+### 2
+
+::: {.callout-note}
+What does the `bill_depth_mm` variable describe?
+:::
+
+`bill_depth_mm` represent bill depth of the pegnuins in millimeters, obtained from [CRAN](<https://cran.r-project.org/web/packages/palmerpenguins/refman/palmerpenguins.html>)
+
+### 3
+
+::: {.callout-note}
+Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm`.
+:::
+
+``` {r}
+penguins |> # Following tidyverse style guide by using pipes
+    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + 
+    geom_point()
+```
+
+### 4
+
+::: {.callout-note}
+What happens when you make a scatterplot of `species` vs `bill_depth_mm`? What s 
+:::
+
+``` {r}
+penguins |> 
+    ggplot(mapping = aes(y = species, x = bill_length_mm)) + 
+    geom_point()
+```
+
+
+### 5
+
+::: {.callout-note}
+Why does the following give an error and how would you fix it?
+``` {r} 
+#| eval: false
+ggplot(data = penguins) + 
+  geom_point()
+```
+:::
+
+This plot is missing a value for the `mapping` argument in `ggplot()`.
+
+``` {r}
+penguins |>
+    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + 
+    geom_point()
+```
+
+### 6
+
+::: {.callout-note}
+What does the `na.rm` argument do in `geom_point()`? WHat is the default value of the argument. Create a scatter plot where you successfully use this argument set to TRUE.
+:::
+
+`na.rm` determines whether points that have missing values create a warning that they were removed. The default value of the argument is `FALSE`. 
+``` {r}
+penguins |>
+    ggplot() + 
+    geom_point(
+        mapping = aes(y = bill_depth_mm, x = bill_length_mm),
+        na.rm = TRUE
+        )
+```
+
+### 7
+
+::: {.callout-note}
+Add the following caption to the plot you made in the previous exercise: "Data came from the palmerpenguins package."
+:::
+
+``` {r}
+penguins |>
+    ggplot() + 
+    geom_point(
+        mapping = aes(y = bill_depth_mm, x = bill_length_mm),
+        na.rm = TRUE
+    ) +
+    labs(caption = "Data came from the palmerpenguins package.")
+```
+
+### 8
+
+::: {.callout-note}
+Recreate the following visualization. What aesthetic should `bill_depth_mm` be mapped to? Should it be mapped at the global or geom level?
+:::
+
+``` {r}
+penguins |>
+    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + 
+    geom_point(mapping = aes(color = bill_depth_mm)) +
+    geom_smooth(method = "gam")
+```
+
+### 9
+
+::: {.callout-note}
+Run this code in your head and predict what the output will look like. Then run the code and check your predictions.
+``` {r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)    
+```
+:::
+
+I predict that the plot will have axes of `body_mass_g` vs `flipper_length_mm`. The points on the plot will be grouped with different by the `island` variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.
+
+``` {r}
+#| output: true
+#| echo: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)   
+```
+
+### 10
+
+::: {.callout-note}
+Will these two graphs look different? Why/why not?
+``` {r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
+```
+:::
+
+These plots will not look different. In the first plot, `geom_point()` and `geom_smooth()` inherit the mapping from `ggplot()`. In the second graph, the same mapping is explicity given to both functions.
