@@ -1,0 +1,291 @@
+---
+execute:
+  warning: false
+  message: false
+number-sections: false
+---
+
+# First Steps Exercise Solutions
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(palmerpenguins)
+
+# Note: warnings and messages are suppressed for all code blocks
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title="Note" collapse="false"}
+
+### The Problem
+
+How many row and columns are in `penguins`?
+
+### The Solution
+``` {r}
+dim(penguins)
+```
+
+There are 344 rows and 8 columns in `penguins`.
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+
+What does the `bill_depth_mm` variable describe?
+
+### The Solution
+
+`bill_depth_mm` represents the bill depth of the pegnuins in millimeters, as stated from [CRAN](<https://cran.r-project.org/web/packages/palmerpenguins/refman/palmerpenguins.html>).
+
+:::
+
+
+<!-- Next Question -->
+## Question 3 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm`.
+
+### The Solution
+
+``` {r}
+penguins |> # Following tidyverse style guide by using pipes
+    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + 
+    geom_point() +
+    labs(title="bill_depth_mm vs bill_length_mm")
+```
+:::
+
+<!-- Next Question -->
+## Question 4 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+What happens when you make a scatterplot of `species` vs `bill_depth_mm`? What might be a better choice of geom?
+
+### The Solution
+
+``` {r}
+penguins |> 
+    ggplot(mapping = aes(y = species, x = bill_length_mm)) + 
+    geom_point() + 
+    labs(title="species vs bill_depth_mm")
+```
+
+When creating a scatterplot, the points are split into the three different species categories, which is not very helpful when represented by a scatterplto. A boxplot can represent this relationship .
+
+```{r}
+penguins |>
+    ggplot(mapping = aes(y = species, x = bill_length_mm)) + 
+    geom_boxplot()
+```
+:::
+
+
+<!-- Next Question -->
+## Question 5 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+Why does the following give an error and how would you fix it?
+``` {r} 
+#| eval: false
+ggplot(data = penguins) + 
+  geom_point()
+```
+
+This plot is missing a value for the `mapping` argument in `ggplot()`. Adding this argument fixes the plot.
+
+### The Solution
+
+``` {r}
+penguins |>
+    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + 
+    geom_point()
+```
+
+:::
+
+
+<!-- Next Question -->
+## Question 6 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+What does the `na.rm` argument do in `geom_point()`? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to `TRUE`.
+
+### The Solution
+`na.rm` determines whether points that have missing values create a warning that they were removed. The default value of the argument is `FALSE`. 
+``` {r}
+penguins |>
+    ggplot() + 
+    geom_point(
+        mapping = aes(y = bill_depth_mm, x = bill_length_mm),
+        na.rm = TRUE
+        )
+```
+
+:::
+
+
+<!-- Next Question -->
+## Question 7 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+Add the following caption to the plot you made in the previous exercise: "Data came from the palmerpenguins package."
+
+### The Solution
+``` {r}
+penguins |>
+    ggplot() + 
+    geom_point(
+        mapping = aes(y = bill_depth_mm, x = bill_length_mm),
+        na.rm = TRUE
+    ) +
+    labs(caption = "Data came from the palmerpenguins package.")
+```
+
+:::
+
+
+<!-- Next Question -->
+## Question 8 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+Recreate the following visualization. What aesthetic should `bill_depth_mm` be mapped to? Should it be mapped at the global or geom level?
+
+### The Solution
+
+`bill_depth_mm` should be mapped to `color` in the geom level, otherwise `geom_smooth` would be split by bill depth.
+
+``` {r}
+penguins |>
+    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + 
+    geom_point(mapping = aes(color = bill_depth_mm)) +
+    geom_smooth(method = "gam")
+```
+
+:::
+
+
+<!-- Next Question -->
+## Question 9 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+Run this code in your head and predict what the output will look like. Then run the code and check your predictions.
+
+``` {r}
+#| eval: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)    
+```
+
+### The Solution
+
+I predict that the plot will have axes of `body_mass_g` vs `flipper_length_mm`. The points on the plot will be grouped with different by the `island` variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.
+
+``` {r}
+#| output: true
+#| echo: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)   
+```
+
+I predicted the components correctly, but I was not expecting the lines to overlap as much as they did.
+
+:::
+
+
+<!-- Next Question -->
+## Question 10 
+
+::: {.callout-note title="Note" icon="false" collapse="false"}
+
+### The Problem
+
+Will these two graphs look different? Why/why not?
+``` {r}
+#| eval: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
+```
+
+### The Solution
+
+These plots will not look different. In the first plot, `geom_point()` and `geom_smooth()` inherit the mapping from `ggplot()`. In the second graph, the same mapping is explicity given to both functions.
+
+
+
+``` {r}
+#| echo: false
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth() +
+  labs(title = "Plot 1")
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  labs(title = "Plot 2")
+```
+
+:::

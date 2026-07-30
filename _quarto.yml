@@ -1,6 +1,27 @@
 project:
-  title: "book"
-  output-dir: "_book"
+  type: book
+  output-dir: _book
+
+execute:
+  freeze: auto
+
+book:
+  title: Notebook
+  subtitle: R for Data Science (2e)
+  reader-mode: true
+  sidebar:
+    style: "docked"
+
+  chapters:
+    - index.qmd
+    - part: "Data Visualization"
+      chapters:
+        - 01-data-visualization/02-first-steps.qmd
+    - part: "Tests"
+
+format:
+  html:
+    callout-icon: false
 
 render:
   - "!LICENSE"
