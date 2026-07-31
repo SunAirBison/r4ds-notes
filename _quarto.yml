@@ -17,11 +17,16 @@ book:
     - part: "Data Visualization"
       chapters:
         - 01-data-visualization/02-first-steps.qmd
+        - 01-data-visualization/04-visualizing-distributions.qmd
     - part: "Tests"
+
+  appendices:
+    - progress.md
 
 format:
   html:
     callout-icon: false
+    number-sections: false
 
 render:
   - "!LICENSE"

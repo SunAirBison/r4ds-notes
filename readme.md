@@ -2,25 +2,16 @@
 
 My personal notebook for following [*R for Data Science (2e)*][r4ds], tracking my progress through each chapter and exercise.
 
+**Recently Completed:** (1.4) Whole Game -- Data Visualization -- Visualizing Distributions
+
+Progress tracker can be found [here][track].
+
 ## 📋 My Goals
 
 - Write `.qmd` notebooks for each chapter that reproduce my findings.
 - Write clear code that follows the `tidyverse` style guide.
 - Use the `ggplot2` library and `tidyverse` set of packages to create production-ready visuals and adhere to the tidyverse [manifesto][tidyman] and [style guide][tidysty].
 - Use Quarto to organize and publish my progress on GitHub Pages.
-
-## 📈 Progress Tacker
-
-- [ ] Whole Game
-  - [ ] Data Visualization
-  - [ ] Workflow: basics
-  - [ ] Data transformation
-  - [ ] Workflow: code style
-  - [ ] Data tidying
-  - [ ] Workflow: scripts and projects
-  - [ ] Data Import
-  - [ ] Workflow: getting help
-- ... Further Sections
 
 ## 📜 License & Attribution
 
@@ -30,3 +21,4 @@ My personal notebook for following [*R for Data Science (2e)*][r4ds], tracking m
 [r4ds]: <https://r4ds.hadley.nz/>
 [tidyman]: <https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html>
 [tidysty]: <https://style.tidyverse.org/>
+[track]: progress.md

@@ -1,0 +1,121 @@
+---
+execute:
+  warnings: false
+  message: false
+number-sections: false
+subtitle: Exercise Solutions
+---
+
+# Visualizing Distributions
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(palmerpenguins)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title="Note" collapse="false"}
+
+### The Problem
+
+Make a bar plot of `species` of `penguins`, where you assign `species` to the `y` aesthetic. How is this plot different?
+
+### The Solution
+``` {r}
+penguins |>
+    ggplot(aes(y = species)) +
+    geom_bar()
+```
+
+This plot has horizontal bars instead of vertical bars.
+
+:::
+
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title="Note" collapse="false"}
+
+### The Problem
+
+How are the following two plots different? Which aesthetic, `color` or `fill`, is more useful for changing the color of bars?
+
+``` {r}
+ggplot(penguins, aes(x = species)) +
+  geom_bar(color = "red")
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = "red")
+```
+
+### The Solution
+
+The `color` aesthetic changes the border of the bars while `fill` changes the color of the whole bar. `fill` is the more useful option when changing bar colours.
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title="Note" collapse="false"}
+
+### The Problem
+
+What does the `bins` argument in `geom_histogram()` do?
+
+### The Solution
+
+The `bins` argument in `geom_histogram()` determines the exact number of bins, the default number is 30.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title="Note" collapse="false"}
+
+### The Problem
+
+Make a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?
+
+### The Solution
+
+``` {r}
+# Quick look of the carat variable
+summary(diamonds$carat)
+
+diamonds |>
+    ggplot(aes(x = carat)) +
+    geom_histogram(binwidth = 1)
+
+diamonds |>
+    ggplot(aes(x = carat)) +
+    geom_histogram(binwidth = 0.5)
+
+diamonds |>
+    ggplot(aes(x = carat)) +
+    geom_histogram(binwidth = 0.25)
+
+diamonds |>
+    ggplot(aes(x = carat)) +
+    geom_histogram(binwidth = 0.1)
+
+diamonds |>
+    ggplot(aes(x = carat)) +
+    geom_histogram(bins = 0.01)
+
+diamonds |>
+    ggplot(aes(x = carat)) +
+    geom_density()
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/data-visualize.html#exercises-1>

@@ -1,10 +1,10 @@
----
-number-sections: false
-
----
 # 📖 R for Data Science (2e) - Notebook
 
 My personal notebook for following [*R for Data Science (2e)*][r4ds], tracking my progress through each chapter and exercise.
+
+**Recently Completed:** (1.4) Whole Game -- Data Visualization -- Visualizing Distributions
+
+Progress tracker can be found [here][track].
 
 ## 📋 My Goals
 
@@ -21,3 +21,4 @@ My personal notebook for following [*R for Data Science (2e)*][r4ds], tracking m
 [r4ds]: <https://r4ds.hadley.nz/>
 [tidyman]: <https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html>
 [tidysty]: <https://style.tidyverse.org/>
+[track]: progress.md
