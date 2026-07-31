@@ -1,11 +1,14 @@
 ---
+subtitle: Exercise Solutions
 execute:
-  warning: false
+  warnings: false
   message: false
 number-sections: false
 ---
 
-# First Steps Exercise Solutions
+# First Steps
+
+[Full Questions][source]
 
 ``` {r libs}
 #| output: false
@@ -111,9 +114,9 @@ ggplot(data = penguins) +
   geom_point()
 ```
 
-This plot is missing a value for the `mapping` argument in `ggplot()`. Adding this argument fixes the plot.
-
 ### The Solution
+
+This plot is missing a value for the `mapping` argument in `ggplot()`. Adding this argument fixes the plot.
 
 ``` {r}
 penguins |>
@@ -134,7 +137,9 @@ penguins |>
 What does the `na.rm` argument do in `geom_point()`? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to `TRUE`.
 
 ### The Solution
+
 `na.rm` determines whether points that have missing values create a warning that they were removed. The default value of the argument is `FALSE`. 
+
 ``` {r}
 penguins |>
     ggplot() + 
@@ -289,3 +294,5 @@ ggplot() +
 ```
 
 :::
+
+[source]: <https://r4ds.hadley.nz/data-visualize.html#exercises>
