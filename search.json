@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Notebook",
     "section": "",
-    "text": "📖 R for Data Science (2e) - Notebook\nMy personal notebook for following R for Data Science (2e), tracking my progress through each chapter and exercise.",
+    "text": "📖 R for Data Science (2e) - Notebook\nMy personal notebook for following R for Data Science (2e), tracking my progress through each chapter and exercise.\nRecently Completed: (1.4) Whole Game – Data Visualization – Visualizing Distributions\nProgress tracker can be found here.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>📖 R for Data Science (2e) - Notebook</span>"
     ]
@@ -32,122 +32,199 @@
   {
     "objectID": "01-data-visualization/02-first-steps.html",
     "href": "01-data-visualization/02-first-steps.html",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "",
-    "text": "Question 1",
+    "text": "Question 1\nFull Questions",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-1",
     "href": "01-data-visualization/02-first-steps.html#question-1",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "",
-    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nHow many row and columns are in penguins?\n\n\nThe Solution\n\ndim(penguins)\n\n[1] 344   8\n\n\nThere are 344 rows and 8 columns in penguins.",
+    "text": "Note\n\n\n\n\n\n\nThe Problem\nHow many row and columns are in penguins?\n\n\nThe Solution\n\ndim(penguins)\n\n[1] 344   8\n\n\nThere are 344 rows and 8 columns in penguins.",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-2",
     "href": "01-data-visualization/02-first-steps.html#question-2",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 2",
-    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the bill_depth_mm variable describe?\n\n\nThe Solution\nbill_depth_mm represents the bill depth of the pegnuins in millimeters, as stated from CRAN.",
+    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the bill_depth_mm variable describe?\n\n\nThe Solution\nbill_depth_mm represents the bill depth of the pegnuins in millimeters, as stated from CRAN.",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-3",
     "href": "01-data-visualization/02-first-steps.html#question-3",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 3",
-    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm.\n\n\nThe Solution\n\npenguins |&gt; # Following tidyverse style guide by using pipes\n    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point() +\n    labs(title=\"bill_depth_mm vs bill_length_mm\")",
+    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm.\n\n\nThe Solution\n\npenguins |&gt; # Following tidyverse style guide by using pipes\n    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point() +\n    labs(title=\"bill_depth_mm vs bill_length_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-4",
     "href": "01-data-visualization/02-first-steps.html#question-4",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 4",
-    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens when you make a scatterplot of species vs bill_depth_mm? What might be a better choice of geom?\n\n\nThe Solution\n\npenguins |&gt; \n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_point() + \n    labs(title=\"species vs bill_depth_mm\")\n\n\n\n\n\n\n\n\nWhen creating a scatterplot, the points are split into the three different species categories, which is not very helpful when represented by a scatterplto. A boxplot can represent this relationship .\n\npenguins |&gt;\n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_boxplot()",
+    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat happens when you make a scatterplot of species vs bill_depth_mm? What might be a better choice of geom?\n\n\nThe Solution\n\npenguins |&gt; \n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_point() + \n    labs(title=\"species vs bill_depth_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nWhen creating a scatterplot, the points are split into the three different species categories, which is not very helpful when represented by a scatterplto. A boxplot can represent this relationship .\n\npenguins |&gt;\n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_boxplot()\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-5",
     "href": "01-data-visualization/02-first-steps.html#question-5",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 5",
-    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhy does the following give an error and how would you fix it?\n\nggplot(data = penguins) + \n  geom_point()\n\nThis plot is missing a value for the mapping argument in ggplot(). Adding this argument fixes the plot.\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point()",
+    "text": "Question 5\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhy does the following give an error and how would you fix it?\n\nggplot(data = penguins) + \n  geom_point()\n\n\n\nThe Solution\nThis plot is missing a value for the mapping argument in ggplot(). Adding this argument fixes the plot.\n\npenguins |&gt;\n    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point()\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-6",
     "href": "01-data-visualization/02-first-steps.html#question-6",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 6",
-    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the na.rm argument do in geom_point()? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to TRUE.\n\n\nThe Solution\nna.rm determines whether points that have missing values create a warning that they were removed. The default value of the argument is FALSE.\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n        )",
+    "text": "Question 6\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the na.rm argument do in geom_point()? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to TRUE.\n\n\nThe Solution\nna.rm determines whether points that have missing values create a warning that they were removed. The default value of the argument is FALSE.\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n        )",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-7",
     "href": "01-data-visualization/02-first-steps.html#question-7",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 7",
-    "text": "Question 7\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nAdd the following caption to the plot you made in the previous exercise: “Data came from the palmerpenguins package.”\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n    ) +\n    labs(caption = \"Data came from the palmerpenguins package.\")",
+    "text": "Question 7\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nAdd the following caption to the plot you made in the previous exercise: “Data came from the palmerpenguins package.”\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n    ) +\n    labs(caption = \"Data came from the palmerpenguins package.\")",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-8",
     "href": "01-data-visualization/02-first-steps.html#question-8",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 8",
-    "text": "Question 8\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRecreate the following visualization. What aesthetic should bill_depth_mm be mapped to? Should it be mapped at the global or geom level?\n\n\nThe Solution\nbill_depth_mm should be mapped to color in the geom level, otherwise geom_smooth would be split by bill depth.\n\npenguins |&gt;\n    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + \n    geom_point(mapping = aes(color = bill_depth_mm)) +\n    geom_smooth(method = \"gam\")",
+    "text": "Question 8\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRecreate the following visualization. What aesthetic should bill_depth_mm be mapped to? Should it be mapped at the global or geom level?\n\n\nThe Solution\nbill_depth_mm should be mapped to color in the geom level, otherwise geom_smooth would be split by bill depth.\n\npenguins |&gt;\n    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + \n    geom_point(mapping = aes(color = bill_depth_mm)) +\n    geom_smooth(method = \"gam\")\n\n`geom_smooth()` using formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-9",
     "href": "01-data-visualization/02-first-steps.html#question-9",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 9",
-    "text": "Question 9\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRun this code in your head and predict what the output will look like. Then run the code and check your predictions.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)\n) +\n  geom_point() +\n  geom_smooth(se = FALSE)    \n\n\n\nThe Solution\nI predict that the plot will have axes of body_mass_g vs flipper_length_mm. The points on the plot will be grouped with different by the island variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.\n\n\n\n\n\n\n\n\n\nI predicted the components correctly, but I was not expecting the lines to overlap as much as they did.",
+    "text": "Question 9\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRun this code in your head and predict what the output will look like. Then run the code and check your predictions.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)\n) +\n  geom_point() +\n  geom_smooth(se = FALSE)    \n\n\n\nThe Solution\nI predict that the plot will have axes of body_mass_g vs flipper_length_mm. The points on the plot will be grouped with different by the island variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nI predicted the components correctly, but I was not expecting the lines to overlap as much as they did.",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
     ]
   },
   {
     "objectID": "01-data-visualization/02-first-steps.html#question-10",
     "href": "01-data-visualization/02-first-steps.html#question-10",
-    "title": "First Steps Exercise Solutions",
+    "title": "First Steps",
     "section": "Question 10",
-    "text": "Question 10\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWill these two graphs look different? Why/why not?\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_smooth()\n\nggplot() +\n  geom_point(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  ) +\n  geom_smooth(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  )\n\n\n\nThe Solution\nThese plots will not look different. In the first plot, geom_point() and geom_smooth() inherit the mapping from ggplot(). In the second graph, the same mapping is explicity given to both functions.",
+    "text": "Question 10\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWill these two graphs look different? Why/why not?\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_smooth()\n\nggplot() +\n  geom_point(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  ) +\n  geom_smooth(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  )\n\n\n\nThe Solution\nThese plots will not look different. In the first plot, geom_point() and geom_smooth() inherit the mapping from ggplot(). In the second graph, the same mapping is explicity given to both functions.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`).\nRemoved 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps Exercise Solutions</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/04-visualizing-distributions.html",
+    "href": "01-data-visualization/04-visualizing-distributions.html",
+    "title": "Visualizing Distributions",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-1",
+    "href": "01-data-visualization/04-visualizing-distributions.html#question-1",
+    "title": "Visualizing Distributions",
+    "section": "",
+    "text": "Note\n\n\n\n\n\n\nThe Problem\nMake a bar plot of species of penguins, where you assign species to the y aesthetic. How is this plot different?\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot(aes(y = species)) +\n    geom_bar()\n\n\n\n\n\n\n\n\nThis plot has horizontal bars instead of vertical bars.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-2",
+    "href": "01-data-visualization/04-visualizing-distributions.html#question-2",
+    "title": "Visualizing Distributions",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nHow are the following two plots different? Which aesthetic, color or fill, is more useful for changing the color of bars?\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(color = \"red\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(fill = \"red\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe color aesthetic changes the border of the bars while fill changes the color of the whole bar. fill is the more useful option when changing bar colours.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-3",
+    "href": "01-data-visualization/04-visualizing-distributions.html#question-3",
+    "title": "Visualizing Distributions",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the bins argument in geom_histogram() do?\n\n\nThe Solution\nThe bins argument in geom_histogram() determines the exact number of bins, the default number is 30.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-4",
+    "href": "01-data-visualization/04-visualizing-distributions.html#question-4",
+    "title": "Visualizing Distributions",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?\n\n\nThe Solution\n\n# Quick look of the carat variable\nsummary(diamonds$carat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.2000  0.4000  0.7000  0.7979  1.0400  5.0100 \n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.25)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(bins = 0.01)\n\nWarning: Computation failed in `stat_bin()`.\nCaused by error in `compute_bins()`:\n! `bins` must be a whole number, not the number 0.01.\n\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_density()",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "progress.html",
+    "href": "progress.html",
+    "title": "Progress Tracker",
+    "section": "",
+    "text": "Whole Game\nFull list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.",
+    "crumbs": [
+      "Appendices",
+      "Progress Tracker"
+    ]
+  },
+  {
+    "objectID": "progress.html#whole-game",
+    "href": "progress.html#whole-game",
+    "title": "Progress Tracker",
+    "section": "",
+    "text": "Data Visualization\n\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nRows\nColumns\nGroups\n\nWorkflow: Code Style",
+    "crumbs": [
+      "Appendices",
+      "Progress Tracker"
     ]
   }
 ]

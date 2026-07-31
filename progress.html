@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notebook</title>
+<title>Progress Tracker – Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-data-visualization/02-first-steps.html" rel="next">
+<link href="./01-data-visualization/04-visualizing-distributions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">📖 R for Data Science (2e) - Notebook</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./progress.html">Appendices</a></li><li class="breadcrumb-item"><a href="./progress.html">Progress Tracker</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">📖 R for Data Science (2e) - Notebook</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">📖 R for Data Science (2e) - Notebook</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./progress.html" class="sidebar-item-text sidebar-link">
+  <a href="./progress.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Progress Tracker</span></a>
   </div>
 </li>
@@ -169,21 +169,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-for-data-science-2e---notebook" id="toc-r-for-data-science-2e---notebook" class="nav-link active" data-scroll-target="#r-for-data-science-2e---notebook">📖 R for Data Science (2e) - Notebook</a>
-  <ul class="collapse">
-  <li><a href="#my-goals" id="toc-my-goals" class="nav-link" data-scroll-target="#my-goals">📋 My Goals</a></li>
-  <li><a href="#license-attribution" id="toc-license-attribution" class="nav-link" data-scroll-target="#license-attribution">📜 License &amp; Attribution</a></li>
-  </ul></li>
+  <li><a href="#whole-game" id="toc-whole-game" class="nav-link active" data-scroll-target="#whole-game">Whole Game</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./progress.html">Appendices</a></li><li class="breadcrumb-item"><a href="./progress.html">Progress Tracker</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Notebook</h1>
-<p class="subtitle lead">R for Data Science (2e)</p>
+<h1 class="title">Progress Tracker</h1>
 </div>
 
 
@@ -200,29 +195,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="r-for-data-science-2e---notebook" class="level1">
-<h1>📖 R for Data Science (2e) - Notebook</h1>
-<p>My personal notebook for following <a href="https://r4ds.hadley.nz/"><em>R for Data Science (2e)</em></a>, tracking my progress through each chapter and exercise.</p>
-<p><strong>Recently Completed:</strong> (1.4) Whole Game – Data Visualization – Visualizing Distributions</p>
-<p>Progress tracker can be found <a href="./progress.html">here</a>.</p>
-<section id="my-goals" class="level2">
-<h2 class="anchored" data-anchor-id="my-goals">📋 My Goals</h2>
-<ul>
-<li>Write <code>.qmd</code> notebooks for each chapter that reproduce my findings.</li>
-<li>Write clear code that follows the <code>tidyverse</code> style guide.</li>
-<li>Use the <code>ggplot2</code> library and <code>tidyverse</code> set of packages to create production-ready visuals and adhere to the tidyverse <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">manifesto</a> and <a href="https://style.tidyverse.org/">style guide</a>.</li>
-<li>Use Quarto to organize and publish my progress on GitHub Pages.</li>
-</ul>
-</section>
-<section id="license-attribution" class="level2">
-<h2 class="anchored" data-anchor-id="license-attribution">📜 License &amp; Attribution</h2>
-<ul>
-<li><strong>Code:</strong> All original code, scripts, and Quarto solutions in this repository are licensed under the <a href="LICENSE">MIT License</a>.</li>
-<li><strong>Text &amp; Materials:</strong> Concepts, dataset structures, and book references belong to Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund <a href="https://r4ds.hadley.nz/"><em>R for Data Science (2e)</em></a>, used here under educational fair use / non-commercial reference.</li>
+<p>Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.</p>
+<section id="whole-game" class="level2">
+<h2 class="anchored" data-anchor-id="whole-game">Whole Game</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Data Visualization</label>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">First Steps</label></li>
+<li><label><input type="checkbox" checked="">Visualizing Distributions</label></li>
+<li><label><input type="checkbox">Visualizing Relationships</label></li>
+<li><label><input type="checkbox">Saving your plots</label></li>
+</ul></li>
+<li><label><input type="checkbox">Workflow Basics</label></li>
+<li><label><input type="checkbox">Data Transformation</label>
+<ul class="task-list">
+<li><label><input type="checkbox">Rows</label></li>
+<li><label><input type="checkbox">Columns</label></li>
+<li><label><input type="checkbox">Groups</label></li>
+</ul></li>
+<li><label><input type="checkbox">Workflow: Code Style</label></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -645,11 +639,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./01-data-visualization/04-visualizing-distributions.html" class="pagination-link" aria-label="Visualizing Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Visualizing Distributions</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-data-visualization/02-first-steps.html" class="pagination-link" aria-label="First Steps">
-        <span class="nav-page-text"><span class="chapter-title">First Steps</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
