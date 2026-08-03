@@ -109,7 +109,7 @@ diamonds |>
 
 diamonds |>
     ggplot(aes(x = carat)) +
-    geom_histogram(bins = 0.01)
+    geom_histogram(binwidth = 0.01)
 
 diamonds |>
     ggplot(aes(x = carat)) +
