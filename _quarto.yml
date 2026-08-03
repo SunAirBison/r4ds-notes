@@ -18,6 +18,7 @@ book:
       chapters:
         - 01-data-visualization/02-first-steps.qmd
         - 01-data-visualization/04-visualizing-distributions.qmd
+        - 01-data-visualization/05-visualizing-relationships.qmd
     - part: "Tests"
 
   appendices:

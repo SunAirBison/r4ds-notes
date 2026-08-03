@@ -1,0 +1,250 @@
+---
+execute:
+  warnings: false
+  message: false
+number-sections: false
+subtitle: Exercise Solutions
+---
+
+# Visualizing Relationships
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(palmerpenguins)
+data(mpg)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+The `mpg` data frame that is bundled with the ggplot2 package contains 234 observations collected by the US Environmental Protection Agency on 38 car models. Which variables in `mpg` are categorical? Which variables are numerical? How can you see this information when you run mpg?
+
+### The Solution
+
+Below is a table of all the variables included in `mpg`. Note `cyl` is categorical since the integers represent a small set of values.
+
+| Name           |  Var. Type  |
+| -------------- | :---------: |
+| `manufacturer` | Categorical |
+| `model`        | Categorical |
+| `displ`        |  Numerical  |
+| `year`         |  Numerical  |
+| `cyl`          | Categorical |
+| `trans`        | Categorical |
+| `drv`          | Categorical |
+| `cty`          |  Numerical  |
+| `hwy`          |  Numerical  |
+| `fl`           | Categorical |
+| `class`        | Categorical |
+
+:::
+
+To see this information (# observation & # car models), I used `summary()`. For just those two numbers specifically, I would use `unique()` and `dim()`. 
+
+```{r}
+# Full table info
+summary(mpg)
+
+# Specific numbers
+length(unique(mpg$model))
+dim(mpg)[1]
+```
+
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Make a scatterplot of `hwy` vs. `displ` using the `mpg` data frame. Next, map a third, numerical variable to `color`, then `size`, then both `color` and `size`, then `shape`. How do these aesthetics behave differently for categorical vs. numerical variables?
+
+### The Solution
+
+``` {r}
+mpg |> 
+    ggplot(aes(x = displ, y = hwy)) +
+    geom_point()
+
+mpg |> 
+    ggplot(aes(x = displ, y = hwy, color = cty)) +
+    geom_point()
+
+mpg |> 
+    ggplot(aes(x = displ, y = hwy, size = displ)) + 
+    geom_point()
+
+mpg |> 
+    ggplot(aes(x = displ, y = hwy, color = cty, size = displ)) +
+    geom_point()
+```
+
+```{r}
+#| eval: false
+# Raises error due to passing a continous variable to shape
+mpg |> 
+    ggplot(aes(x = displ, y = hwy, shape = cty)) + 
+    geom_point()
+```
+
+When the variable is categorical, all three aesthetics behave simillarly. Each category is assigned a unique color/size/shape.
+
+When the variable is numerical, each of the aesthetics does something different:
+
+- `color` maps each value on a gradient, keeping all information.
+- `size` rounds each value to be one of a set of sizes with a positive integer value. It loses some information from the variable.
+- `shape` is unable to map to a numerical (continous) variable and raises an error when we attempt to map it.
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+In the scatterplot of `hwy` vs. `displ`, what happens if you map a third variable to `linewidth`?
+
+### The Solution
+
+``` {r}
+mpg |> 
+  ggplot(aes(x = displ, y = hwy, linewidth = cty)) +
+  geom_point()
+```
+
+Adding `linewidth` to aesthetics shows no visible changes to the scatterplot.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What happens if you map the same variable to multiple aesthetics?
+
+### The Solution
+
+``` {r}
+mpg |> 
+  ggplot() + 
+  geom_point(aes(x = hwy, y = hwy, color = hwy))
+
+  mpg |> 
+  ggplot() + 
+  geom_point(aes(x = hwy, y = hwy, color = hwy, size = hwy))
+```
+
+When we map the same variable to multiple aesthetics (in scatterplots), The values follow a diagonal line, since for each point `x` and `y` are equal. For `color` and `size`, they became gradients with one extreme on one side of the line to the other extreme on the other end. 
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm` and color the points by `species`. What does adding coloring by species reveal about the relationship between these two variables? What about faceting by `species`.
+
+### The Solution
+
+``` {r}
+penguins |>
+  ggplot(aes(color = species)) + 
+  geom_point(
+    aes(x = bill_length_mm, y = bill_depth_mm), 
+    na.rm = TRUE)
+```
+
+This plot shows that the bill length and depth of the penguins measured are clustered by species.
+
+``` {r}
+penguins |>
+  ggplot(aes(color = species)) + 
+  geom_point(
+    aes(x = bill_length_mm, y = bill_depth_mm), 
+    na.rm = TRUE) +
+  facet_wrap(~species)
+```
+
+When faceting by species, it is easier to see that Gentoo penguins have a noticible difference in bill depth to the other species and that Adelle penguins have a smaller bill length comapared to the other species.
+
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Why does the following yield two separate legends? How would you fix it to combine the two legends?
+
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm, y = bill_depth_mm, 
+    color = species, shape = species
+  )
+) +
+  geom_point() +
+  labs(color = "Species")
+```
+
+### The Solution
+
+Two separate legends appear since our custom name for `color` is different that the default one for `shape`. We can fix it by either changing `color` back to the default legend name or change the name for `shape` to "Legend".
+
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm, y = bill_depth_mm, 
+    color = species, shape = species 
+  )
+) +
+  geom_point(na.rm = FALSE) +
+  labs(color = "Species", shape = "Species")
+```
+
+:::
+
+<!-- Next Question -->
+## Question 7
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Create the two following stacked bar plots. Which question can you answer with the first one? Which question can you answer with the second one?
+
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "fill")
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar(position = "fill")
+```
+
+### The Solution
+
+The first plot (`species` vs `island`) shows for each island the proportion of penguins on that particular island. This plot can tell us what the population of each island look like.
+The second plot (`island` vs `species`) shows for each penguin species, the proportion of that species on each island. This plot can tell us the proportion of the total population of each penguin species across the different islands.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/data-visualize.html#exercises-2>
