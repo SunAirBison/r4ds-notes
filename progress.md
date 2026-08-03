@@ -4,11 +4,11 @@ Full list of exercises that I have completed. The list will be updated overtime 
 
 ## Whole Game
 
-- [ ] Data Visualization
+- [x] Data Visualization
   - [x] First Steps
   - [x] Visualizing Distributions
-  - [ ] Visualizing Relationships
-  - [ ] Saving your plots
+  - [x] Visualizing Relationships
+  - [x] Saving your plots
 - [ ] Workflow Basics
 - [ ] Data Transformation
   - [ ] Rows

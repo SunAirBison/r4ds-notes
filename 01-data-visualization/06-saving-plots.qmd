@@ -1,0 +1,62 @@
+---
+execute:
+  warnings: false
+  message: false
+number-sections: false
+subtitle: Exercise Solutions
+---
+
+# Visualizing Relationships
+
+[Full Questions][source]
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Run the following lines of code. Which of the two plots is saved as `mpg-plot.png`? Why?
+
+```{r}
+#| eval: false
+ggplot(mpg, aes(x = class)) +
+  geom_bar()
+ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+ggsave("mpg-plot.png")
+```
+
+### The Solution
+
+The second plot is saved. This is due to it being the most recent plot made, the first plot was overwritten by the second plot.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What do you need to change in the code above to save the plot as a PDF instead of a PNG? How could you find out what types of image files would work in `ggsave()`?
+
+### The Solution
+
+To save the plot as a PNG, we would change the string in `ggsave()` to end with `.pdf`.
+
+``` {r}
+ggplot(mpg, aes(x = class)) +
+  geom_bar()
+ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+ggsave("mpg-plot.pdf")
+```
+
+Using `?ggsave` shows all the file types that would work.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/data-visualize.html#exercises-3>
