@@ -10,6 +10,13 @@ subtitle: Exercise Solutions
 
 [Full Questions][source]
 
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(palmerpenguins)
+```
+
 <!-- Next Question -->
 ## Question 1
 
@@ -23,10 +30,10 @@ Run the following lines of code. Which of the two plots is saved as `mpg-plot.pn
 #| eval: false
 ggplot(mpg, aes(x = class)) +
   geom_bar()
-ggplot(mpg, aes(x = cty, y = hwy)) +
-  geom_point()
-ggsave("mpg-plot.png")
-```
+  ggplot(mpg, aes(x = cty, y = hwy)) +
+    geom_point()
+    ggsave("mpg-plot.png")
+    ```
 
 ### The Solution
 

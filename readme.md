@@ -2,7 +2,7 @@
 
 My personal notebook for following [*R for Data Science (2e)*][r4ds], tracking my progress through each chapter and exercise.
 
-**Recently Completed:** Whole Game -- (1.6) Data Visualization -- Saving your plots
+**Recently Completed:** Whole Game -- Workflow: basics
 
 Progress tracker can be found [here][track].
 

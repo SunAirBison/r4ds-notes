@@ -16,10 +16,11 @@ book:
     - index.qmd
     - part: "Data Visualization"
       chapters:
-        - 01-data-visualization/02-first-steps.qmd
-        - 01-data-visualization/04-visualizing-distributions.qmd
-        - 01-data-visualization/05-visualizing-relationships.qmd
-    - part: "Tests"
+        - whole-game/01-data-visualization/02-first-steps.qmd
+        - whole-game/01-data-visualization/04-visualizing-distributions.qmd
+        - whole-game/01-data-visualization/05-visualizing-relationships.qmd
+        - whole-game/01-data-visualization/06-saving-plots.qmd
+    - part: whole-game/02-workflow-basics.qmd
 
   appendices:
     - progress.md

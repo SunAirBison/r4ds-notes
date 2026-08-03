@@ -9,7 +9,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Visualizing Distributions
   - [x] Visualizing Relationships
   - [x] Saving your plots
-- [ ] Workflow Basics
+- [x] Workflow Basics
 - [ ] Data Transformation
   - [ ] Rows
   - [ ] Columns
