@@ -199,10 +199,98 @@
     "href": "01-data-visualization/04-visualizing-distributions.html#question-4",
     "title": "Visualizing Distributions",
     "section": "Question 4",
-    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?\n\n\nThe Solution\n\n# Quick look of the carat variable\nsummary(diamonds$carat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.2000  0.4000  0.7000  0.7979  1.0400  5.0100 \n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.25)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(bins = 0.01)\n\nWarning: Computation failed in `stat_bin()`.\nCaused by error in `compute_bins()`:\n! `bins` must be a whole number, not the number 0.01.\n\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_density()",
+    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?\n\n\nThe Solution\n\n# Quick look of the carat variable\nsummary(diamonds$carat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.2000  0.4000  0.7000  0.7979  1.0400  5.0100 \n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.25)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.01)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_density()",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html",
+    "href": "01-data-visualization/05-visualizing-relationships.html",
+    "title": "Visualizing Relationships",
+    "section": "",
+    "text": "Question 1\nFull Questions\nTo see this information (# observation & # car models), I used summary(). For just those two numbers specifically, I would use unique() and dim().\n# Full table info\nsummary(mpg)\n\n    manufacturer       model         displ            year           cyl       \n Length   :234   Length   :234   Min.   :1.600   Min.   :1999   Min.   :4.000  \n N.unique : 15   N.unique : 38   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000  \n N.blank  :  0   N.blank  :  0   Median :3.300   Median :2004   Median :6.000  \n Min.nchar:  4   Min.nchar:  2   Mean   :3.472   Mean   :2004   Mean   :5.889  \n Max.nchar: 10   Max.nchar: 22   3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000  \n                                 Max.   :7.000   Max.   :2008   Max.   :8.000  \n       trans            drv           cty             hwy       \n Length   :234   Length   :234   Min.   : 9.00   Min.   :12.00  \n N.unique : 10   N.unique :  3   1st Qu.:14.00   1st Qu.:18.00  \n N.blank  :  0   N.blank  :  0   Median :17.00   Median :24.00  \n Min.nchar:  8   Min.nchar:  1   Mean   :16.86   Mean   :23.44  \n Max.nchar: 10   Max.nchar:  1   3rd Qu.:19.00   3rd Qu.:27.00  \n                                 Max.   :35.00   Max.   :44.00  \n         fl            class    \n Length   :234   Length   :234  \n N.unique :  5   N.unique :  7  \n N.blank  :  0   N.blank  :  0  \n Min.nchar:  1   Min.nchar:  3  \n Max.nchar:  1   Max.nchar: 10  \n                                \n\n# Specific numbers\nlength(unique(mpg$model))\n\n[1] 38\n\ndim(mpg)[1]\n\n[1] 234",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-1",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-1",
+    "title": "Visualizing Relationships",
+    "section": "",
+    "text": "Note\n\n\n\n\n\n\nThe Problem\nThe mpg data frame that is bundled with the ggplot2 package contains 234 observations collected by the US Environmental Protection Agency on 38 car models. Which variables in mpg are categorical? Which variables are numerical? How can you see this information when you run mpg?\n\n\nThe Solution\nBelow is a table of all the variables included in mpg. Note cyl is categorical since the integers represent a small set of values.\n\n\n\nName\nVar. Type\n\n\n\n\nmanufacturer\nCategorical\n\n\nmodel\nCategorical\n\n\ndispl\nNumerical\n\n\nyear\nNumerical\n\n\ncyl\nCategorical\n\n\ntrans\nCategorical\n\n\ndrv\nCategorical\n\n\ncty\nNumerical\n\n\nhwy\nNumerical\n\n\nfl\nCategorical\n\n\nclass\nCategorical",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-2",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-2",
+    "title": "Visualizing Relationships",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of hwy vs. displ using the mpg data frame. Next, map a third, numerical variable to color, then size, then both color and size, then shape. How do these aesthetics behave differently for categorical vs. numerical variables?\n\n\nThe Solution\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, size = displ)) + \n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty, size = displ)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\n# Raises error due to passing a continous variable to shape\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, shape = cty)) + \n    geom_point()\n\nWhen the variable is categorical, all three aesthetics behave simillarly. Each category is assigned a unique color/size/shape.\nWhen the variable is numerical, each of the aesthetics does something different:\n\ncolor maps each value on a gradient, keeping all information.\nsize rounds each value to be one of a set of sizes with a positive integer value. It loses some information from the variable.\nshape is unable to map to a numerical (continous) variable and raises an error when we attempt to map it.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-3",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-3",
+    "title": "Visualizing Relationships",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nIn the scatterplot of hwy vs. displ, what happens if you map a third variable to linewidth?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot(aes(x = displ, y = hwy, linewidth = cty)) +\n  geom_point()\n\n\n\n\n\n\n\n\nAdding linewidth to aesthetics shows no visible changes to the scatterplot.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-4",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-4",
+    "title": "Visualizing Relationships",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you map the same variable to multiple aesthetics?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy))\n\n\n\n\n\n\n\n  mpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy, size = hwy))\n\n\n\n\n\n\n\n\nWhen we map the same variable to multiple aesthetics (in scatterplots), The values follow a diagonal line, since for each point x and y are equal. For color and size, they became gradients with one extreme on one side of the line to the other extreme on the other end.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-5",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-5",
+    "title": "Visualizing Relationships",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm and color the points by species. What does adding coloring by species reveal about the relationship between these two variables? What about faceting by species.\n\n\nThe Solution\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE)\n\n\n\n\n\n\n\n\nThis plot shows that the bill length and depth of the penguins measured are clustered by species.\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE) +\n  facet_wrap(~species)\n\n\n\n\n\n\n\n\nWhen faceting by species, it is easier to see that Gentoo penguins have a noticible difference in bill depth to the other species and that Adelle penguins have a smaller bill length comapared to the other species.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-6",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-6",
+    "title": "Visualizing Relationships",
+    "section": "Question 6",
+    "text": "Question 6\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhy does the following yield two separate legends? How would you fix it to combine the two legends?\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species\n  )\n) +\n  geom_point() +\n  labs(color = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\nThe Solution\nTwo separate legends appear since our custom name for color is different that the default one for shape. We can fix it by either changing color back to the default legend name or change the name for shape to “Legend”.\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species \n  )\n) +\n  geom_point(na.rm = FALSE) +\n  labs(color = \"Species\", shape = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-7",
+    "href": "01-data-visualization/05-visualizing-relationships.html#question-7",
+    "title": "Visualizing Relationships",
+    "section": "Question 7",
+    "text": "Question 7\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nCreate the two following stacked bar plots. Which question can you answer with the first one? Which question can you answer with the second one?\n\nggplot(penguins, aes(x = island, fill = species)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species, fill = island)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe first plot (species vs island) shows for each island the proportion of penguins on that particular island. This plot can tell us what the population of each island look like. The second plot (island vs species) shows for each penguin species, the proportion of that species on each island. This plot can tell us the proportion of the total population of each penguin species across the different islands.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
     ]
   },
   {
