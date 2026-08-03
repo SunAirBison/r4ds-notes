@@ -1,0 +1,109 @@
+---
+execute:
+  warnings: false
+  message: false
+number-sections: false
+subtitle: Exercise Solutions
+---
+
+# Workflow: Basics
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(palmerpenguins)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Why does this code not work?
+
+``` {r}
+#| eval: false
+my_variable <- 10
+my_varıable
+#> Error:
+#> ! object 'my_varıable' not found
+```
+
+### The Solution
+
+The variable names are not the same.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+```{r}
+#| eval: false
+libary(todyverse)
+
+ggplot(dTA = mpg) + 
+  geom_point(maping = aes(x = displ y = hwy)) +
+  geom_smooth(method = "lm)
+```
+
+### The Solution
+
+``` {r}
+# dTA -> data, move aes, fix mapping typo, add comma
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + #
+  geom_smooth(method = "lm") # add ending quote
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Press Alt + Shift + K. What happens? How can you get to the same place using the menus? 
+
+### The Solution
+
+In RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Run the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?
+
+```{r}
+#| eval: false
+my_bar_plot <- ggplot(mpg, aes(x = class)) +
+  geom_bar()
+my_scatter_plot <- ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+ggsave(filename = "mpg-plot.png", plot = my_bar_plot)
+```
+
+### The Solution
+
+`my_bar_plot` is saved since it is explicitly added as an argument to `ggsave()`
+
+:::
+
+[source]: <https://r4ds.hadley.nz/workflow-basics.html#exercises>
