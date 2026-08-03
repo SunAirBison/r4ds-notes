@@ -30,8 +30,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html",
-    "href": "01-data-visualization/02-first-steps.html",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html",
+    "href": "whole-game/01-data-visualization/02-first-steps.html",
     "title": "First Steps",
     "section": "",
     "text": "Question 1\nFull Questions",
@@ -41,8 +41,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-1",
-    "href": "01-data-visualization/02-first-steps.html#question-1",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-1",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-1",
     "title": "First Steps",
     "section": "",
     "text": "Note\n\n\n\n\n\n\nThe Problem\nHow many row and columns are in penguins?\n\n\nThe Solution\n\ndim(penguins)\n\n[1] 344   8\n\n\nThere are 344 rows and 8 columns in penguins.",
@@ -52,8 +52,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-2",
-    "href": "01-data-visualization/02-first-steps.html#question-2",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-2",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-2",
     "title": "First Steps",
     "section": "Question 2",
     "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the bill_depth_mm variable describe?\n\n\nThe Solution\nbill_depth_mm represents the bill depth of the pegnuins in millimeters, as stated from CRAN.",
@@ -63,8 +63,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-3",
-    "href": "01-data-visualization/02-first-steps.html#question-3",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-3",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-3",
     "title": "First Steps",
     "section": "Question 3",
     "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm.\n\n\nThe Solution\n\npenguins |&gt; # Following tidyverse style guide by using pipes\n    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point() +\n    labs(title=\"bill_depth_mm vs bill_length_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
@@ -74,8 +74,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-4",
-    "href": "01-data-visualization/02-first-steps.html#question-4",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-4",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-4",
     "title": "First Steps",
     "section": "Question 4",
     "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat happens when you make a scatterplot of species vs bill_depth_mm? What might be a better choice of geom?\n\n\nThe Solution\n\npenguins |&gt; \n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_point() + \n    labs(title=\"species vs bill_depth_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nWhen creating a scatterplot, the points are split into the three different species categories, which is not very helpful when represented by a scatterplto. A boxplot can represent this relationship .\n\npenguins |&gt;\n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_boxplot()\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).",
@@ -85,8 +85,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-5",
-    "href": "01-data-visualization/02-first-steps.html#question-5",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-5",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-5",
     "title": "First Steps",
     "section": "Question 5",
     "text": "Question 5\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhy does the following give an error and how would you fix it?\n\nggplot(data = penguins) + \n  geom_point()\n\n\n\nThe Solution\nThis plot is missing a value for the mapping argument in ggplot(). Adding this argument fixes the plot.\n\npenguins |&gt;\n    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point()\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
@@ -96,8 +96,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-6",
-    "href": "01-data-visualization/02-first-steps.html#question-6",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-6",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-6",
     "title": "First Steps",
     "section": "Question 6",
     "text": "Question 6\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the na.rm argument do in geom_point()? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to TRUE.\n\n\nThe Solution\nna.rm determines whether points that have missing values create a warning that they were removed. The default value of the argument is FALSE.\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n        )",
@@ -107,8 +107,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-7",
-    "href": "01-data-visualization/02-first-steps.html#question-7",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-7",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-7",
     "title": "First Steps",
     "section": "Question 7",
     "text": "Question 7\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nAdd the following caption to the plot you made in the previous exercise: “Data came from the palmerpenguins package.”\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n    ) +\n    labs(caption = \"Data came from the palmerpenguins package.\")",
@@ -118,8 +118,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-8",
-    "href": "01-data-visualization/02-first-steps.html#question-8",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-8",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-8",
     "title": "First Steps",
     "section": "Question 8",
     "text": "Question 8\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRecreate the following visualization. What aesthetic should bill_depth_mm be mapped to? Should it be mapped at the global or geom level?\n\n\nThe Solution\nbill_depth_mm should be mapped to color in the geom level, otherwise geom_smooth would be split by bill depth.\n\npenguins |&gt;\n    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + \n    geom_point(mapping = aes(color = bill_depth_mm)) +\n    geom_smooth(method = \"gam\")\n\n`geom_smooth()` using formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
@@ -129,8 +129,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-9",
-    "href": "01-data-visualization/02-first-steps.html#question-9",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-9",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-9",
     "title": "First Steps",
     "section": "Question 9",
     "text": "Question 9\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRun this code in your head and predict what the output will look like. Then run the code and check your predictions.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)\n) +\n  geom_point() +\n  geom_smooth(se = FALSE)    \n\n\n\nThe Solution\nI predict that the plot will have axes of body_mass_g vs flipper_length_mm. The points on the plot will be grouped with different by the island variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nI predicted the components correctly, but I was not expecting the lines to overlap as much as they did.",
@@ -140,8 +140,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/02-first-steps.html#question-10",
-    "href": "01-data-visualization/02-first-steps.html#question-10",
+    "objectID": "whole-game/01-data-visualization/02-first-steps.html#question-10",
+    "href": "whole-game/01-data-visualization/02-first-steps.html#question-10",
     "title": "First Steps",
     "section": "Question 10",
     "text": "Question 10\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWill these two graphs look different? Why/why not?\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_smooth()\n\nggplot() +\n  geom_point(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  ) +\n  geom_smooth(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  )\n\n\n\nThe Solution\nThese plots will not look different. In the first plot, geom_point() and geom_smooth() inherit the mapping from ggplot(). In the second graph, the same mapping is explicity given to both functions.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`).\nRemoved 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
@@ -151,8 +151,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/04-visualizing-distributions.html",
-    "href": "01-data-visualization/04-visualizing-distributions.html",
+    "objectID": "whole-game/01-data-visualization/04-visualizing-distributions.html",
+    "href": "whole-game/01-data-visualization/04-visualizing-distributions.html",
     "title": "Visualizing Distributions",
     "section": "",
     "text": "Question 1\nFull Questions",
@@ -162,8 +162,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-1",
-    "href": "01-data-visualization/04-visualizing-distributions.html#question-1",
+    "objectID": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-1",
+    "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-1",
     "title": "Visualizing Distributions",
     "section": "",
     "text": "Note\n\n\n\n\n\n\nThe Problem\nMake a bar plot of species of penguins, where you assign species to the y aesthetic. How is this plot different?\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot(aes(y = species)) +\n    geom_bar()\n\n\n\n\n\n\n\n\nThis plot has horizontal bars instead of vertical bars.",
@@ -173,8 +173,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-2",
-    "href": "01-data-visualization/04-visualizing-distributions.html#question-2",
+    "objectID": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-2",
+    "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-2",
     "title": "Visualizing Distributions",
     "section": "Question 2",
     "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nHow are the following two plots different? Which aesthetic, color or fill, is more useful for changing the color of bars?\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(color = \"red\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(fill = \"red\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe color aesthetic changes the border of the bars while fill changes the color of the whole bar. fill is the more useful option when changing bar colours.",
@@ -184,8 +184,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-3",
-    "href": "01-data-visualization/04-visualizing-distributions.html#question-3",
+    "objectID": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-3",
+    "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-3",
     "title": "Visualizing Distributions",
     "section": "Question 3",
     "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the bins argument in geom_histogram() do?\n\n\nThe Solution\nThe bins argument in geom_histogram() determines the exact number of bins, the default number is 30.",
@@ -195,8 +195,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/04-visualizing-distributions.html#question-4",
-    "href": "01-data-visualization/04-visualizing-distributions.html#question-4",
+    "objectID": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-4",
+    "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-4",
     "title": "Visualizing Distributions",
     "section": "Question 4",
     "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?\n\n\nThe Solution\n\n# Quick look of the carat variable\nsummary(diamonds$carat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.2000  0.4000  0.7000  0.7979  1.0400  5.0100 \n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.25)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.01)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_density()",
@@ -206,8 +206,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html",
-    "href": "01-data-visualization/05-visualizing-relationships.html",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html",
     "title": "Visualizing Relationships",
     "section": "",
     "text": "Question 1\nFull Questions\nTo see this information (# observation & # car models), I used summary(). For just those two numbers specifically, I would use unique() and dim().\n# Full table info\nsummary(mpg)\n\n    manufacturer       model         displ            year           cyl       \n Length   :234   Length   :234   Min.   :1.600   Min.   :1999   Min.   :4.000  \n N.unique : 15   N.unique : 38   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000  \n N.blank  :  0   N.blank  :  0   Median :3.300   Median :2004   Median :6.000  \n Min.nchar:  4   Min.nchar:  2   Mean   :3.472   Mean   :2004   Mean   :5.889  \n Max.nchar: 10   Max.nchar: 22   3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000  \n                                 Max.   :7.000   Max.   :2008   Max.   :8.000  \n       trans            drv           cty             hwy       \n Length   :234   Length   :234   Min.   : 9.00   Min.   :12.00  \n N.unique : 10   N.unique :  3   1st Qu.:14.00   1st Qu.:18.00  \n N.blank  :  0   N.blank  :  0   Median :17.00   Median :24.00  \n Min.nchar:  8   Min.nchar:  1   Mean   :16.86   Mean   :23.44  \n Max.nchar: 10   Max.nchar:  1   3rd Qu.:19.00   3rd Qu.:27.00  \n                                 Max.   :35.00   Max.   :44.00  \n         fl            class    \n Length   :234   Length   :234  \n N.unique :  5   N.unique :  7  \n N.blank  :  0   N.blank  :  0  \n Min.nchar:  1   Min.nchar:  3  \n Max.nchar:  1   Max.nchar: 10  \n                                \n\n# Specific numbers\nlength(unique(mpg$model))\n\n[1] 38\n\ndim(mpg)[1]\n\n[1] 234",
@@ -217,8 +217,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-1",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-1",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-1",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-1",
     "title": "Visualizing Relationships",
     "section": "",
     "text": "Note\n\n\n\n\n\n\nThe Problem\nThe mpg data frame that is bundled with the ggplot2 package contains 234 observations collected by the US Environmental Protection Agency on 38 car models. Which variables in mpg are categorical? Which variables are numerical? How can you see this information when you run mpg?\n\n\nThe Solution\nBelow is a table of all the variables included in mpg. Note cyl is categorical since the integers represent a small set of values.\n\n\n\nName\nVar. Type\n\n\n\n\nmanufacturer\nCategorical\n\n\nmodel\nCategorical\n\n\ndispl\nNumerical\n\n\nyear\nNumerical\n\n\ncyl\nCategorical\n\n\ntrans\nCategorical\n\n\ndrv\nCategorical\n\n\ncty\nNumerical\n\n\nhwy\nNumerical\n\n\nfl\nCategorical\n\n\nclass\nCategorical",
@@ -228,8 +228,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-2",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-2",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-2",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-2",
     "title": "Visualizing Relationships",
     "section": "Question 2",
     "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of hwy vs. displ using the mpg data frame. Next, map a third, numerical variable to color, then size, then both color and size, then shape. How do these aesthetics behave differently for categorical vs. numerical variables?\n\n\nThe Solution\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, size = displ)) + \n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty, size = displ)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\n# Raises error due to passing a continous variable to shape\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, shape = cty)) + \n    geom_point()\n\nWhen the variable is categorical, all three aesthetics behave simillarly. Each category is assigned a unique color/size/shape.\nWhen the variable is numerical, each of the aesthetics does something different:\n\ncolor maps each value on a gradient, keeping all information.\nsize rounds each value to be one of a set of sizes with a positive integer value. It loses some information from the variable.\nshape is unable to map to a numerical (continous) variable and raises an error when we attempt to map it.",
@@ -239,8 +239,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-3",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-3",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-3",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-3",
     "title": "Visualizing Relationships",
     "section": "Question 3",
     "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nIn the scatterplot of hwy vs. displ, what happens if you map a third variable to linewidth?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot(aes(x = displ, y = hwy, linewidth = cty)) +\n  geom_point()\n\n\n\n\n\n\n\n\nAdding linewidth to aesthetics shows no visible changes to the scatterplot.",
@@ -250,8 +250,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-4",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-4",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-4",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-4",
     "title": "Visualizing Relationships",
     "section": "Question 4",
     "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you map the same variable to multiple aesthetics?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy))\n\n\n\n\n\n\n\n  mpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy, size = hwy))\n\n\n\n\n\n\n\n\nWhen we map the same variable to multiple aesthetics (in scatterplots), The values follow a diagonal line, since for each point x and y are equal. For color and size, they became gradients with one extreme on one side of the line to the other extreme on the other end.",
@@ -261,8 +261,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-5",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-5",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-5",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-5",
     "title": "Visualizing Relationships",
     "section": "Question 5",
     "text": "Question 5\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm and color the points by species. What does adding coloring by species reveal about the relationship between these two variables? What about faceting by species.\n\n\nThe Solution\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE)\n\n\n\n\n\n\n\n\nThis plot shows that the bill length and depth of the penguins measured are clustered by species.\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE) +\n  facet_wrap(~species)\n\n\n\n\n\n\n\n\nWhen faceting by species, it is easier to see that Gentoo penguins have a noticible difference in bill depth to the other species and that Adelle penguins have a smaller bill length comapared to the other species.",
@@ -272,8 +272,8 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-6",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-6",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-6",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-6",
     "title": "Visualizing Relationships",
     "section": "Question 6",
     "text": "Question 6\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhy does the following yield two separate legends? How would you fix it to combine the two legends?\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species\n  )\n) +\n  geom_point() +\n  labs(color = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\nThe Solution\nTwo separate legends appear since our custom name for color is different that the default one for shape. We can fix it by either changing color back to the default legend name or change the name for shape to “Legend”.\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species \n  )\n) +\n  geom_point(na.rm = FALSE) +\n  labs(color = \"Species\", shape = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
@@ -283,14 +283,86 @@
     ]
   },
   {
-    "objectID": "01-data-visualization/05-visualizing-relationships.html#question-7",
-    "href": "01-data-visualization/05-visualizing-relationships.html#question-7",
+    "objectID": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-7",
+    "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-7",
     "title": "Visualizing Relationships",
     "section": "Question 7",
     "text": "Question 7\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nCreate the two following stacked bar plots. Which question can you answer with the first one? Which question can you answer with the second one?\n\nggplot(penguins, aes(x = island, fill = species)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species, fill = island)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe first plot (species vs island) shows for each island the proportion of penguins on that particular island. This plot can tell us what the population of each island look like. The second plot (island vs species) shows for each penguin species, the proportion of that species on each island. This plot can tell us the proportion of the total population of each penguin species across the different islands.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/01-data-visualization/06-saving-plots.html",
+    "href": "whole-game/01-data-visualization/06-saving-plots.html",
+    "title": "Saving Plots",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Saving Plots</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/01-data-visualization/06-saving-plots.html#question-1",
+    "href": "whole-game/01-data-visualization/06-saving-plots.html#question-1",
+    "title": "Saving Plots",
+    "section": "",
+    "text": "Note\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nggplot(mpg, aes(x = class)) +\n  geom_bar()\n  ggplot(mpg, aes(x = cty, y = hwy)) +\n    geom_point()\n    ggsave(\"mpg-plot.png\")\n    ```\n\n\n\n\n### The Solution\n\nThe second plot is saved. This is due to it being the most recent plot made, the first plot was overwritten by the second plot.\n\n:::\n\n&lt;!-- Next Question --&gt;\n## Question 2\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\nWhat do you need to change in the code above to save the plot as a PDF instead of a PNG? How could you find out what types of image files would work in `ggsave()`?\n\n### The Solution\n\nTo save the plot as a PNG, we would change the string in `ggsave()` to end with `.pdf`.\n\n``` {r}\nggplot(mpg, aes(x = class)) +\n  geom_bar()\nggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(\"mpg-plot.pdf\")\n\nUsing ?ggsave shows all the file types that would work.",
+    "crumbs": [
+      "Data Visualization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Saving Plots</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/02-workflow-basics.html",
+    "href": "whole-game/02-workflow-basics.html",
+    "title": "Workflow: Basics",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Workflow: Basics"
+    ]
+  },
+  {
+    "objectID": "whole-game/02-workflow-basics.html#question-1",
+    "href": "whole-game/02-workflow-basics.html#question-1",
+    "title": "Workflow: Basics",
+    "section": "",
+    "text": "Note\n\n\n\n\n\n\nThe Problem\nWhy does this code not work?\n\nmy_variable &lt;- 10\nmy_varıable\n#&gt; Error:\n#&gt; ! object 'my_varıable' not found\n\n\n\nThe Solution\nThe variable names are not the same.",
+    "crumbs": [
+      "Workflow: Basics"
+    ]
+  },
+  {
+    "objectID": "whole-game/02-workflow-basics.html#question-2",
+    "href": "whole-game/02-workflow-basics.html#question-2",
+    "title": "Workflow: Basics",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\n\nThe Solution\n\n# dTA -&gt; data, move aes, fix mapping typo, add comma\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point() + #\n  geom_smooth(method = \"lm\") # add ending quote\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Workflow: Basics"
+    ]
+  },
+  {
+    "objectID": "whole-game/02-workflow-basics.html#question-3",
+    "href": "whole-game/02-workflow-basics.html#question-3",
+    "title": "Workflow: Basics",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nPress Alt + Shift + K. What happens? How can you get to the same place using the menus?\n\n\nThe Solution\nIn RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.",
+    "crumbs": [
+      "Workflow: Basics"
+    ]
+  },
+  {
+    "objectID": "whole-game/02-workflow-basics.html#question-4",
+    "href": "whole-game/02-workflow-basics.html#question-4",
+    "title": "Workflow: Basics",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nmy_bar_plot &lt;- ggplot(mpg, aes(x = class)) +\n  geom_bar()\nmy_scatter_plot &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(filename = \"mpg-plot.png\", plot = my_bar_plot)\n\n\n\nThe Solution\nmy_bar_plot is saved since it is explicitly added as an argument to ggsave()",
+    "crumbs": [
+      "Workflow: Basics"
     ]
   },
   {
