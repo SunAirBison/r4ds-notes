@@ -6,7 +6,7 @@ number-sections: false
 subtitle: Exercise Solutions
 ---
 
-# Visualizing Relationships
+# Saving Plots
 
 [Full Questions][source]
 
