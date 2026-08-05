@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Notebook",
     "section": "",
-    "text": "📖 R for Data Science (2e) - Notebook\nMy personal notebook for following R for Data Science (2e), tracking my progress through each chapter and exercise.\nRecently Completed: (1.4) Whole Game – Data Visualization – Visualizing Distributions\nProgress tracker can be found here.",
+    "text": "📖 R for Data Science (2e) - Notebook\nMy personal notebook for following R for Data Science (2e), tracking my progress through each chapter and exercise.\nProgress tracker can be found here.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>📖 R for Data Science (2e) - Notebook</span>"
     ]
@@ -45,7 +45,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-1",
     "title": "First Steps",
     "section": "",
-    "text": "Note\n\n\n\n\n\n\nThe Problem\nHow many row and columns are in penguins?\n\n\nThe Solution\n\ndim(penguins)\n\n[1] 344   8\n\n\nThere are 344 rows and 8 columns in penguins.",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nHow many row and columns are in penguins?\n\n\nThe Solution\n\ndim(penguins)\n\n[1] 344   8\n\n\nThere are 344 rows and 8 columns in penguins.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -56,7 +56,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-2",
     "title": "First Steps",
     "section": "Question 2",
-    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the bill_depth_mm variable describe?\n\n\nThe Solution\nbill_depth_mm represents the bill depth of the pegnuins in millimeters, as stated from CRAN.",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the bill_depth_mm variable describe?\n\n\nThe Solution\nbill_depth_mm represents the bill depth of the pegnuins in millimeters, as stated from CRAN.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -67,7 +67,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-3",
     "title": "First Steps",
     "section": "Question 3",
-    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm.\n\n\nThe Solution\n\npenguins |&gt; # Following tidyverse style guide by using pipes\n    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point() +\n    labs(title=\"bill_depth_mm vs bill_length_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm.\n\n\nThe Solution\n\npenguins |&gt; # Following tidyverse style guide by using pipes\n    ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point() +\n    labs(title=\"bill_depth_mm vs bill_length_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -78,7 +78,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-4",
     "title": "First Steps",
     "section": "Question 4",
-    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat happens when you make a scatterplot of species vs bill_depth_mm? What might be a better choice of geom?\n\n\nThe Solution\n\npenguins |&gt; \n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_point() + \n    labs(title=\"species vs bill_depth_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nWhen creating a scatterplot, the points are split into the three different species categories, which is not very helpful when represented by a scatterplto. A boxplot can represent this relationship .\n\npenguins |&gt;\n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_boxplot()\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens when you make a scatterplot of species vs bill_depth_mm? What might be a better choice of geom?\n\n\nThe Solution\n\npenguins |&gt; \n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_point() + \n    labs(title=\"species vs bill_depth_mm\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nWhen creating a scatterplot, the points are split into the three different species categories, which is not very helpful when represented by a scatterplto. A boxplot can represent this relationship .\n\npenguins |&gt;\n    ggplot(mapping = aes(y = species, x = bill_length_mm)) + \n    geom_boxplot()\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -89,7 +89,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-5",
     "title": "First Steps",
     "section": "Question 5",
-    "text": "Question 5\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhy does the following give an error and how would you fix it?\n\nggplot(data = penguins) + \n  geom_point()\n\n\n\nThe Solution\nThis plot is missing a value for the mapping argument in ggplot(). Adding this argument fixes the plot.\n\npenguins |&gt;\n    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point()\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhy does the following give an error and how would you fix it?\n\nggplot(data = penguins) + \n  geom_point()\n\n\n\nThe Solution\nThis plot is missing a value for the mapping argument in ggplot(). Adding this argument fixes the plot.\n\npenguins |&gt;\n    ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + \n    geom_point()\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -100,7 +100,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-6",
     "title": "First Steps",
     "section": "Question 6",
-    "text": "Question 6\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the na.rm argument do in geom_point()? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to TRUE.\n\n\nThe Solution\nna.rm determines whether points that have missing values create a warning that they were removed. The default value of the argument is FALSE.\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n        )",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the na.rm argument do in geom_point()? What is the default value of the argument. Create a scatter plot where you successfully use this argument set to TRUE.\n\n\nThe Solution\nna.rm determines whether points that have missing values create a warning that they were removed. The default value of the argument is FALSE.\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n        )",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -111,7 +111,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-7",
     "title": "First Steps",
     "section": "Question 7",
-    "text": "Question 7\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nAdd the following caption to the plot you made in the previous exercise: “Data came from the palmerpenguins package.”\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n    ) +\n    labs(caption = \"Data came from the palmerpenguins package.\")",
+    "text": "Question 7\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nAdd the following caption to the plot you made in the previous exercise: “Data came from the palmerpenguins package.”\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot() + \n    geom_point(\n        mapping = aes(y = bill_depth_mm, x = bill_length_mm),\n        na.rm = TRUE\n    ) +\n    labs(caption = \"Data came from the palmerpenguins package.\")",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -122,7 +122,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-8",
     "title": "First Steps",
     "section": "Question 8",
-    "text": "Question 8\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRecreate the following visualization. What aesthetic should bill_depth_mm be mapped to? Should it be mapped at the global or geom level?\n\n\nThe Solution\nbill_depth_mm should be mapped to color in the geom level, otherwise geom_smooth would be split by bill depth.\n\npenguins |&gt;\n    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + \n    geom_point(mapping = aes(color = bill_depth_mm)) +\n    geom_smooth(method = \"gam\")\n\n`geom_smooth()` using formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "text": "Question 8\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRecreate the following visualization. What aesthetic should bill_depth_mm be mapped to? Should it be mapped at the global or geom level?\n\n\nThe Solution\nbill_depth_mm should be mapped to color in the geom level, otherwise geom_smooth would be split by bill depth.\n\npenguins |&gt;\n    ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + \n    geom_point(mapping = aes(color = bill_depth_mm)) +\n    geom_smooth(method = \"gam\")\n\n`geom_smooth()` using formula = 'y ~ s(x, bs = \"cs\")'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -133,7 +133,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-9",
     "title": "First Steps",
     "section": "Question 9",
-    "text": "Question 9\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRun this code in your head and predict what the output will look like. Then run the code and check your predictions.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)\n) +\n  geom_point() +\n  geom_smooth(se = FALSE)    \n\n\n\nThe Solution\nI predict that the plot will have axes of body_mass_g vs flipper_length_mm. The points on the plot will be grouped with different by the island variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nI predicted the components correctly, but I was not expecting the lines to overlap as much as they did.",
+    "text": "Question 9\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRun this code in your head and predict what the output will look like. Then run the code and check your predictions.\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)\n) +\n  geom_point() +\n  geom_smooth(se = FALSE)    \n\n\n\nThe Solution\nI predict that the plot will have axes of body_mass_g vs flipper_length_mm. The points on the plot will be grouped with different by the island variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\nI predicted the components correctly, but I was not expecting the lines to overlap as much as they did.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -144,7 +144,7 @@
     "href": "whole-game/01-data-visualization/02-first-steps.html#question-10",
     "title": "First Steps",
     "section": "Question 10",
-    "text": "Question 10\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWill these two graphs look different? Why/why not?\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_smooth()\n\nggplot() +\n  geom_point(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  ) +\n  geom_smooth(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  )\n\n\n\nThe Solution\nThese plots will not look different. In the first plot, geom_point() and geom_smooth() inherit the mapping from ggplot(). In the second graph, the same mapping is explicity given to both functions.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`).\nRemoved 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "text": "Question 10\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWill these two graphs look different? Why/why not?\n\nggplot(\n  data = penguins,\n  mapping = aes(x = flipper_length_mm, y = body_mass_g)\n) +\n  geom_point() +\n  geom_smooth()\n\nggplot() +\n  geom_point(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  ) +\n  geom_smooth(\n    data = penguins,\n    mapping = aes(x = flipper_length_mm, y = body_mass_g)\n  )\n\n\n\nThe Solution\nThese plots will not look different. In the first plot, geom_point() and geom_smooth() inherit the mapping from ggplot(). In the second graph, the same mapping is explicity given to both functions.\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range (`stat_smooth()`).\nRemoved 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>First Steps</span>"
@@ -166,7 +166,7 @@
     "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-1",
     "title": "Visualizing Distributions",
     "section": "",
-    "text": "Note\n\n\n\n\n\n\nThe Problem\nMake a bar plot of species of penguins, where you assign species to the y aesthetic. How is this plot different?\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot(aes(y = species)) +\n    geom_bar()\n\n\n\n\n\n\n\n\nThis plot has horizontal bars instead of vertical bars.",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nMake a bar plot of species of penguins, where you assign species to the y aesthetic. How is this plot different?\n\n\nThe Solution\n\npenguins |&gt;\n    ggplot(aes(y = species)) +\n    geom_bar()\n\n\n\n\n\n\n\n\nThis plot has horizontal bars instead of vertical bars.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
@@ -177,7 +177,7 @@
     "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-2",
     "title": "Visualizing Distributions",
     "section": "Question 2",
-    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nHow are the following two plots different? Which aesthetic, color or fill, is more useful for changing the color of bars?\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(color = \"red\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(fill = \"red\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe color aesthetic changes the border of the bars while fill changes the color of the whole bar. fill is the more useful option when changing bar colours.",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nHow are the following two plots different? Which aesthetic, color or fill, is more useful for changing the color of bars?\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(color = \"red\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species)) +\n  geom_bar(fill = \"red\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe color aesthetic changes the border of the bars while fill changes the color of the whole bar. fill is the more useful option when changing bar colours.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
@@ -188,7 +188,7 @@
     "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-3",
     "title": "Visualizing Distributions",
     "section": "Question 3",
-    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat does the bins argument in geom_histogram() do?\n\n\nThe Solution\nThe bins argument in geom_histogram() determines the exact number of bins, the default number is 30.",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the bins argument in geom_histogram() do?\n\n\nThe Solution\nThe bins argument in geom_histogram() determines the exact number of bins, the default number is 30.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
@@ -199,7 +199,7 @@
     "href": "whole-game/01-data-visualization/04-visualizing-distributions.html#question-4",
     "title": "Visualizing Distributions",
     "section": "Question 4",
-    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?\n\n\nThe Solution\n\n# Quick look of the carat variable\nsummary(diamonds$carat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.2000  0.4000  0.7000  0.7979  1.0400  5.0100 \n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.25)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.01)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_density()",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMake a histogram of the carat variable in the diamonds dataset. Experiment with different binwidths. What binwidth reveals the most interesting patterns?\n\n\nThe Solution\n\n# Quick look of the carat variable\nsummary(diamonds$carat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.2000  0.4000  0.7000  0.7979  1.0400  5.0100 \n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.25)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_histogram(binwidth = 0.01)\n\n\n\n\n\n\n\ndiamonds |&gt;\n    ggplot(aes(x = carat)) +\n    geom_density()",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Visualizing Distributions</span>"
@@ -210,7 +210,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html",
     "title": "Visualizing Relationships",
     "section": "",
-    "text": "Question 1\nFull Questions\nTo see this information (# observation & # car models), I used summary(). For just those two numbers specifically, I would use unique() and dim().\n# Full table info\nsummary(mpg)\n\n    manufacturer       model         displ            year           cyl       \n Length   :234   Length   :234   Min.   :1.600   Min.   :1999   Min.   :4.000  \n N.unique : 15   N.unique : 38   1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000  \n N.blank  :  0   N.blank  :  0   Median :3.300   Median :2004   Median :6.000  \n Min.nchar:  4   Min.nchar:  2   Mean   :3.472   Mean   :2004   Mean   :5.889  \n Max.nchar: 10   Max.nchar: 22   3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000  \n                                 Max.   :7.000   Max.   :2008   Max.   :8.000  \n       trans            drv           cty             hwy       \n Length   :234   Length   :234   Min.   : 9.00   Min.   :12.00  \n N.unique : 10   N.unique :  3   1st Qu.:14.00   1st Qu.:18.00  \n N.blank  :  0   N.blank  :  0   Median :17.00   Median :24.00  \n Min.nchar:  8   Min.nchar:  1   Mean   :16.86   Mean   :23.44  \n Max.nchar: 10   Max.nchar:  1   3rd Qu.:19.00   3rd Qu.:27.00  \n                                 Max.   :35.00   Max.   :44.00  \n         fl            class    \n Length   :234   Length   :234  \n N.unique :  5   N.unique :  7  \n N.blank  :  0   N.blank  :  0  \n Min.nchar:  1   Min.nchar:  3  \n Max.nchar:  1   Max.nchar: 10  \n                                \n\n# Specific numbers\nlength(unique(mpg$model))\n\n[1] 38\n\ndim(mpg)[1]\n\n[1] 234",
+    "text": "Question 1\nFull Questions\nTo see this information (# observation & # car models), I used summary(). For just those two numbers specifically, I would use unique() and dim().\n# Full table info\nsummary(mpg)\n\n manufacturer          model               displ            year     \n Length:234         Length:234         Min.   :1.600   Min.   :1999  \n Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999  \n Mode  :character   Mode  :character   Median :3.300   Median :2004  \n                                       Mean   :3.472   Mean   :2004  \n                                       3rd Qu.:4.600   3rd Qu.:2008  \n                                       Max.   :7.000   Max.   :2008  \n      cyl           trans               drv                 cty       \n Min.   :4.000   Length:234         Length:234         Min.   : 9.00  \n 1st Qu.:4.000   Class :character   Class :character   1st Qu.:14.00  \n Median :6.000   Mode  :character   Mode  :character   Median :17.00  \n Mean   :5.889                                         Mean   :16.86  \n 3rd Qu.:8.000                                         3rd Qu.:19.00  \n Max.   :8.000                                         Max.   :35.00  \n      hwy             fl               class          \n Min.   :12.00   Length:234         Length:234        \n 1st Qu.:18.00   Class :character   Class :character  \n Median :24.00   Mode  :character   Mode  :character  \n Mean   :23.44                                        \n 3rd Qu.:27.00                                        \n Max.   :44.00                                        \n\n# Specific numbers\nlength(unique(mpg$model))\n\n[1] 38\n\ndim(mpg)[1]\n\n[1] 234",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -221,7 +221,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-1",
     "title": "Visualizing Relationships",
     "section": "",
-    "text": "Note\n\n\n\n\n\n\nThe Problem\nThe mpg data frame that is bundled with the ggplot2 package contains 234 observations collected by the US Environmental Protection Agency on 38 car models. Which variables in mpg are categorical? Which variables are numerical? How can you see this information when you run mpg?\n\n\nThe Solution\nBelow is a table of all the variables included in mpg. Note cyl is categorical since the integers represent a small set of values.\n\n\n\nName\nVar. Type\n\n\n\n\nmanufacturer\nCategorical\n\n\nmodel\nCategorical\n\n\ndispl\nNumerical\n\n\nyear\nNumerical\n\n\ncyl\nCategorical\n\n\ntrans\nCategorical\n\n\ndrv\nCategorical\n\n\ncty\nNumerical\n\n\nhwy\nNumerical\n\n\nfl\nCategorical\n\n\nclass\nCategorical",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nThe mpg data frame that is bundled with the ggplot2 package contains 234 observations collected by the US Environmental Protection Agency on 38 car models. Which variables in mpg are categorical? Which variables are numerical? How can you see this information when you run mpg?\n\n\nThe Solution\nBelow is a table of all the variables included in mpg. Note cyl is categorical since the integers represent a small set of values.\n\n\n\nName\nVar. Type\n\n\n\n\nmanufacturer\nCategorical\n\n\nmodel\nCategorical\n\n\ndispl\nNumerical\n\n\nyear\nNumerical\n\n\ncyl\nCategorical\n\n\ntrans\nCategorical\n\n\ndrv\nCategorical\n\n\ncty\nNumerical\n\n\nhwy\nNumerical\n\n\nfl\nCategorical\n\n\nclass\nCategorical",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -232,7 +232,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-2",
     "title": "Visualizing Relationships",
     "section": "Question 2",
-    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of hwy vs. displ using the mpg data frame. Next, map a third, numerical variable to color, then size, then both color and size, then shape. How do these aesthetics behave differently for categorical vs. numerical variables?\n\n\nThe Solution\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, size = displ)) + \n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty, size = displ)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\n# Raises error due to passing a continous variable to shape\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, shape = cty)) + \n    geom_point()\n\nWhen the variable is categorical, all three aesthetics behave simillarly. Each category is assigned a unique color/size/shape.\nWhen the variable is numerical, each of the aesthetics does something different:\n\ncolor maps each value on a gradient, keeping all information.\nsize rounds each value to be one of a set of sizes with a positive integer value. It loses some information from the variable.\nshape is unable to map to a numerical (continous) variable and raises an error when we attempt to map it.",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of hwy vs. displ using the mpg data frame. Next, map a third, numerical variable to color, then size, then both color and size, then shape. How do these aesthetics behave differently for categorical vs. numerical variables?\n\n\nThe Solution\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty)) +\n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, size = displ)) + \n    geom_point()\n\n\n\n\n\n\n\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, color = cty, size = displ)) +\n    geom_point()\n\n\n\n\n\n\n\n\n\n# Raises error due to passing a continous variable to shape\nmpg |&gt; \n    ggplot(aes(x = displ, y = hwy, shape = cty)) + \n    geom_point()\n\nWhen the variable is categorical, all three aesthetics behave simillarly. Each category is assigned a unique color/size/shape.\nWhen the variable is numerical, each of the aesthetics does something different:\n\ncolor maps each value on a gradient, keeping all information.\nsize rounds each value to be one of a set of sizes with a positive integer value. It loses some information from the variable.\nshape is unable to map to a numerical (continous) variable and raises an error when we attempt to map it.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -243,7 +243,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-3",
     "title": "Visualizing Relationships",
     "section": "Question 3",
-    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nIn the scatterplot of hwy vs. displ, what happens if you map a third variable to linewidth?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot(aes(x = displ, y = hwy, linewidth = cty)) +\n  geom_point()\n\n\n\n\n\n\n\n\nAdding linewidth to aesthetics shows no visible changes to the scatterplot.",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nIn the scatterplot of hwy vs. displ, what happens if you map a third variable to linewidth?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot(aes(x = displ, y = hwy, linewidth = cty)) +\n  geom_point()\n\n\n\n\n\n\n\n\nAdding linewidth to aesthetics shows no visible changes to the scatterplot.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -254,7 +254,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-4",
     "title": "Visualizing Relationships",
     "section": "Question 4",
-    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you map the same variable to multiple aesthetics?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy))\n\n\n\n\n\n\n\n  mpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy, size = hwy))\n\n\n\n\n\n\n\n\nWhen we map the same variable to multiple aesthetics (in scatterplots), The values follow a diagonal line, since for each point x and y are equal. For color and size, they became gradients with one extreme on one side of the line to the other extreme on the other end.",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you map the same variable to multiple aesthetics?\n\n\nThe Solution\n\nmpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy))\n\n\n\n\n\n\n\n  mpg |&gt; \n  ggplot() + \n  geom_point(aes(x = hwy, y = hwy, color = hwy, size = hwy))\n\n\n\n\n\n\n\n\nWhen we map the same variable to multiple aesthetics (in scatterplots), The values follow a diagonal line, since for each point x and y are equal. For color and size, they became gradients with one extreme on one side of the line to the other extreme on the other end.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -265,7 +265,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-5",
     "title": "Visualizing Relationships",
     "section": "Question 5",
-    "text": "Question 5\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm and color the points by species. What does adding coloring by species reveal about the relationship between these two variables? What about faceting by species.\n\n\nThe Solution\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE)\n\n\n\n\n\n\n\n\nThis plot shows that the bill length and depth of the penguins measured are clustered by species.\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE) +\n  facet_wrap(~species)\n\n\n\n\n\n\n\n\nWhen faceting by species, it is easier to see that Gentoo penguins have a noticible difference in bill depth to the other species and that Adelle penguins have a smaller bill length comapared to the other species.",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMake a scatterplot of bill_depth_mm vs. bill_length_mm and color the points by species. What does adding coloring by species reveal about the relationship between these two variables? What about faceting by species.\n\n\nThe Solution\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE)\n\n\n\n\n\n\n\n\nThis plot shows that the bill length and depth of the penguins measured are clustered by species.\n\npenguins |&gt;\n  ggplot(aes(color = species)) + \n  geom_point(\n    aes(x = bill_length_mm, y = bill_depth_mm), \n    na.rm = TRUE) +\n  facet_wrap(~species)\n\n\n\n\n\n\n\n\nWhen faceting by species, it is easier to see that Gentoo penguins have a noticible difference in bill depth to the other species and that Adelle penguins have a smaller bill length comapared to the other species.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -276,7 +276,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-6",
     "title": "Visualizing Relationships",
     "section": "Question 6",
-    "text": "Question 6\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nWhy does the following yield two separate legends? How would you fix it to combine the two legends?\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species\n  )\n) +\n  geom_point() +\n  labs(color = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\nThe Solution\nTwo separate legends appear since our custom name for color is different that the default one for shape. We can fix it by either changing color back to the default legend name or change the name for shape to “Legend”.\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species \n  )\n) +\n  geom_point(na.rm = FALSE) +\n  labs(color = \"Species\", shape = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhy does the following yield two separate legends? How would you fix it to combine the two legends?\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species\n  )\n) +\n  geom_point() +\n  labs(color = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n\nThe Solution\nTwo separate legends appear since our custom name for color is different that the default one for shape. We can fix it by either changing color back to the default legend name or change the name for shape to “Legend”.\n\nggplot(\n  data = penguins,\n  mapping = aes(\n    x = bill_length_mm, y = bill_depth_mm, \n    color = species, shape = species \n  )\n) +\n  geom_point(na.rm = FALSE) +\n  labs(color = \"Species\", shape = \"Species\")\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -287,7 +287,7 @@
     "href": "whole-game/01-data-visualization/05-visualizing-relationships.html#question-7",
     "title": "Visualizing Relationships",
     "section": "Question 7",
-    "text": "Question 7\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nCreate the two following stacked bar plots. Which question can you answer with the first one? Which question can you answer with the second one?\n\nggplot(penguins, aes(x = island, fill = species)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species, fill = island)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe first plot (species vs island) shows for each island the proportion of penguins on that particular island. This plot can tell us what the population of each island look like. The second plot (island vs species) shows for each penguin species, the proportion of that species on each island. This plot can tell us the proportion of the total population of each penguin species across the different islands.",
+    "text": "Question 7\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nCreate the two following stacked bar plots. Which question can you answer with the first one? Which question can you answer with the second one?\n\nggplot(penguins, aes(x = island, fill = species)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\nggplot(penguins, aes(x = species, fill = island)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe first plot (species vs island) shows for each island the proportion of penguins on that particular island. This plot can tell us what the population of each island look like. The second plot (island vs species) shows for each penguin species, the proportion of that species on each island. This plot can tell us the proportion of the total population of each penguin species across the different islands.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualizing Relationships</span>"
@@ -309,60 +309,142 @@
     "href": "whole-game/01-data-visualization/06-saving-plots.html#question-1",
     "title": "Saving Plots",
     "section": "",
-    "text": "Note\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nggplot(mpg, aes(x = class)) +\n  geom_bar()\n  ggplot(mpg, aes(x = cty, y = hwy)) +\n    geom_point()\n    ggsave(\"mpg-plot.png\")\n    ```\n\n\n\n\n### The Solution\n\nThe second plot is saved. This is due to it being the most recent plot made, the first plot was overwritten by the second plot.\n\n:::\n\n&lt;!-- Next Question --&gt;\n## Question 2\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\nWhat do you need to change in the code above to save the plot as a PDF instead of a PNG? How could you find out what types of image files would work in `ggsave()`?\n\n### The Solution\n\nTo save the plot as a PNG, we would change the string in `ggsave()` to end with `.pdf`.\n\n``` {r}\nggplot(mpg, aes(x = class)) +\n  geom_bar()\nggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(\"mpg-plot.pdf\")\n\nUsing ?ggsave shows all the file types that would work.",
+    "text": "NoteNote\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nggplot(mpg, aes(x = class)) +\n  geom_bar()\n  ggplot(mpg, aes(x = cty, y = hwy)) +\n    geom_point()\n    ggsave(\"mpg-plot.png\")\n    ```\n\n### The Solution\n\nThe second plot is saved. This is due to it being the most recent plot made, the first plot was overwritten by the second plot.\n\n:::\n\n&lt;!-- Next Question --&gt;\n## Question 2\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\nWhat do you need to change in the code above to save the plot as a PDF instead of a PNG? How could you find out what types of image files would work in `ggsave()`?\n\n### The Solution\n\nTo save the plot as a PNG, we would change the string in `ggsave()` to end with `.pdf`.\n\n``` {r}\nggplot(mpg, aes(x = class)) +\n  geom_bar()\nggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(\"mpg-plot.pdf\")\n\nUsing ?ggsave shows all the file types that would work.",
     "crumbs": [
       "Data Visualization",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Saving Plots</span>"
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics.html",
-    "href": "whole-game/02-workflow-basics.html",
+    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html",
+    "href": "whole-game/02-workflow-basics/02-workflow-basics.html",
     "title": "Workflow: Basics",
     "section": "",
     "text": "Question 1\nFull Questions",
     "crumbs": [
-      "Workflow: Basics"
+      "Workflow: Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics.html#question-1",
-    "href": "whole-game/02-workflow-basics.html#question-1",
+    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-1",
+    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-1",
     "title": "Workflow: Basics",
     "section": "",
-    "text": "Note\n\n\n\n\n\n\nThe Problem\nWhy does this code not work?\n\nmy_variable &lt;- 10\nmy_varıable\n#&gt; Error:\n#&gt; ! object 'my_varıable' not found\n\n\n\nThe Solution\nThe variable names are not the same.",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhy does this code not work?\n\nmy_variable &lt;- 10\nmy_varıable\n#&gt; Error:\n#&gt; ! object 'my_varıable' not found\n\n\n\nThe Solution\nThe variable names are not the same.",
     "crumbs": [
-      "Workflow: Basics"
+      "Workflow: Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics.html#question-2",
-    "href": "whole-game/02-workflow-basics.html#question-2",
+    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-2",
+    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-2",
     "title": "Workflow: Basics",
     "section": "Question 2",
-    "text": "Question 2\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\n\nThe Solution\n\n# dTA -&gt; data, move aes, fix mapping typo, add comma\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point() + #\n  geom_smooth(method = \"lm\") # add ending quote\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\n\nThe Solution\n\n# dTA -&gt; data, move aes, fix mapping typo, add comma\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point() + #\n  geom_smooth(method = \"lm\") # add ending quote\n\n`geom_smooth()` using formula = 'y ~ x'",
     "crumbs": [
-      "Workflow: Basics"
+      "Workflow: Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics.html#question-3",
-    "href": "whole-game/02-workflow-basics.html#question-3",
+    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-3",
+    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-3",
     "title": "Workflow: Basics",
     "section": "Question 3",
-    "text": "Question 3\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nPress Alt + Shift + K. What happens? How can you get to the same place using the menus?\n\n\nThe Solution\nIn RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nPress Alt + Shift + K. What happens? How can you get to the same place using the menus?\n\n\nThe Solution\nIn RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.",
     "crumbs": [
-      "Workflow: Basics"
+      "Workflow: Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics.html#question-4",
-    "href": "whole-game/02-workflow-basics.html#question-4",
+    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-4",
+    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-4",
     "title": "Workflow: Basics",
     "section": "Question 4",
-    "text": "Question 4\n\n\n\n\n\n\nNote\n\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nmy_bar_plot &lt;- ggplot(mpg, aes(x = class)) +\n  geom_bar()\nmy_scatter_plot &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(filename = \"mpg-plot.png\", plot = my_bar_plot)\n\n\n\nThe Solution\nmy_bar_plot is saved since it is explicitly added as an argument to ggsave()",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nmy_bar_plot &lt;- ggplot(mpg, aes(x = class)) +\n  geom_bar()\nmy_scatter_plot &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(filename = \"mpg-plot.png\", plot = my_bar_plot)\n\n\n\nThe Solution\nmy_bar_plot is saved since it is explicitly added as an argument to ggsave()",
     "crumbs": [
-      "Workflow: Basics"
+      "Workflow: Basics",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html",
+    "href": "whole-game/03-data-transformation/02-rows.html",
+    "title": "Rows",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html#question-1",
+    "href": "whole-game/03-data-transformation/02-rows.html#question-1",
+    "title": "Rows",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nIn a single pipleine for each condition, find all flights that meet the condition:\n\nHad an arrival delay of two or more hours\nFlew to Houston\nWere operated by United, American, or Delta\nDeparted in July, August, or September\nArrived more than two hours late but didn’t leave late.\nWere delayed by at least an hour, but made up over 30 minutes in flight.\n\n\n\nThe Solution\n\n# Had an arrival delay of two or more hours\nflights |&gt; filter(dep_delay &gt;= 120) # dep_delay is in minutes\n\n# A tibble: 9,888 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      848           1835       853     1001           1950\n 2  2013     1     1      957            733       144     1056            853\n 3  2013     1     1     1114            900       134     1447           1222\n 4  2013     1     1     1540           1338       122     2020           1825\n 5  2013     1     1     1815           1325       290     2120           1542\n 6  2013     1     1     1842           1422       260     1958           1535\n 7  2013     1     1     1856           1645       131     2212           2005\n 8  2013     1     1     1934           1725       129     2126           1855\n 9  2013     1     1     1938           1703       155     2109           1823\n10  2013     1     1     1942           1705       157     2124           1830\n# ℹ 9,878 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n# Flew to Houston\nflights |&gt; filter(dest == \"IAH\" | dest == \"HOU\")\n\n# A tibble: 9,313 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      623            627        -4      933            932\n 4  2013     1     1      728            732        -4     1041           1038\n 5  2013     1     1      739            739         0     1104           1038\n 6  2013     1     1      908            908         0     1228           1219\n 7  2013     1     1     1028           1026         2     1350           1339\n 8  2013     1     1     1044           1045        -1     1352           1351\n 9  2013     1     1     1114            900       134     1447           1222\n10  2013     1     1     1205           1200         5     1503           1505\n# ℹ 9,303 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n# Operated by United, American or Delta\n# Note AA: American, DL: Delta, UA: United, from the airlines table \nflights |&gt; filter(carrier %in% c(\"UA\", \"AA\", \"DL\"))\n\n# A tibble: 139,504 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      554            600        -6      812            837\n 5  2013     1     1      554            558        -4      740            728\n 6  2013     1     1      558            600        -2      753            745\n 7  2013     1     1      558            600        -2      924            917\n 8  2013     1     1      558            600        -2      923            937\n 9  2013     1     1      559            600        -1      941            910\n10  2013     1     1      559            600        -1      854            902\n# ℹ 139,494 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n# Departed in July, August, or September\nflights |&gt; filter(month %in% 7:9)\n\n# A tibble: 86,326 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     7     1        1           2029       212      236           2359\n 2  2013     7     1        2           2359         3      344            344\n 3  2013     7     1       29           2245       104      151              1\n 4  2013     7     1       43           2130       193      322             14\n 5  2013     7     1       44           2150       174      300            100\n 6  2013     7     1       46           2051       235      304           2358\n 7  2013     7     1       48           2001       287      308           2305\n 8  2013     7     1       58           2155       183      335             43\n 9  2013     7     1      100           2146       194      327             30\n10  2013     7     1      100           2245       135      337            135\n# ℹ 86,316 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n# Arrived more than two hours late but didn't leave late.\nflights |&gt; filter(arr_delay &gt; 120 & dep_delay &lt;= 0)\n\n# A tibble: 29 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1    27     1419           1420        -1     1754           1550\n 2  2013    10     7     1350           1350         0     1736           1526\n 3  2013    10     7     1357           1359        -2     1858           1654\n 4  2013    10    16      657            700        -3     1258           1056\n 5  2013    11     1      658            700        -2     1329           1015\n 6  2013     3    18     1844           1847        -3       39           2219\n 7  2013     4    17     1635           1640        -5     2049           1845\n 8  2013     4    18      558            600        -2     1149            850\n 9  2013     4    18      655            700        -5     1213            950\n10  2013     5    22     1827           1830        -3     2217           2010\n# ℹ 19 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n# Were delayed by at least an hour, but made up over 30 minutes in flight.\n# We check second condition by checking the difference\nflights |&gt; filter(dep_delay &gt; 60 & (dep_delay - arr_delay) &gt; 30)\n\n# A tibble: 1,819 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1     2205           1720       285       46           2040\n 2  2013     1     1     2326           2130       116      131             18\n 3  2013     1     3     1503           1221       162     1803           1555\n 4  2013     1     3     1839           1700        99     2056           1950\n 5  2013     1     3     1850           1745        65     2148           2120\n 6  2013     1     3     1941           1759       102     2246           2139\n 7  2013     1     3     1950           1845        65     2228           2227\n 8  2013     1     3     2257           2000       177       45           2224\n 9  2013     1     4     1917           1700       137     2135           1950\n10  2013     1     4     2010           1745       145     2257           2120\n# ℹ 1,809 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html#question-2",
+    "href": "whole-game/03-data-transformation/02-rows.html#question-2",
+    "title": "Rows",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nSort flights to find the flights with the longest departure delays. Find the flights that left earliest in the morning.\n\n\nThe Solution\n\n# Longest departure delays\nflights |&gt; arrange(desc(dep_delay))\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     9      641            900      1301     1242           1530\n 2  2013     6    15     1432           1935      1137     1607           2120\n 3  2013     1    10     1121           1635      1126     1239           1810\n 4  2013     9    20     1139           1845      1014     1457           2210\n 5  2013     7    22      845           1600      1005     1044           1815\n 6  2013     4    10     1100           1900       960     1342           2211\n 7  2013     3    17     2321            810       911      135           1020\n 8  2013     6    27      959           1900       899     1236           2226\n 9  2013     7    22     2257            759       898      121           1026\n10  2013    12     5      756           1700       896     1058           2020\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n# Earliest Departures\nflights |&gt; arrange(dep_time)\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1    13        1           2249        72      108           2357\n 2  2013     1    31        1           2100       181      124           2225\n 3  2013    11    13        1           2359         2      442            440\n 4  2013    12    16        1           2359         2      447            437\n 5  2013    12    20        1           2359         2      430            440\n 6  2013    12    26        1           2359         2      437            440\n 7  2013    12    30        1           2359         2      441            437\n 8  2013     2    11        1           2100       181      111           2225\n 9  2013     2    24        1           2245        76      121           2354\n10  2013     3     8        1           2355         6      431            440\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html#question-3",
+    "href": "whole-game/03-data-transformation/02-rows.html#question-3",
+    "title": "Rows",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nSort flights to find the fastest flights.\n\n\nThe Solution\nWe find the fastest flights by checking the difference in arrival and departure time. Since some flights are overnight, we need to account for rows with dep_time &gt; arr_time to ensure we do not have negative flight times.\n\n# Add a day (2400 minutes) if dep_time is later than arr_time\n# This could produce errors if a flight took more than 24 hours (unrealistic) \nflights |&gt; arrange((arr_time - dep_time) + 2400 * (dep_time &gt; arr_time))\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     5     1323           1325        -2     1358           1421\n 2  2013     2    22     1312           1316        -4     1347           1413\n 3  2013     9     3     1203           1153        10     1238           1250\n 4  2013     8    14      722            730        -8      758            830\n 5  2013     8    18      722            729        -7      758            830\n 6  2013     9    24      718            725        -7      754            822\n 7  2013     3    27     1418           1329        49     1455           1426\n 8  2013     5     8       16           2159       137       53           2304\n 9  2013     9     4      717            725        -8      754            822\n10  2013     2    24     1315           1320        -5     1353           1419\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html#question-4",
+    "href": "whole-game/03-data-transformation/02-rows.html#question-4",
+    "title": "Rows",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWas there a flight on every day of 2013?\n\n\nThe Solution\nTo check this, we count the number of unique (month, day) pairs and see if there are 365 unique entries.\n\nflights |&gt; distinct(month, day) |&gt; count()\n\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1   365\n\n\nThere was a flight on every day of 2013.",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html#question-5",
+    "href": "whole-game/03-data-transformation/02-rows.html#question-5",
+    "title": "Rows",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhich flights traveled the farthest distance? Which traveled the least distance?\n\n\nThe Solution\nWe will filter all flights that have distance equal to max / min respectively.\n\n# Maximum flights\ntmp &lt;- flights |&gt; filter(distance == max(flights$distance)) \ntmp\n\n# A tibble: 342 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      857            900        -3     1516           1530\n 2  2013     1     2      909            900         9     1525           1530\n 3  2013     1     3      914            900        14     1504           1530\n 4  2013     1     4      900            900         0     1516           1530\n 5  2013     1     5      858            900        -2     1519           1530\n 6  2013     1     6     1019            900        79     1558           1530\n 7  2013     1     7     1042            900       102     1620           1530\n 8  2013     1     8      901            900         1     1504           1530\n 9  2013     1     9      641            900      1301     1242           1530\n10  2013     1    10      859            900        -1     1449           1530\n# ℹ 332 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\ntmp |&gt; distinct(origin, dest)\n\n# A tibble: 1 × 2\n  origin dest \n  &lt;chr&gt;  &lt;chr&gt;\n1 JFK    HNL  \n\n# Minimum flights\ntmp &lt;- flights |&gt; filter(distance == min(flights$distance)) \ntmp\n\n# A tibble: 1 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     7    27       NA            106        NA       NA            245\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\ntmp |&gt; distinct(origin, dest)\n\n# A tibble: 1 × 2\n  origin dest \n  &lt;chr&gt;  &lt;chr&gt;\n1 EWR    LGA  \n\n\nJFK to HNL is the longest flight. EWR to LGA is the shortest flight.",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/02-rows.html#question-6",
+    "href": "whole-game/03-data-transformation/02-rows.html#question-6",
+    "title": "Rows",
+    "section": "Question 6",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nDoes it matter what order you used filter() and arrange() if you’re using both?\n\n\nThe Solution\nIt does matter in terms of computational cost. When you arrange first before you filter, we need to sort a larger number of rows compared to if you filter first. Since sorting has a larger computational cost \\(O(n\\cdot\\log(n))\\) (on average using quicksort) than filtering which has a cost of \\(O(n)\\). Thus we should do filtering first, the operation that is less ‘expensive’.",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Rows</span>"
     ]
   },
   {
