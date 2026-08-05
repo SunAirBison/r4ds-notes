@@ -1,0 +1,179 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Columns
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(nycflights13)
+
+# Note: warnings and messages are suppressed for all code blocks
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Compare `dep_time`, `sched_dep_time` and `dep_delay`. How would you expect those three numbers to be related?
+
+### The Solution
+
+The relationship between the three columns should be:
+
+$$dep\_ time - sched\_ dep\_ time = dep\_ delay$$
+
+``` {r}
+flights |> select(dep_time, sched_dep_time, dep_delay) |> head()
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Brainstorm as many ways as possible to select `dep_time`, `dep_delay`, `arr_time`, and `arr_delay` from `flights`.
+
+### The Solution
+
+Here are a table of possible ways that obtain these columns using `select()`
+
+| Method         | Pseudocode                                                                |
+| -------------- | ------------------------------------------------------------------------- |
+| Select columns | `select(dep_time, dep_delay, arr_time, arr_delay`                         |
+| Remove columns | `select(-month, !year, ...)`                                              |
+| Select Range   | `select(dep_time:arr_delay, -sched_dep_time, -sched_arr_time)`            |
+| Remove Ranges  | `select(!<cols_before>, -sched_dep_time, -sched_arr_time, !<cols-after>)` |
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What happends if you specify the name of the same variable multiple times in a `select()` call?
+
+### The Solution
+
+``` {r}
+flights |> select(tailnum) |> head()
+flights |> select(tailnum, tailnum) |> head()
+flights |> select(tailnum, tailnum, tailnum) |> head()
+```
+
+Repeating the same column multiple times does not change the output of select.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What does the `any_of()` function do? Why might it be helpful in conjunction with this vector?
+
+```{r}
+variables <- c("year", "month", "day", "dep_delay", "arr_delay")
+```
+
+### The Solution
+
+`any_of()` (from `tidyselect`) checks if it first argument is one of the values stored in the second argument. We can use it with `variables` to make our `select()` function call easier to read, reuse, or modify later.
+
+``` {r}
+# Now we can change variables if we changes to the select
+flights |> select(any_of(variables)) |> head()
+```
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Does the result of running the following code surprise you? How do the select helpers deal with upper and lower case by default? How can you change that default?
+
+```{r}
+flights |> select(contains("TIME"))
+```
+
+### The Solution
+
+Running the code did surprise me with the amount of columns it returned. By default, select helpers (`contains()`) are case insensitive. To change this, we add the argument `ignore.case = FALSE`.
+
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Rename `air_time` to `air_time_min` and move it to the beginning of the data frame.
+
+### The Solution
+
+``` {r}
+flights |> 
+    rename(air_time_min = air_time) |> 
+    relocate(air_time_min, .before = year)
+```
+
+:::
+
+<!-- Next Question -->
+## Question 7
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Why doesn’t the following work, and what does the error mean?
+
+```{r}
+#| eval: false
+flights |> 
+  select(tailnum) |> 
+  arrange(arr_delay)
+#> Error in `arrange()`:
+#> ℹ In argument: `..1 = arr_delay`.
+#> Caused by error:
+#> ! object 'arr_delay' not found
+```
+
+### The Solution
+
+The issue is that during the select function call, we remove all columns except for `tailnum`, so when we try to arrange by `arr_delay`, it does not exist in the table we piped into it. To fix this issue, we just need to swap the order of `select` and `arrange`.
+
+```{r}
+flights |> 
+  arrange(arr_delay) |>
+  select(tailnum)
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/data-transform.html#exercises-1>

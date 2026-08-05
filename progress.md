@@ -12,6 +12,6 @@ Full list of exercises that I have completed. The list will be updated overtime 
 - [x] Workflow Basics
 - [ ] Data Transformation
   - [x] Rows
-  - [ ] Columns
+  - [x] Columns
   - [ ] Groups
 - [ ] Workflow: Code Style
