@@ -20,7 +20,12 @@ book:
         - whole-game/01-data-visualization/04-visualizing-distributions.qmd
         - whole-game/01-data-visualization/05-visualizing-relationships.qmd
         - whole-game/01-data-visualization/06-saving-plots.qmd
-    - part: whole-game/02-workflow-basics.qmd
+
+    - part: "Workflow: Basics"
+      chapters:
+        - whole-game/02-workflow-basics/02-workflow-basics.qmd
+
+    - part: "Data Transformation"
 
   appendices:
     - progress.md
