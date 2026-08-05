@@ -448,6 +448,94 @@
     ]
   },
   {
+    "objectID": "whole-game/03-data-transformation/03-columns.html",
+    "href": "whole-game/03-data-transformation/03-columns.html",
+    "title": "Columns",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-1",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-1",
+    "title": "Columns",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nCompare dep_time, sched_dep_time and dep_delay. How would you expect those three numbers to be related?\n\n\nThe Solution\nThe relationship between the three columns should be:\n\\[dep\\_ time - sched\\_ dep\\_ time = dep\\_ delay\\]\n\nflights |&gt; select(dep_time, sched_dep_time, dep_delay) |&gt; head()\n\n# A tibble: 6 × 3\n  dep_time sched_dep_time dep_delay\n     &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n1      517            515         2\n2      533            529         4\n3      542            540         2\n4      544            545        -1\n5      554            600        -6\n6      554            558        -4",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-2",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-2",
+    "title": "Columns",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nBrainstorm as many ways as possible to select dep_time, dep_delay, arr_time, and arr_delay from flights.\n\n\nThe Solution\nHere are a table of possible ways that obtain these columns using select()\n\n\n\n\n\n\n\nMethod\nPseudocode\n\n\n\n\nSelect columns\nselect(dep_time, dep_delay, arr_time, arr_delay\n\n\nRemove columns\nselect(-month, !year, ...)\n\n\nSelect Range\nselect(dep_time:arr_delay, -sched_dep_time, -sched_arr_time)\n\n\nRemove Ranges\nselect(!&lt;cols_before&gt;, -sched_dep_time, -sched_arr_time, !&lt;cols-after&gt;)",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-3",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-3",
+    "title": "Columns",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat happends if you specify the name of the same variable multiple times in a select() call?\n\n\nThe Solution\n\nflights |&gt; select(tailnum) |&gt; head()\n\n# A tibble: 6 × 1\n  tailnum\n  &lt;chr&gt;  \n1 N14228 \n2 N24211 \n3 N619AA \n4 N804JB \n5 N668DN \n6 N39463 \n\nflights |&gt; select(tailnum, tailnum) |&gt; head()\n\n# A tibble: 6 × 1\n  tailnum\n  &lt;chr&gt;  \n1 N14228 \n2 N24211 \n3 N619AA \n4 N804JB \n5 N668DN \n6 N39463 \n\nflights |&gt; select(tailnum, tailnum, tailnum) |&gt; head()\n\n# A tibble: 6 × 1\n  tailnum\n  &lt;chr&gt;  \n1 N14228 \n2 N24211 \n3 N619AA \n4 N804JB \n5 N668DN \n6 N39463 \n\n\nRepeating the same column multiple times does not change the output of select.",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-4",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-4",
+    "title": "Columns",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the any_of() function do? Why might it be helpful in conjunction with this vector?\n\nvariables &lt;- c(\"year\", \"month\", \"day\", \"dep_delay\", \"arr_delay\")\n\n\n\nThe Solution\nany_of() (from tidyselect) checks if it first argument is one of the values stored in the second argument. We can use it with variables to make our select() function call easier to read, reuse, or modify later.\n\n# Now we can change variables if we changes to the select\nflights |&gt; select(any_of(variables)) |&gt; head()\n\n# A tibble: 6 × 5\n   year month   day dep_delay arr_delay\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1  2013     1     1         2        11\n2  2013     1     1         4        20\n3  2013     1     1         2        33\n4  2013     1     1        -1       -18\n5  2013     1     1        -6       -25\n6  2013     1     1        -4        12",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-5",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-5",
+    "title": "Columns",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nDoes the result of running the following code surprise you? How do the select helpers deal with upper and lower case by default? How can you change that default?\n\nflights |&gt; select(contains(\"TIME\"))\n\n# A tibble: 336,776 × 6\n   dep_time sched_dep_time arr_time sched_arr_time air_time time_hour          \n      &lt;int&gt;          &lt;int&gt;    &lt;int&gt;          &lt;int&gt;    &lt;dbl&gt; &lt;dttm&gt;             \n 1      517            515      830            819      227 2013-01-01 05:00:00\n 2      533            529      850            830      227 2013-01-01 05:00:00\n 3      542            540      923            850      160 2013-01-01 05:00:00\n 4      544            545     1004           1022      183 2013-01-01 05:00:00\n 5      554            600      812            837      116 2013-01-01 06:00:00\n 6      554            558      740            728      150 2013-01-01 05:00:00\n 7      555            600      913            854      158 2013-01-01 06:00:00\n 8      557            600      709            723       53 2013-01-01 06:00:00\n 9      557            600      838            846      140 2013-01-01 06:00:00\n10      558            600      753            745      138 2013-01-01 06:00:00\n# ℹ 336,766 more rows\n\n\n\n\nThe Solution\nRunning the code did surprise me with the amount of columns it returned. By default, select helpers (contains()) are case insensitive. To change this, we add the argument ignore.case = FALSE.",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-6",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-6",
+    "title": "Columns",
+    "section": "Question 6",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRename air_time to air_time_min and move it to the beginning of the data frame.\n\n\nThe Solution\n\nflights |&gt; \n    rename(air_time_min = air_time) |&gt; \n    relocate(air_time_min, .before = year)\n\n# A tibble: 336,776 × 19\n   air_time_min  year month   day dep_time sched_dep_time dep_delay arr_time\n          &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;\n 1          227  2013     1     1      517            515         2      830\n 2          227  2013     1     1      533            529         4      850\n 3          160  2013     1     1      542            540         2      923\n 4          183  2013     1     1      544            545        -1     1004\n 5          116  2013     1     1      554            600        -6      812\n 6          150  2013     1     1      554            558        -4      740\n 7          158  2013     1     1      555            600        -5      913\n 8           53  2013     1     1      557            600        -3      709\n 9          140  2013     1     1      557            600        -3      838\n10          138  2013     1     1      558            600        -2      753\n# ℹ 336,766 more rows\n# ℹ 11 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;,\n#   flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/03-data-transformation/03-columns.html#question-7",
+    "href": "whole-game/03-data-transformation/03-columns.html#question-7",
+    "title": "Columns",
+    "section": "Question 7",
+    "text": "Question 7\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhy doesn’t the following work, and what does the error mean?\n\nflights |&gt; \n  select(tailnum) |&gt; \n  arrange(arr_delay)\n#&gt; Error in `arrange()`:\n#&gt; ℹ In argument: `..1 = arr_delay`.\n#&gt; Caused by error:\n#&gt; ! object 'arr_delay' not found\n\n\n\nThe Solution\nThe issue is that during the select function call, we remove all columns except for tailnum, so when we try to arrange by arr_delay, it does not exist in the table we piped into it. To fix this issue, we just need to swap the order of select and arrange.\n\nflights |&gt; \n  arrange(arr_delay) |&gt;\n  select(tailnum)\n\n# A tibble: 336,776 × 1\n   tailnum\n   &lt;chr&gt;  \n 1 N843VA \n 2 N840VA \n 3 N851UA \n 4 N3KCAA \n 5 N551AS \n 6 N24212 \n 7 N3760C \n 8 N806UA \n 9 N805JB \n10 N855VA \n# ℹ 336,766 more rows",
+    "crumbs": [
+      "Data Transformation",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Columns</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
