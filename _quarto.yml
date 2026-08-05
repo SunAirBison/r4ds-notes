@@ -26,6 +26,8 @@ book:
         - whole-game/02-workflow-basics/02-workflow-basics.qmd
 
     - part: "Data Transformation"
+      chapters:
+        - whole-game/03-data-transformation/02-rows.qmd
 
   appendices:
     - progress.md

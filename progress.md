@@ -11,7 +11,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Saving your plots
 - [x] Workflow Basics
 - [ ] Data Transformation
-  - [ ] Rows
+  - [x] Rows
   - [ ] Columns
   - [ ] Groups
 - [ ] Workflow: Code Style

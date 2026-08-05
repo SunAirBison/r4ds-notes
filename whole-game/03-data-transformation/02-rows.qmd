@@ -1,0 +1,173 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Rows
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(dplyr)
+library(nycflights13)
+
+# Note: warnings and messages are suppressed for all code blocks
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+In a single pipleine for each condition, find all flights that meet the condition:
+  
+- Had an arrival delay of two or more hours
+- Flew to Houston
+- Were operated by United, American, or Delta
+- Departed in July, August, or September
+- Arrived more than two hours late but didn't leave late.
+- Were delayed by at least an hour, but made up over 30 minutes in flight.
+
+### The Solution
+
+``` {r}
+# Had an arrival delay of two or more hours
+flights |> filter(dep_delay >= 120) # dep_delay is in minutes
+
+# Flew to Houston
+flights |> filter(dest == "IAH" | dest == "HOU")
+
+# Operated by United, American or Delta
+# Note AA: American, DL: Delta, UA: United, from the airlines table 
+flights |> filter(carrier %in% c("UA", "AA", "DL"))
+
+# Departed in July, August, or September
+flights |> filter(month %in% 7:9)
+
+# Arrived more than two hours late but didn't leave late.
+flights |> filter(arr_delay > 120 & dep_delay <= 0)
+
+# Were delayed by at least an hour, but made up over 30 minutes in flight.
+# We check second condition by checking the difference
+flights |> filter(dep_delay > 60 & (dep_delay - arr_delay) > 30)
+```
+
+:::
+
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Sort `flights` to find the flights with the longest departure delays. Find the flights that left earliest in the morning.
+
+### The Solution
+
+``` {r}
+# Longest departure delays
+flights |> arrange(desc(dep_delay))
+
+# Earliest Departures
+flights |> arrange(dep_time)
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Sort `flights` to find the fastest flights.
+
+### The Solution
+
+We find the fastest flights by checking the difference in arrival and departure time. Since some flights are overnight, we need to account for rows with `dep_time` > `arr_time` to ensure we do not have negative flight times.
+
+``` {r}
+# Add a day (2400 minutes) if dep_time is later than arr_time
+# This could produce errors if a flight took more than 24 hours (unrealistic) 
+flights |> arrange((arr_time - dep_time) + 2400 * (dep_time > arr_time))
+```
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Was there a flight on every day of 2013?
+
+### The Solution
+
+To check this, we count the number of unique (`month`, `day`) pairs and see if there are 365 unique entries.
+
+``` {r}
+flights |> distinct(month, day) |> count()
+```
+
+There was a flight on every day of 2013.
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Which flights traveled the farthest distance? Which traveled the least distance?
+
+### The Solution
+
+We will filter all flights that have `distance` equal to max / min respectively. 
+
+``` {r}
+# Maximum flights
+tmp <- flights |> filter(distance == max(flights$distance)) 
+tmp
+tmp |> distinct(origin, dest)
+
+
+# Minimum flights
+tmp <- flights |> filter(distance == min(flights$distance)) 
+tmp
+tmp |> distinct(origin, dest)
+```
+
+JFK to HNL is the longest flight. EWR to LGA is the shortest flight.
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Does it matter what order you used `filter()` and `arrange()` if you're using both?
+
+### The Solution
+
+It does matter in terms of computational cost. When you arrange first before you filter, we need to sort a larger number of rows compared to if you filter first. Since sorting has a larger computational cost $O(n\cdot\log(n))$ (on average using quicksort) than filtering which has a cost of $O(n)$. Thus we should do filtering first, the operation that is less 'expensive'.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/data-transform.html#exercises>
