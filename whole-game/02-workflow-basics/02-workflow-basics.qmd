@@ -1,9 +1,6 @@
 ---
-execute:
-  warnings: false
-  message: false
-number-sections: false
 subtitle: Exercise Solutions
+number-sections: false
 ---
 
 # Workflow: Basics

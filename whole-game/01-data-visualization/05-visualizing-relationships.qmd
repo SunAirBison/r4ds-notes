@@ -1,9 +1,6 @@
 ---
-execute:
-  warnings: false
-  message: false
-number-sections: false
 subtitle: Exercise Solutions
+number-sections: false
 ---
 
 # Visualizing Relationships
@@ -218,7 +215,7 @@ ggplot(
     color = species, shape = species 
   )
 ) +
-  geom_point(na.rm = FALSE) +
+  geom_point(na.rm = TRUE) +
   labs(color = "Species", shape = "Species")
 ```
 

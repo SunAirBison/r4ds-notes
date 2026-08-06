@@ -1,9 +1,6 @@
 ---
-execute:
-  warnings: false
-  message: false
-number-sections: false
 subtitle: Exercise Solutions
+number-sections: false
 ---
 
 # Saving Plots
@@ -33,7 +30,7 @@ ggplot(mpg, aes(x = class)) +
   ggplot(mpg, aes(x = cty, y = hwy)) +
     geom_point()
     ggsave("mpg-plot.png")
-    ```
+```
 
 ### The Solution
 

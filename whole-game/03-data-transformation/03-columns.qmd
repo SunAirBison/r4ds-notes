@@ -1,8 +1,5 @@
 ---
 subtitle: Exercise Solutions
-execute:
-  warnings: false
-  message: false
 number-sections: false
 ---
 
@@ -15,8 +12,6 @@ number-sections: false
 # Loading Packages
 library(tidyverse)
 library(nycflights13)
-
-# Note: warnings and messages are suppressed for all code blocks
 ```
 
 <!-- Next Question -->

@@ -1,8 +1,5 @@
 ---
 subtitle: Exercise Solutions
-execute:
-  warnings: false
-  message: false
 number-sections: false
 ---
 
@@ -16,8 +13,6 @@ number-sections: false
 library(tidyverse)
 library(dplyr)
 library(nycflights13)
-
-# Note: warnings and messages are suppressed for all code blocks
 ```
 
 <!-- Next Question -->
@@ -46,7 +41,6 @@ flights |> filter(dep_delay >= 120) # dep_delay is in minutes
 flights |> filter(dest == "IAH" | dest == "HOU")
 
 # Operated by United, American or Delta
-# Note AA: American, DL: Delta, UA: United, from the airlines table 
 flights |> filter(carrier %in% c("UA", "AA", "DL"))
 
 # Departed in July, August, or September

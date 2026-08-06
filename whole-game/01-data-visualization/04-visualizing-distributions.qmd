@@ -1,9 +1,6 @@
 ---
-execute:
-  warnings: false
-  message: false
-number-sections: false
 subtitle: Exercise Solutions
+number-sections: false
 ---
 
 # Visualizing Distributions
@@ -87,6 +84,8 @@ Make a histogram of the carat variable in the diamonds dataset. Experiment with 
 
 ### The Solution
 
+As we decrease the binwidth in the histograms, we can see decreasing the binwidth shows peaks that were hidden from the larger binwidths. From the different bandwidths tested, `binwidth = 0.1` produced the best results. A smaller binwidth caused the historgram to be visually unclear.
+
 ``` {r}
 # Quick look of the carat variable
 summary(diamonds$carat)
@@ -111,6 +110,7 @@ diamonds |>
     ggplot(aes(x = carat)) +
     geom_histogram(binwidth = 0.01)
 
+# Extremely small "binwidth"
 diamonds |>
     ggplot(aes(x = carat)) +
     geom_density()

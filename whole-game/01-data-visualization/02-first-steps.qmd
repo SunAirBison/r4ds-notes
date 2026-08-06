@@ -1,8 +1,5 @@
 ---
 subtitle: Exercise Solutions
-execute:
-  warnings: false
-  message: false
 number-sections: false
 ---
 
@@ -16,7 +13,6 @@ number-sections: false
 library(tidyverse)
 library(palmerpenguins)
 
-# Note: warnings and messages are suppressed for all code blocks
 ```
 
 <!-- Next Question -->
@@ -191,8 +187,8 @@ Recreate the following visualization. What aesthetic should `bill_depth_mm` be m
 ``` {r}
 penguins |>
     ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + 
-    geom_point(mapping = aes(color = bill_depth_mm)) +
-    geom_smooth(method = "gam")
+    geom_point(mapping = aes(color = bill_depth_mm), na.rm = TRUE) +
+    geom_smooth(method = "gam", na.rm = TRUE)
 ```
 
 :::
@@ -228,8 +224,8 @@ ggplot(
   data = penguins,
   mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
 ) +
-  geom_point() +
-  geom_smooth(se = FALSE)   
+  geom_point(na.rm = TRUE) +
+  geom_smooth(se = FALSE, na.rm = TRUE)   
 ```
 
 I predicted the components correctly, but I was not expecting the lines to overlap as much as they did.
@@ -277,18 +273,20 @@ ggplot(
   data = penguins,
   mapping = aes(x = flipper_length_mm, y = body_mass_g)
 ) +
-  geom_point() +
-  geom_smooth() +
+  geom_point(na.rm = TRUE) +
+  geom_smooth(na.rm = TRUE) +
   labs(title = "Plot 1")
 
 ggplot() +
   geom_point(
-    data = penguins,
-    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+    data = penguins, 
+    mapping = aes(x = flipper_length_mm, y = body_mass_g),
+    na.rm = TRUE
   ) +
   geom_smooth(
-    data = penguins,
-    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+    data = penguins, 
+    mapping = aes(x = flipper_length_mm, y = body_mass_g),
+    na.rm = TRUE
   ) +
   labs(title = "Plot 2")
 ```
