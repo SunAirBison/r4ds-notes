@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -33,7 +33,7 @@ In a single pipleine for each condition, find all flights that meet the conditio
 
 ### The Solution
 
-``` {r}
+```{r}
 # Had an arrival delay of two or more hours
 flights |> filter(dep_delay >= 120) # dep_delay is in minutes
 
@@ -68,7 +68,7 @@ Sort `flights` to find the flights with the longest departure delays. Find the f
 
 ### The Solution
 
-``` {r}
+```{r}
 # Longest departure delays
 flights |> arrange(desc(dep_delay))
 
@@ -91,7 +91,7 @@ Sort `flights` to find the fastest flights.
 
 We find the fastest flights by checking the difference in arrival and departure time. Since some flights are overnight, we need to account for rows with `dep_time` > `arr_time` to ensure we do not have negative flight times.
 
-``` {r}
+```{r}
 # Add a day (2400 minutes) if dep_time is later than arr_time
 # This could produce errors if a flight took more than 24 hours (unrealistic) 
 flights |> arrange((arr_time - dep_time) + 2400 * (dep_time > arr_time))
@@ -112,7 +112,7 @@ Was there a flight on every day of 2013?
 
 To check this, we count the number of unique (`month`, `day`) pairs and see if there are 365 unique entries.
 
-``` {r}
+```{r}
 flights |> distinct(month, day) |> count()
 ```
 
@@ -133,7 +133,7 @@ Which flights traveled the farthest distance? Which traveled the least distance?
 
 We will filter all flights that have `distance` equal to max / min respectively. 
 
-``` {r}
+```{r}
 # Maximum flights
 tmp <- flights |> filter(distance == max(flights$distance)) 
 tmp

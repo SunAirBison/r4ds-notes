@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -25,7 +25,7 @@ library(palmerpenguins)
 How many row and columns are in `penguins`?
 
 ### The Solution
-``` {r}
+```{r}
 dim(penguins)
 ```
 
@@ -60,7 +60,7 @@ Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm`.
 
 ### The Solution
 
-``` {r}
+```{r}
 penguins |> # Following tidyverse style guide by using pipes
     ggplot(mapping = aes(y = bill_depth_mm, x = bill_length_mm)) + 
     geom_point() +
@@ -79,7 +79,7 @@ What happens when you make a scatterplot of `species` vs `bill_depth_mm`? What m
 
 ### The Solution
 
-``` {r}
+```{r}
 penguins |> 
     ggplot(mapping = aes(y = species, x = bill_length_mm)) + 
     geom_point() + 
@@ -104,7 +104,7 @@ penguins |>
 ### The Problem
 
 Why does the following give an error and how would you fix it?
-``` {r} 
+```{r} 
 #| eval: false
 ggplot(data = penguins) + 
   geom_point()
@@ -114,7 +114,7 @@ ggplot(data = penguins) +
 
 This plot is missing a value for the `mapping` argument in `ggplot()`. Adding this argument fixes the plot.
 
-``` {r}
+```{r}
 penguins |>
     ggplot(mapping =  aes(y = bill_depth_mm, x = bill_length_mm)) + 
     geom_point()
@@ -136,7 +136,7 @@ What does the `na.rm` argument do in `geom_point()`? What is the default value o
 
 `na.rm` determines whether points that have missing values create a warning that they were removed. The default value of the argument is `FALSE`. 
 
-``` {r}
+```{r}
 penguins |>
     ggplot() + 
     geom_point(
@@ -158,7 +158,7 @@ penguins |>
 Add the following caption to the plot you made in the previous exercise: "Data came from the palmerpenguins package."
 
 ### The Solution
-``` {r}
+```{r}
 penguins |>
     ggplot() + 
     geom_point(
@@ -184,7 +184,7 @@ Recreate the following visualization. What aesthetic should `bill_depth_mm` be m
 
 `bill_depth_mm` should be mapped to `color` in the geom level, otherwise `geom_smooth` would be split by bill depth.
 
-``` {r}
+```{r}
 penguins |>
     ggplot(mapping = aes(y = body_mass_g, x = flipper_length_mm)) + 
     geom_point(mapping = aes(color = bill_depth_mm), na.rm = TRUE) +
@@ -203,7 +203,7 @@ penguins |>
 
 Run this code in your head and predict what the output will look like. Then run the code and check your predictions.
 
-``` {r}
+```{r}
 #| eval: false
 ggplot(
   data = penguins,
@@ -217,7 +217,7 @@ ggplot(
 
 I predict that the plot will have axes of `body_mass_g` vs `flipper_length_mm`. The points on the plot will be grouped with different by the `island` variable. There will be a linear model for each different island and the standard error of the estimated body mass at each value on the lines will not be visible.
 
-``` {r}
+```{r}
 #| output: true
 #| echo: false
 ggplot(
@@ -241,7 +241,7 @@ I predicted the components correctly, but I was not expecting the lines to overl
 ### The Problem
 
 Will these two graphs look different? Why/why not?
-``` {r}
+```{r}
 #| eval: false
 ggplot(
   data = penguins,
@@ -267,7 +267,7 @@ These plots will not look different. In the first plot, `geom_point()` and `geom
 
 
 
-``` {r}
+```{r}
 #| echo: false
 ggplot(
   data = penguins,

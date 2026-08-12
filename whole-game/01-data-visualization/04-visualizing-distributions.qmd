@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -24,7 +24,7 @@ library(palmerpenguins)
 Make a bar plot of `species` of `penguins`, where you assign `species` to the `y` aesthetic. How is this plot different?
 
 ### The Solution
-``` {r}
+```{r}
 penguins |>
     ggplot(aes(y = species)) +
     geom_bar()
@@ -44,7 +44,7 @@ This plot has horizontal bars instead of vertical bars.
 
 How are the following two plots different? Which aesthetic, `color` or `fill`, is more useful for changing the color of bars?
 
-``` {r}
+```{r}
 ggplot(penguins, aes(x = species)) +
   geom_bar(color = "red")
 
@@ -86,7 +86,7 @@ Make a histogram of the carat variable in the diamonds dataset. Experiment with 
 
 As we decrease the binwidth in the histograms, we can see decreasing the binwidth shows peaks that were hidden from the larger binwidths. From the different bandwidths tested, `binwidth = 0.1` produced the best results. A smaller binwidth caused the historgram to be visually unclear.
 
-``` {r}
+```{r}
 # Quick look of the carat variable
 summary(diamonds$carat)
 

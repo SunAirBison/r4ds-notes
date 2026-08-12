@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -51,7 +51,7 @@ What do you need to change in the code above to save the plot as a PDF instead o
 
 To save the plot as a PNG, we would change the string in `ggsave()` to end with `.pdf`.
 
-``` {r}
+```{r}
 ggplot(mpg, aes(x = class)) +
   geom_bar()
 ggplot(mpg, aes(x = cty, y = hwy)) +

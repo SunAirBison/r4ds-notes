@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -67,7 +67,7 @@ Make a scatterplot of `hwy` vs. `displ` using the `mpg` data frame. Next, map a 
 
 ### The Solution
 
-``` {r}
+```{r}
 mpg |> 
     ggplot(aes(x = displ, y = hwy)) +
     geom_point()
@@ -113,7 +113,7 @@ In the scatterplot of `hwy` vs. `displ`, what happens if you map a third variabl
 
 ### The Solution
 
-``` {r}
+```{r}
 mpg |> 
   ggplot(aes(x = displ, y = hwy, linewidth = cty)) +
   geom_point()
@@ -134,7 +134,7 @@ What happens if you map the same variable to multiple aesthetics?
 
 ### The Solution
 
-``` {r}
+```{r}
 mpg |> 
   ggplot() + 
   geom_point(aes(x = hwy, y = hwy, color = hwy))
@@ -159,7 +159,7 @@ Make a scatterplot of `bill_depth_mm` vs. `bill_length_mm` and color the points 
 
 ### The Solution
 
-``` {r}
+```{r}
 penguins |>
   ggplot(aes(color = species)) + 
   geom_point(
@@ -169,7 +169,7 @@ penguins |>
 
 This plot shows that the bill length and depth of the penguins measured are clustered by species.
 
-``` {r}
+```{r}
 penguins |>
   ggplot(aes(color = species)) + 
   geom_point(

@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -23,7 +23,7 @@ library(palmerpenguins)
 
 Why does this code not work?
 
-``` {r}
+```{r}
 #| eval: false
 my_variable <- 10
 my_varıable
@@ -55,7 +55,7 @@ ggplot(dTA = mpg) +
 
 ### The Solution
 
-``` {r}
+```{r}
 # dTA -> data, move aes, fix mapping typo, add comma
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + #

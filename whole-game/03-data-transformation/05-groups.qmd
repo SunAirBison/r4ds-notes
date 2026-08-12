@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -26,7 +26,7 @@ Which carrier has the worst average delays? Challenge: can you disentangle the e
 
 ### The Solution
 
-``` {r}
+```{r}
 flights |> 
     group_by(carrier) |>
     summarize(
@@ -54,7 +54,7 @@ Find the flights that are most delayed upon departure to each destination.
 
 The following code produces a table containg the maximum departure delay for each destination airport.
 
-``` {r}
+```{r}
 flights |>
     group_by(dest) |>
     relocate(dest, dep_delay) |>
@@ -76,7 +76,7 @@ How do delays vary over the dourse of the day? Illustrate your answer with a plo
 
 First lets look at average departure delays across all departure times: 
 
-``` {r}
+```{r}
 dep_delays <- flights |> 
     group_by(dep_time) |>
     summarize(avg_dep_delay = mean(dep_delay))
@@ -88,7 +88,7 @@ dep_delays |>
 
 Next lets look at average arrival delays across all arrival times: 
 
-``` {r}
+```{r}
 arr_delays <- flights |> 
     group_by(arr_time) |>
     summarize(avg_arr_delay = mean(arr_delay))

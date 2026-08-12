@@ -7,7 +7,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -29,7 +29,7 @@ The relationship between the three columns should be:
 
 $$dep\_ time - sched\_ dep\_ time = dep\_ delay$$
 
-``` {r}
+```{r}
 flights |> select(dep_time, sched_dep_time, dep_delay) |> head()
 ```
 
@@ -67,7 +67,7 @@ What happends if you specify the name of the same variable multiple times in a `
 
 ### The Solution
 
-``` {r}
+```{r}
 flights |> select(tailnum) |> head()
 flights |> select(tailnum, tailnum) |> head()
 flights |> select(tailnum, tailnum, tailnum) |> head()
@@ -94,7 +94,7 @@ variables <- c("year", "month", "day", "dep_delay", "arr_delay")
 
 `any_of()` (from `tidyselect`) checks if it first argument is one of the values stored in the second argument. We can use it with `variables` to make our `select()` function call easier to read, reuse, or modify later.
 
-``` {r}
+```{r}
 # Now we can change variables if we changes to the select
 flights |> select(any_of(variables)) |> head()
 ```
@@ -131,7 +131,7 @@ Rename `air_time` to `air_time_min` and move it to the beginning of the data fra
 
 ### The Solution
 
-``` {r}
+```{r}
 flights |> 
     rename(air_time_min = air_time) |> 
     relocate(air_time_min, .before = year)
