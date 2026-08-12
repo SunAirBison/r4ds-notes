@@ -10,8 +10,8 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Visualizing Relationships
   - [x] Saving your plots
 - [x] Workflow Basics
-- [ ] Data Transformation
+- [x] Data Transformation
   - [x] Rows
   - [x] Columns
-  - [ ] Groups
+  - [x] Groups
 - [ ] Workflow: Code Style

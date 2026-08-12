@@ -29,6 +29,7 @@ book:
       chapters:
         - whole-game/03-data-transformation/02-rows.qmd
         - whole-game/03-data-transformation/03-columns.qmd
+        - whole-game/03-data-transformation/05-groups.qmd
 
   appendices:
     - progress.md
