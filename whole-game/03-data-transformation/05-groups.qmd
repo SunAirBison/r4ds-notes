@@ -245,7 +245,7 @@ df |>
 
 My prediction was correct. The pipeline first groups the data frame by unique `(y,z)` pairs, then it takes that new table and takes the average of all `x` values in each group. The message is saying that the data frame that was outputted is no longer grouped by `y` and `z`, it is only group by `y` values. It also says how to hide the message or get the groupings to what it was originally.
 
-#### Part e.
+#### e.
 
 The output will contain the same mean_x values as the previous question, but will not have any group and will not have the message before the output.  
 
@@ -259,9 +259,9 @@ My prediction was correct. The pipeline first groups the rows by unique `(y,z)` 
 
 :::
 
-#### Part f.
+#### f.
 
-The first output will be the same as the output in Part e. The second output will be a data frame grouped by `(y,z)` pairs that adds a new column that contains the mean of the `x` values in each group, keeping all columns.
+The first output will be the same as the output in part e. The second output will be a data frame grouped by `(y,z)` pairs that adds a new column that contains the mean of the `x` values in each group, keeping all columns.
 
 ```{r}
 df |>
