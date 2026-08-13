@@ -14,4 +14,4 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Rows
   - [x] Columns
   - [x] Groups
-- [ ] Workflow: Code Style
+- [x] Workflow: Code Style
