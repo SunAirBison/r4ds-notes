@@ -333,7 +333,6 @@
     "section": "",
     "text": "Question 1\nFull Questions",
     "crumbs": [
-      "Workflow: Basics",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
@@ -344,7 +343,6 @@
     "section": "",
     "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhy does this code not work?\n\nmy_variable &lt;- 10\nmy_varıable\n#&gt; Error:\n#&gt; ! object 'my_varıable' not found\n\n\n\nThe Solution\nThe variable names are not the same.",
     "crumbs": [
-      "Workflow: Basics",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
@@ -355,7 +353,6 @@
     "section": "Question 2",
     "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\n\nThe Solution\n\n# dTA -&gt; data, move aes, fix mapping typo, add comma\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point() + #\n  geom_smooth(method = \"lm\") # add ending quote\n\n`geom_smooth()` using formula = 'y ~ x'",
     "crumbs": [
-      "Workflow: Basics",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
@@ -366,7 +363,6 @@
     "section": "Question 3",
     "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nPress Alt + Shift + K. What happens? How can you get to the same place using the menus?\n\n\nThe Solution\nIn RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.",
     "crumbs": [
-      "Workflow: Basics",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
@@ -377,7 +373,6 @@
     "section": "Question 4",
     "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nmy_bar_plot &lt;- ggplot(mpg, aes(x = class)) +\n  geom_bar()\nmy_scatter_plot &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(filename = \"mpg-plot.png\", plot = my_bar_plot)\n\n\n\nThe Solution\nmy_bar_plot is saved since it is explicitly added as an argument to ggsave()",
     "crumbs": [
-      "Workflow: Basics",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Workflow: Basics</span>"
     ]
   },
@@ -621,6 +616,26 @@
     "crumbs": [
       "Data Transformation",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Groups</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/04-code-style.html",
+    "href": "whole-game/04-code-style.html",
+    "title": "Workflow: Code Style",
+    "section": "",
+    "text": "Question 1\nFull Question",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Workflow: Code Style</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/04-code-style.html#question-1",
+    "href": "whole-game/04-code-style.html#question-1",
+    "title": "Workflow: Code Style",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nRestyle the following pipelines following the tidyverse guidelines.\n\nflights|&gt;filter(dest==\"IAH\")|&gt;group_by(year,month,day)|&gt;summarize(n=n(),\ndelay=mean(arr_delay,na.rm=TRUE))|&gt;filter(n&gt;10)\n\nflights|&gt;filter(carrier==\"UA\",dest%in%c(\"IAH\",\"HOU\"),sched_dep_time&gt;\n0900,sched_arr_time&lt;2000)|&gt;group_by(flight)|&gt;summarize(delay=mean(\narr_delay,na.rm=TRUE),cancelled=sum(is.na(arr_delay)),n=n())|&gt;filter(n&gt;10)\n\n\n\nThe Solution\nTo make the above code chunk be in the tidyverse style, most changes were to separate sections with spaces and newlines. The next most common fix was making the indents fit the style guide.\n\nflights |&gt; \n    filter(dest == \"IAH\") |&gt;\n    group_by(year, month, day) |&gt;\n    summarize(\n        n = n(),\n        delay = mean(arr_delay, na.rm = TRUE)\n    ) |&gt;\n    filter(n &gt; 10)\n\nflights |&gt;\n    filter(\n        carrier == \"UA\",\n        dest %in% c(\"IAH\", \"HOU\"),\n        sched_dep_time &gt; 0900,\n        sched_arr_time &lt; 2000\n    ) |&gt;\n    group_by(flight) |&gt;\n    summarize(\n        delay = mean(arr_delay, na.rm=TRUE),\n        cancelled = sum(is.na(arr_delay)),\n        n = n()\n    ) |&gt;\n    filter(n &gt; 10)",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Workflow: Code Style</span>"
     ]
   },
   {
