@@ -15,3 +15,6 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Columns
   - [x] Groups
 - [x] Workflow: Code Style
+- [ ] Data Tidying
+- [ ] Workflow: Scripts and Projects
+- [ ] Data Import
