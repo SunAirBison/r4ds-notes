@@ -224,6 +224,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <a href="../../whole-game/04-code-style.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Workflow: Code Style</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../whole-game/05-data-tidying.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Tidying</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -661,8 +666,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>My prediction was correct. The pipeline first groups the data frame by unique <code>(y,z)</code> pairs, then it takes that new table and takes the average of all <code>x</code> values in each group. The message is saying that the data frame that was outputted is no longer grouped by <code>y</code> and <code>z</code>, it is only group by <code>y</code> values. It also says how to hide the message or get the groupings to what it was originally.</p>
 </section>
-<section id="part-e." class="level4">
-<h4 class="anchored" data-anchor-id="part-e.">Part e.</h4>
+<section id="e." class="level4">
+<h4 class="anchored" data-anchor-id="e.">e.</h4>
 <p>The output will contain the same mean_x values as the previous question, but will not have any group and will not have the message before the output.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
@@ -683,9 +688,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="part-f." class="level4">
-<h4 class="anchored" data-anchor-id="part-f.">Part f.</h4>
-<p>The first output will be the same as the output in Part e. The second output will be a data frame grouped by <code>(y,z)</code> pairs that adds a new column that contains the mean of the <code>x</code> values in each group, keeping all columns.</p>
+<section id="f." class="level4">
+<h4 class="anchored" data-anchor-id="f.">f.</h4>
+<p>The first output will be the same as the output in part e. The second output will be a data frame grouped by <code>(y,z)</code> pairs that adds a new column that contains the mean of the <code>x</code> values in each group, keeping all columns.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(y, z) <span class="sc">|&gt;</span></span>
