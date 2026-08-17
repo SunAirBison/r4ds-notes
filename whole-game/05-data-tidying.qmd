@@ -1,0 +1,96 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Data Tidying
+
+[Full Questions][source]
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+For each of the sample tables below, describe what each observation and each column represents.
+
+```{r}
+#| eval: false
+table1
+#> # A tibble: 6 × 4
+#>   country      year  cases population
+#>   <chr>       <dbl>  <dbl>      <dbl>
+#> 1 Afghanistan  1999    745   19987071
+#> 2 Afghanistan  2000   2666   20595360
+#> 3 Brazil       1999  37737  172006362
+#> 4 Brazil       2000  80488  174504898
+#> 5 China        1999 212258 1272915272
+#> 6 China        2000 213766 1280428583
+
+table2
+#> # A tibble: 12 × 4
+#>   country      year type           count
+#>   <chr>       <dbl> <chr>          <dbl>
+#> 1 Afghanistan  1999 cases            745
+#> 2 Afghanistan  1999 population  19987071
+#> 3 Afghanistan  2000 cases           2666
+#> 4 Afghanistan  2000 population  20595360
+#> 5 Brazil       1999 cases          37737
+#> 6 Brazil       1999 population 172006362
+#> # ℹ 6 more rows
+
+table3
+#> # A tibble: 6 × 3
+#>   country      year rate             
+#>   <chr>       <dbl> <chr>            
+#> 1 Afghanistan  1999 745/19987071     
+#> 2 Afghanistan  2000 2666/20595360    
+#> 3 Brazil       1999 37737/172006362  
+#> 4 Brazil       2000 80488/174504898  
+#> 5 China        1999 212258/1272915272
+#> 6 China        2000 213766/1280428583
+```
+
+### The Solution
+
+- In `table1`, each observation represents the number of cases and population of countries in a year. The columns (in order) represent the country observed, the year that observation was taken, the number of TB cases in that country that year, and the population of that country in that year.
+- In `table2`, each observation represents a statistic taken from a country in a given year. The columns (in order) represent the country observed, the year that observation was taken, what statistic this observation is recording, and the value of the statistic recorded.
+- In `table3`, each observation is the ratio of TB cases over the population of a country in a year. The columns (in order) represents the country, the year the observation was taken, and the rate of TB cases in a country in that year.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Sketch out the process you would use to calculate the `rate` for `table 2` and `table 3`. You will need to perform four operations:
+
+- Extract the number of TB cases per country per year.
+- Extract the matching population per country per year.
+- Divide cases by population, and multiply by 10000.
+- Store back in the appropriate place.
+
+### The Solution
+
+For `table1`, since cases and population are already separated into their own columns, we can use `mutate` to calculate the rate.
+
+``` {r}
+#| eval: false
+table1 |> mutate(rate = cases / population * 10000) # Place on right most column
+```
+
+For `table2` we first need to "tidy" the table by creating individual columns for the population and cases values. We can do this by filtering by type to obtain a column for just the cases and population respectively, then we can create a new table containing the case and population of each year of each country in its own observation. This will be an identical table to `table1`, where we can do the same operation. 
+
+
+:::
+
+
+[source]: <https://r4ds.hadley.nz/data-tidy.html#exercises>

@@ -30,6 +30,7 @@ book:
         - whole-game/03-data-transformation/05-groups.qmd
 
     - whole-game/04-code-style.qmd
+    - whole-game/05-data-tidying.qmd
 
   appendices:
     - progress.md
