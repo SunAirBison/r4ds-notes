@@ -327,8 +327,8 @@
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html",
-    "href": "whole-game/02-workflow-basics/02-workflow-basics.html",
+    "objectID": "whole-game/02-workflow-basics.html",
+    "href": "whole-game/02-workflow-basics.html",
     "title": "Workflow: Basics",
     "section": "",
     "text": "Question 1\nFull Questions",
@@ -337,8 +337,8 @@
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-1",
-    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-1",
+    "objectID": "whole-game/02-workflow-basics.html#question-1",
+    "href": "whole-game/02-workflow-basics.html#question-1",
     "title": "Workflow: Basics",
     "section": "",
     "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhy does this code not work?\n\nmy_variable &lt;- 10\nmy_varıable\n#&gt; Error:\n#&gt; ! object 'my_varıable' not found\n\n\n\nThe Solution\nThe variable names are not the same.",
@@ -347,8 +347,8 @@
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-2",
-    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-2",
+    "objectID": "whole-game/02-workflow-basics.html#question-2",
+    "href": "whole-game/02-workflow-basics.html#question-2",
     "title": "Workflow: Basics",
     "section": "Question 2",
     "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\n\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n\n\n\nThe Solution\n\n# dTA -&gt; data, move aes, fix mapping typo, add comma\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point() + #\n  geom_smooth(method = \"lm\") # add ending quote\n\n`geom_smooth()` using formula = 'y ~ x'",
@@ -357,8 +357,8 @@
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-3",
-    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-3",
+    "objectID": "whole-game/02-workflow-basics.html#question-3",
+    "href": "whole-game/02-workflow-basics.html#question-3",
     "title": "Workflow: Basics",
     "section": "Question 3",
     "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nPress Alt + Shift + K. What happens? How can you get to the same place using the menus?\n\n\nThe Solution\nIn RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.",
@@ -367,8 +367,8 @@
     ]
   },
   {
-    "objectID": "whole-game/02-workflow-basics/02-workflow-basics.html#question-4",
-    "href": "whole-game/02-workflow-basics/02-workflow-basics.html#question-4",
+    "objectID": "whole-game/02-workflow-basics.html#question-4",
+    "href": "whole-game/02-workflow-basics.html#question-4",
     "title": "Workflow: Basics",
     "section": "Question 4",
     "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\nmy_bar_plot &lt;- ggplot(mpg, aes(x = class)) +\n  geom_bar()\nmy_scatter_plot &lt;- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(filename = \"mpg-plot.png\", plot = my_bar_plot)\n\n\n\nThe Solution\nmy_bar_plot is saved since it is explicitly added as an argument to ggsave()",
@@ -739,13 +739,67 @@
     ]
   },
   {
+    "objectID": "visualize/09-layers/02-aesthetics.html",
+    "href": "visualize/09-layers/02-aesthetics.html",
+    "title": "Aesthetic Mappings",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aesthetic Mappings</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/02-aesthetics.html#question-1",
+    "href": "visualize/09-layers/02-aesthetics.html#question-1",
+    "title": "Aesthetic Mappings",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nCreate a scatterplot of hwy vs. displ (from the mpg dataset) where the points are pink filled in triangles.\n\n\nThe Solution\n\nmpg |&gt; ggplot(aes(x = hwy, y = displ)) +\n    geom_point(shape = 24, fill = \"pink\")",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aesthetic Mappings</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/02-aesthetics.html#question-2",
+    "href": "visualize/09-layers/02-aesthetics.html#question-2",
+    "title": "Aesthetic Mappings",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhy did the following code not result in a plot with blue points?\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy, color = \"blue\"))\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe code above did not create a plot with blue points since we added color in the mapping argument of geom_point instead of the function itself\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy), color = \"blue\")",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aesthetic Mappings</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/02-aesthetics.html#question-3",
+    "href": "visualize/09-layers/02-aesthetics.html#question-3",
+    "title": "Aesthetic Mappings",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the stroke aesthetic do? What shapes does it work with?\n\n\nThe Solution\nThe stroke aesthetic changes the width of the border of the points. It will work on shapes that have borders to change the width of ().",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aesthetic Mappings</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/02-aesthetics.html#question-4",
+    "href": "visualize/09-layers/02-aesthetics.html#question-4",
+    "title": "Aesthetic Mappings",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you map an aesthetic to something other than a variable name, like aes(color = displ &lt; 5)?\n\n\nThe Solution\nIf you map color to displ &lt; 5, it will split the points into two colors, . It will group the points into colors based on the unique values in the thing that we map into the aesthetic.\n\nmpg |&gt; ggplot() + \n  geom_point(aes(x = displ, y = hwy, color = displ &lt; 5))",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Aesthetic Mappings</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
     "section": "",
     "text": "Whole Game\nFull list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.",
     "crumbs": [
-      "Appendices",
       "Progress Tracker"
     ]
   },
@@ -756,7 +810,6 @@
     "section": "",
     "text": "Data Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises",
     "crumbs": [
-      "Appendices",
       "Progress Tracker"
     ]
   },
@@ -767,7 +820,6 @@
     "section": "Visualize",
     "text": "Visualize\n\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nCommunication",
     "crumbs": [
-      "Appendices",
       "Progress Tracker"
     ]
   }

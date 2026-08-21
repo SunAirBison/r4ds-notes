@@ -1,0 +1,17 @@
+{
+  "hash": "b4d46c782708bafbb45919269c046d82",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nsubtitle: Exercise Solutions\nnumber-sections: false\n---\n\n# Workflow: Basics\n\n[Full Questions][source]\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Loading Packages\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n```\n:::\n\n\n<!-- Next Question -->\n## Question 1\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\nWhy does this code not work?\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmy_variable <- 10\nmy_varıable\n#> Error:\n#> ! object 'my_varıable' not found\n```\n:::\n\n\n### The Solution\n\nThe variable names are not the same.\n\n:::\n\n<!-- Next Question -->\n## Question 2\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibary(todyverse)\n\nggplot(dTA = mpg) + \n  geom_point(maping = aes(x = displ y = hwy)) +\n  geom_smooth(method = \"lm)\n```\n:::\n\n\n### The Solution\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# dTA -> data, move aes, fix mapping typo, add comma\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point() + #\n  geom_smooth(method = \"lm\") # add ending quote\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\n`geom_smooth()` using formula = 'y ~ x'\n```\n\n\n:::\n\n::: {.cell-output-display}\n![](02-workflow-basics_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n:::\n\n<!-- Next Question -->\n## Question 3\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\nPress Alt + Shift + K. What happens? How can you get to the same place using the menus? \n\n### The Solution\n\nIn RStudio (I am using VSCode) pressing Alt + Shift + K shows a reference for keyboard shortcuts. To get to this using only menus, go from Help to Keyboard Shortcuts Help.\n\n:::\n\n<!-- Next Question -->\n## Question 4\n\n::: {.callout-note title='Note' collapse='false'}\n\n### The Problem\n\nRun the following lines of code. Which of the two plots is saved as mpg-plot.png? Why?\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmy_bar_plot <- ggplot(mpg, aes(x = class)) +\n  geom_bar()\nmy_scatter_plot <- ggplot(mpg, aes(x = cty, y = hwy)) +\n  geom_point()\nggsave(filename = \"mpg-plot.png\", plot = my_bar_plot)\n```\n:::\n\n\n### The Solution\n\n`my_bar_plot` is saved since it is explicitly added as an argument to `ggsave()`\n\n:::\n\n[source]: <https://r4ds.hadley.nz/workflow-basics.html#exercises>\n",
+    "supporting": [
+      "02-workflow-basics_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
