@@ -754,7 +754,18 @@
     "href": "progress.html#whole-game",
     "title": "Progress Tracker",
     "section": "",
-    "text": "Data Visualization\n\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\n(Skipping, not using RStudio for this workbook) Workflow: Scripts and Projects\nData Import",
+    "text": "Data Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises",
+    "crumbs": [
+      "Appendices",
+      "Progress Tracker"
+    ]
+  },
+  {
+    "objectID": "progress.html#visualize",
+    "href": "progress.html#visualize",
+    "title": "Progress Tracker",
+    "section": "Visualize",
+    "text": "Visualize\n\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nCommunication",
     "crumbs": [
       "Appendices",
       "Progress Tracker"
