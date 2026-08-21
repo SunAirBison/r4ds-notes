@@ -21,7 +21,7 @@ book:
         - whole-game/01-data-visualization/05-visualizing-relationships.qmd
         - whole-game/01-data-visualization/06-saving-plots.qmd
 
-    - whole-game/02-workflow-basics/02-workflow-basics.qmd
+    - whole-game/02-workflow-basics.qmd
 
     - part: "Data Transformation"
       chapters:
@@ -33,9 +33,11 @@ book:
     - whole-game/05-data-tidying.qmd
     - whole-game/07-data-import.qmd
 
-  appendices:
-    - progress.md
+    - part: "Layers"
+      chapters:
+        - visualize/09-layers/02-aesthetics.qmd
 
+    - progress.md
 format:
   html:
     callout-icon: false

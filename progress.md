@@ -28,10 +28,14 @@ Full list of exercises that I have completed. The list will be updated overtime 
 
 - [ ] Layers
   - **Exercises:**
-  - [ ] Aesthetic Mappings 
+  - [x] Aesthetic Mappings 
   - [ ] Geometric Objects
   - [ ] Facets
   - [ ] Statistical Transformations
   - [ ] Position Adjustments
   - [ ] Coordinate Systems
-- [ ] Exploratory Data Analysis
+- [ ] Exploratory Data Analysis 
+  - **Exercises:**
+  - [ ] Variation
+  - [ ] Unusual Values
+- [ ] Communication

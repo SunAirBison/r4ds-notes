@@ -1,0 +1,96 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Aesthetic Mappings
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Create a scatterplot of `hwy` vs. `displ` (from the `mpg` dataset) where the points are pink filled in triangles.
+
+### The Solution
+
+``` {r}
+mpg |> ggplot(aes(x = hwy, y = displ)) +
+    geom_point(shape = 24, fill = "pink")
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Why did the following code not result in a plot with blue points?
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = "blue"))
+```
+
+### The Solution
+
+The code above did not create a plot with blue points since we added `color` in the `mapping` argument of `geom_point` instead of the function itself
+``` {r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy), color = "blue")
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What does the `stroke` aesthetic do? What shapes does it work with?
+
+### The Solution
+
+The `stroke` aesthetic changes the width of the border of the points. It will work on shapes that have borders to change the width of ().
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What happens if you map an aesthetic to something other than a variable name, like `aes(color = displ < 5)`?
+
+### The Solution
+
+If you map color to `displ < 5`, it will split the points into two colors, . It will group the points into colors based on the unique values in the thing that we map into the aesthetic.
+
+``` {r}
+mpg |> ggplot() + 
+  geom_point(aes(x = displ, y = hwy, color = displ < 5))
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/layers.html#exercises>
