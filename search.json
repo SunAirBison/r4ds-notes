@@ -669,6 +669,76 @@
     ]
   },
   {
+    "objectID": "whole-game/07-data-import.html",
+    "href": "whole-game/07-data-import.html",
+    "title": "Data Import",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/07-data-import.html#question-1",
+    "href": "whole-game/07-data-import.html#question-1",
+    "title": "Data Import",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat function would you use to read a file where fields were separated with “|”?\n\n\nThe Solution\nI would use read_delim(delim = '|')",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/07-data-import.html#question-2",
+    "href": "whole-game/07-data-import.html#question-2",
+    "title": "Data Import",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nApart from file, skip, and comment, what other arguments do read_csv() and read_tsv have in common?\n\n\nThe Solution\nThe arguments of read_csv() and read_tsv() are identical, with the same defaults.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/07-data-import.html#question-3",
+    "href": "whole-game/07-data-import.html#question-3",
+    "title": "Data Import",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat are the most important arguments to read_fwf()?\n\n\nThe Solution\nThe most important arguments to read fixed-width files using read_fwf() are the file we want to read and col_positions, how the entries of the file are separated.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/07-data-import.html#question-4",
+    "href": "whole-game/07-data-import.html#question-4",
+    "title": "Data Import",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nTo read the following text into a data frame, what argument to read_csv() do you need to specify? \"x,y\\n1,'a,b'\"\n\n\nThe Solution\nTo read the text above, we need to change the default of the argument from quote = \"\\\"\" to quote = \"\\'\".\n\n# Adding I() due to readr 2.2.0 changes\n\nread_csv(I(\"x,y\\n1,'a,b'\"), quote = \"\\'\")\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): y\ndbl (1): x\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a,b",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/07-data-import.html#question-5",
+    "href": "whole-game/07-data-import.html#question-5",
+    "title": "Data Import",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nIdentify what is wrong with each of the following inline CSV files.\n\n\nThe Solution\n\n# Observations have more columns than expected\nread_csv(\"a,b\\n1,2,3\\n4,5,6\")\n\n# Rows have more and less entries than columns \nread_csv(\"a,b,c\\n1,2\\n1,2,3,4\")\n\n# Additional quotation mark \nread_csv(\"a,b\\n\\\"1\")\n\n# I do not see anything wrong with this file\nread_csv(\"a,b\\n1,2\\na,b\")\n\n# File is not separated by commas\nread_csv(\"a;b\\n1;3\")",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
+    "objectID": "whole-game/07-data-import.html#question-6",
+    "href": "whole-game/07-data-import.html#question-6",
+    "title": "Data Import",
+    "section": "Question 6",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nPractice referring to non-syntactic names in the following data frame by:\n\nExtracting the variable called 1.\nPlotting a scatterplot of 1 vs. 2.\nCreating a new column called 3, which is 2 divided by 1.\nRenaming the columns to one, two, and three.\n\n\n\nThe Solution\n\nannoying &lt;- tibble(\n  `1` = 1:10,\n  `2` = `1` * 2 + rnorm(length(`1`))\n)\n\n# (a)\nannoying |&gt; select(`1`)\n\n# A tibble: 10 × 1\n     `1`\n   &lt;int&gt;\n 1     1\n 2     2\n 3     3\n 4     4\n 5     5\n 6     6\n 7     7\n 8     8\n 9     9\n10    10\n\n# (b)\nannoying |&gt; ggplot(mapping = aes(x = `2`, y = `1`)) +\n  geom_point()\n\n\n\n\n\n\n\n# (c)\nannoying &lt;- annoying |&gt; mutate(`3` = `2` / `1`) \nannoying\n\n# A tibble: 10 × 3\n     `1`   `2`   `3`\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1  1.55  1.55\n 2     2  3.97  1.98\n 3     3  7.06  2.35\n 4     4  7.20  1.80\n 5     5  8.87  1.77\n 6     6 13.2   2.20\n 7     7 14.4   2.05\n 8     8 14.3   1.79\n 9     9 18.2   2.02\n10    10 19.7   1.97\n\n# (d)\nannoying |&gt; select(\n  one = `1`,\n  two = `2`,\n  three = `3`,\n)\n\n# A tibble: 10 × 3\n     one   two three\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1  1.55  1.55\n 2     2  3.97  1.98\n 3     3  7.06  2.35\n 4     4  7.20  1.80\n 5     5  8.87  1.77\n 6     6 13.2   2.20\n 7     7 14.4   2.05\n 8     8 14.3   1.79\n 9     9 18.2   2.02\n10    10 19.7   1.97",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
@@ -684,7 +754,7 @@
     "href": "progress.html#whole-game",
     "title": "Progress Tracker",
     "section": "",
-    "text": "Data Visualization\n\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\nData Import",
+    "text": "Data Visualization\n\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\n(Skipping, not using RStudio for this workbook) Workflow: Scripts and Projects\nData Import",
     "crumbs": [
       "Appendices",
       "Progress Tracker"
