@@ -1,0 +1,160 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Data Import
+
+[Full Questions][source]
+
+``` {r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What function would you use to read a file where fields were separated with "|"?
+
+### The Solution
+
+I would use `read_delim(delim = '|')`
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Apart from `file`, `skip`, and `comment`, what other arguments do `read_csv()` and `read_tsv` have in common?
+
+### The Solution
+
+  The arguments of `read_csv()` and `read_tsv()` are identical, with the same defaults. 
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What are the most important arguments to `read_fwf()`?
+
+### The Solution
+
+The most important arguments to read fixed-width files using `read_fwf()` are the `file` we want to read and `col_positions`, how the entries of the file are separated.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+To read the following text into a data frame, what argument to `read_csv()` do you need to specify? `"x,y\n1,'a,b'"`
+
+### The Solution
+
+To read the text above, we need to change the default of the argument from `quote = "\""` to `quote = "\'"`.
+
+``` {r}
+# Adding I() due to readr 2.2.0 changes
+
+read_csv(I("x,y\n1,'a,b'"), quote = "\'")
+```
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Identify what is wrong with each of the following inline CSV files. 
+
+### The Solution
+
+``` {r}
+#| eval: false
+# Observations have more columns than expected
+read_csv("a,b\n1,2,3\n4,5,6")
+
+# Rows have more and less entries than columns 
+read_csv("a,b,c\n1,2\n1,2,3,4")
+
+# Additional quotation mark 
+read_csv("a,b\n\"1")
+
+# I do not see anything wrong with this file
+read_csv("a,b\n1,2\na,b")
+
+# File is not separated by commas
+read_csv("a;b\n1;3")
+```
+
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Practice referring to non-syntactic names in the following data frame by:
+
+a. Extracting the variable called 1.
+b. Plotting a scatterplot of 1 vs. 2.
+c. Creating a new column called 3, which is 2 divided by 1.
+d. Renaming the columns to one, two, and three.
+
+### The Solution
+
+``` {r}
+annoying <- tibble(
+  `1` = 1:10,
+  `2` = `1` * 2 + rnorm(length(`1`))
+)
+
+# (a)
+annoying |> select(`1`)
+
+# (b)
+annoying |> ggplot(mapping = aes(x = `2`, y = `1`)) +
+  geom_point()
+
+
+# (c)
+annoying <- annoying |> mutate(`3` = `2` / `1`) 
+annoying
+
+# (d)
+annoying |> select(
+  one = `1`,
+  two = `2`,
+  three = `3`,
+)
+
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/data-import.html#exercises>

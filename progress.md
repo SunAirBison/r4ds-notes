@@ -16,5 +16,5 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Groups
 - [x] Workflow: Code Style
 - [x] Data Tidying
-- [ ] Workflow: Scripts and Projects
-- [ ] Data Import
+- (Skipping, not using RStudio for this workbook) Workflow: Scripts and Projects
+- [x] Data Import

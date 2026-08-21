@@ -31,6 +31,7 @@ book:
 
     - whole-game/04-code-style.qmd
     - whole-game/05-data-tidying.qmd
+    - whole-game/07-data-import.qmd
 
   appendices:
     - progress.md
