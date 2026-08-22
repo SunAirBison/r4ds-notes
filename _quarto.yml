@@ -36,6 +36,7 @@ book:
     - part: "Layers"
       chapters:
         - visualize/09-layers/02-aesthetics.qmd
+        - visualize/09-layers/03-geometric-objects.qmd
 
     - progress.md
 format:

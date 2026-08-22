@@ -2,8 +2,7 @@
 
 Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.
 
-## Whole Game
-
+- ## Whole Game
 - [x] Data Visualization
   - **Exercises:** 
   - [x] First Steps
@@ -24,8 +23,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
 - Workflow: Getting Help
   - (N/A) no exercises
 
-## Visualize
-
+- ## Visualization
 - [ ] Layers
   - **Exercises:**
   - [x] Aesthetic Mappings 
