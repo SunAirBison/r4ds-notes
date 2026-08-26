@@ -82,7 +82,7 @@ Sketch out the process you would use to calculate the `rate` for `table 2` and `
 
 For `table1`, since cases and population are already separated into their own columns, we can use `mutate` to calculate the rate.
 
-``` {r}
+```{r}
 #| eval: false
 table1 |> mutate(rate = cases / population * 10000) # Place on right most column
 ```

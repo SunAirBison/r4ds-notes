@@ -10,7 +10,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -73,7 +73,7 @@ To read the following text into a data frame, what argument to `read_csv()` do y
 
 To read the text above, we need to change the default of the argument from `quote = "\""` to `quote = "\'"`.
 
-``` {r}
+```{r}
 # Adding I() due to readr 2.2.0 changes
 
 read_csv(I("x,y\n1,'a,b'"), quote = "\'")
@@ -92,7 +92,7 @@ Identify what is wrong with each of the following inline CSV files.
 
 ### The Solution
 
-``` {r}
+```{r}
 #| eval: false
 # Observations have more columns than expected
 read_csv("a,b\n1,2,3\n4,5,6")
@@ -128,7 +128,7 @@ d. Renaming the columns to one, two, and three.
 
 ### The Solution
 
-``` {r}
+```{r}
 annoying <- tibble(
   `1` = 1:10,
   `2` = `1` * 2 + rnorm(length(`1`))

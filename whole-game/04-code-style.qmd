@@ -37,7 +37,7 @@ arr_delay,na.rm=TRUE),cancelled=sum(is.na(arr_delay)),n=n())|>filter(n>10)
 ### The Solution
 
 To make the above code chunk be in the tidyverse style, most changes were to separate sections with spaces and newlines. The next most common fix was making the indents fit the style guide.
-``` {r}
+```{r}
 #| eval: false
 flights |> 
     filter(dest == "IAH") |>

@@ -10,7 +10,7 @@ number-sections: false
 
 [Full Questions][source]
 
-``` {r libs}
+```{r libs}
 #| output: false
 # Loading Packages
 library(tidyverse)
@@ -28,7 +28,7 @@ Create a scatterplot of `hwy` vs. `displ` (from the `mpg` dataset) where the poi
 
 ### The Solution
 
-``` {r}
+```{r}
 mpg |> ggplot(aes(x = hwy, y = displ)) +
     geom_point(shape = 24, fill = "pink")
 ```
@@ -51,7 +51,7 @@ ggplot(mpg) +
 ### The Solution
 
 The code above did not create a plot with blue points since we added `color` in the `mapping` argument of `geom_point` instead of the function itself
-``` {r}
+```{r}
 ggplot(mpg) + 
   geom_point(aes(x = displ, y = hwy), color = "blue")
 ```
@@ -86,7 +86,7 @@ What happens if you map an aesthetic to something other than a variable name, li
 
 If you map color to `displ < 5`, it will split the points into two colors, . It will group the points into colors based on the unique values in the thing that we map into the aesthetic.
 
-``` {r}
+```{r}
 mpg |> ggplot() + 
   geom_point(aes(x = displ, y = hwy, color = displ < 5))
 ```
