@@ -27,8 +27,8 @@ Full list of exercises that I have completed. The list will be updated overtime 
 - [ ] Layers
   - **Exercises:**
   - [x] Aesthetic Mappings 
-  - [ ] Geometric Objects
-  - [ ] Facets
+  - [x] Geometric Objects
+  - [x] Facets
   - [ ] Statistical Transformations
   - [ ] Position Adjustments
   - [ ] Coordinate Systems

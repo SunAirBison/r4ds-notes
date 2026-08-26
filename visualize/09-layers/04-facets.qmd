@@ -1,0 +1,186 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Facets
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What happens if you facet on a continuous variable?
+
+### The Solution
+
+```{r}
+mpg |> ggplot(aes(x = hwy)) +
+    geom_bar() +
+    facet_wrap(~displ)
+
+length(unique(mpg$displ))
+```
+
+:::
+
+When you use facet on a continious variable, ggplot creates a graph for each unique value of that variable.
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What do the empty cells in the plot below with facet_grid(drv ~ cyl) mean? How do the two plots below relate?
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  facet_grid(drv ~ cyl, scales = "free")
+
+ggplot(mpg) + 
+  geom_point(aes(x = drv, y = cyl))
+```
+
+### The Solution
+
+The empty plots in indicate that there are no observations in the data set with the pair of values associated with `drv` & `cyl`. They relate with the second plot since this plot displays the different pairs of `drv` & `cyl` in the data set.  
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What plots does the following code make? What does `.` do?
+
+```{r}
+#| eval: false
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+```
+
+### The Solution
+
+The plots make scatterplots split by either `drv` or `cyl` and displayed in a single column or row respectively. The `.` is what is aligning the scatterplots.
+
+```{r}
+#| echo: false
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+```
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Compare the plot below with a plot using a color aesthetic mapping. What are the advantages to using faceting instead of the color aesthetic? What are the disadvantages? How might the balance change if you had a larger dataset?
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) + 
+  facet_wrap(~ cyl, nrow = 2)
+```
+
+### The Solution
+
+Some advantages to using facets instead of color mapping include:
+
+- More easily seeing the relationship of each group.
+- If there are many groups, having too many colors may the plot to become unclear.
+
+Some disadvantages include:
+
+- Not seeing relationships within the whole dataset.
+- Some groups may have very few points, which take up space and provides very little information. 
+
+With larger datasets, facets become more appealing since facets will more likely have more observations and plotting all observations into a single plot becomes more cluttered and less useful for inference.
+
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Which of the following plots makes it easier to compare engine size (`displ`) across cars with different drive trains? What does this say about when to place a faceting variable across rows or columns?
+
+```{r}
+ggplot(mpg, aes(x = displ)) + 
+  geom_histogram() + 
+  facet_grid(drv ~ .)
+
+ggplot(mpg, aes(x = displ)) + 
+  geom_histogram() +
+  facet_grid(. ~ drv)
+```
+
+### The Solution
+
+The first plot is easier for comparision. When determining whether to facet across rows or columns, the dimensions of each plot and which axis care about more across the plots. 
+
+:::
+
+<!-- Next Question -->
+## Question 7
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Recreate the following plot using `facet_wrap()` instead of `facet_grid()`. How do the positions of the facet labels change?
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+```
+
+### The Solution
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_wrap(~drv, ncol = 1, strip.position = "right")
+```
+
+By default, `facet_wrap` puts labels on `"top"`. Using `strip.position` we can change the position of the label.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/layers.html#exercises-2>
