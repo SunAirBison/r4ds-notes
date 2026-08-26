@@ -132,6 +132,21 @@ With larger datasets, facets become more appealing since facets will more likely
 :::
 
 <!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Read `?facet_wrap`. What does `nrow` do? What does `ncol` do? What other options control the layout of the individual panels? Why doesn’t `facet_grid()` have `nrow` and `ncol` arguments?
+
+### The Solution
+
+`nrow` and `ncol` determine how many rows or columns there will be when displaying `facet_wrap()`. Other arguments include `drop`, `dir` adn `scales`. `facet_grid()` does not have `nrow` nor `ncol` since the number of rows and columns are determined by the two variables chosen.
+
+:::
+
+<!-- Next Question -->
 ## Question 6
 
 ::: {.callout-note title='Note' collapse='false'}
