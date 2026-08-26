@@ -904,6 +904,17 @@
     ]
   },
   {
+    "objectID": "visualize/09-layers/04-facets.html#question-5",
+    "href": "visualize/09-layers/04-facets.html#question-5",
+    "title": "Facets",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRead ?facet_wrap. What does nrow do? What does ncol do? What other options control the layout of the individual panels? Why doesn’t facet_grid() have nrow and ncol arguments?\n\n\nThe Solution\nnrow and ncol determine how many rows or columns there will be when displaying facet_wrap(). Other arguments include drop, dir adn scales. facet_grid() does not have nrow nor ncol since the number of rows and columns are determined by the two variables chosen.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
     "objectID": "visualize/09-layers/04-facets.html#question-6",
     "href": "visualize/09-layers/04-facets.html#question-6",
     "title": "Facets",
