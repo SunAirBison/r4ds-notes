@@ -733,7 +733,7 @@
     "href": "whole-game/07-data-import.html#question-6",
     "title": "Data Import",
     "section": "Question 6",
-    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nPractice referring to non-syntactic names in the following data frame by:\n\nExtracting the variable called 1.\nPlotting a scatterplot of 1 vs. 2.\nCreating a new column called 3, which is 2 divided by 1.\nRenaming the columns to one, two, and three.\n\n\n\nThe Solution\n\nannoying &lt;- tibble(\n  `1` = 1:10,\n  `2` = `1` * 2 + rnorm(length(`1`))\n)\n\n# (a)\nannoying |&gt; select(`1`)\n\n# A tibble: 10 × 1\n     `1`\n   &lt;int&gt;\n 1     1\n 2     2\n 3     3\n 4     4\n 5     5\n 6     6\n 7     7\n 8     8\n 9     9\n10    10\n\n# (b)\nannoying |&gt; ggplot(mapping = aes(x = `2`, y = `1`)) +\n  geom_point()\n\n\n\n\n\n\n\n# (c)\nannoying &lt;- annoying |&gt; mutate(`3` = `2` / `1`) \nannoying\n\n# A tibble: 10 × 3\n     `1`   `2`   `3`\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1  1.55  1.55\n 2     2  3.97  1.98\n 3     3  7.06  2.35\n 4     4  7.20  1.80\n 5     5  8.87  1.77\n 6     6 13.2   2.20\n 7     7 14.4   2.05\n 8     8 14.3   1.79\n 9     9 18.2   2.02\n10    10 19.7   1.97\n\n# (d)\nannoying |&gt; select(\n  one = `1`,\n  two = `2`,\n  three = `3`,\n)\n\n# A tibble: 10 × 3\n     one   two three\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1  1.55  1.55\n 2     2  3.97  1.98\n 3     3  7.06  2.35\n 4     4  7.20  1.80\n 5     5  8.87  1.77\n 6     6 13.2   2.20\n 7     7 14.4   2.05\n 8     8 14.3   1.79\n 9     9 18.2   2.02\n10    10 19.7   1.97",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nPractice referring to non-syntactic names in the following data frame by:\n\nExtracting the variable called 1.\nPlotting a scatterplot of 1 vs. 2.\nCreating a new column called 3, which is 2 divided by 1.\nRenaming the columns to one, two, and three.\n\n\n\nThe Solution\n\nannoying &lt;- tibble(\n  `1` = 1:10,\n  `2` = `1` * 2 + rnorm(length(`1`))\n)\n\n# (a)\nannoying |&gt; select(`1`)\n\n# A tibble: 10 × 1\n     `1`\n   &lt;int&gt;\n 1     1\n 2     2\n 3     3\n 4     4\n 5     5\n 6     6\n 7     7\n 8     8\n 9     9\n10    10\n\n# (b)\nannoying |&gt; ggplot(mapping = aes(x = `2`, y = `1`)) +\n  geom_point()\n\n\n\n\n\n\n\n# (c)\nannoying &lt;- annoying |&gt; mutate(`3` = `2` / `1`) \nannoying\n\n# A tibble: 10 × 3\n     `1`   `2`   `3`\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1  2.33  2.33\n 2     2  4.50  2.25\n 3     3  7.02  2.34\n 4     4  6.81  1.70\n 5     5 10.6   2.13\n 6     6 10.8   1.79\n 7     7 15.0   2.14\n 8     8 16.0   2.00\n 9     9 16.6   1.85\n10    10 20.5   2.05\n\n# (d)\nannoying |&gt; select(\n  one = `1`,\n  two = `2`,\n  three = `3`,\n)\n\n# A tibble: 10 × 3\n     one   two three\n   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     1  2.33  2.33\n 2     2  4.50  2.25\n 3     3  7.02  2.34\n 4     4  6.81  1.70\n 5     5 10.6   2.13\n 6     6 10.8   1.79\n 7     7 15.0   2.14\n 8     8 16.0   2.00\n 9     9 16.6   1.85\n10    10 20.5   2.05",
     "crumbs": [
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>Data Import</span>"
     ]
@@ -794,31 +794,143 @@
     ]
   },
   {
+    "objectID": "visualize/09-layers/03-geometric-objects.html",
+    "href": "visualize/09-layers/03-geometric-objects.html",
+    "title": "Geometric Objects",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Geometric Objects</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/03-geometric-objects.html#question-1",
+    "href": "visualize/09-layers/03-geometric-objects.html#question-1",
+    "title": "Geometric Objects",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat geom whould you use to draw a line chart? A boxplot? A histogram? An area chart?\n\n\nThe Solution\nThe following are the geoms to use for each chart:\n\nLine chart : geom_smooth()\nBoxplot : geom_boxplot()\nHistogram : geom_histogram(), or more generically geom_freqpoly()\nArea chart : geom_area(), or more generically geom_ribbon()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Geometric Objects</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/03-geometric-objects.html#question-2",
+    "href": "visualize/09-layers/03-geometric-objects.html#question-2",
+    "title": "Geometric Objects",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nEarlier in this chapter we used show.legend without explaning it:\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_smooth(aes(color = drv), show.legend = FALSE)\n\nWhat does show.legend = FALSE do here? What happens if you remove it? Why do you think we used it earlier?\n\n\nThe Solution\nIt removes the legend of the geom. It was used since the legend of the graphs would block the other graphs.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Geometric Objects</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/03-geometric-objects.html#question-3",
+    "href": "visualize/09-layers/03-geometric-objects.html#question-3",
+    "title": "Geometric Objects",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the se argument to geom_smooth() do?\n\n\nThe Solution\nThe se determine if there is a confidence band around the predicted values (line). Its default value is TRUE",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Geometric Objects</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/03-geometric-objects.html#question-4",
+    "href": "visualize/09-layers/03-geometric-objects.html#question-4",
+    "title": "Geometric Objects",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRecreate the R code necessary to generate the graphs from the textbook. Note that wherever a categorical variable is used in the plot, it’s drv.\n\n\nThe Solution\nFrom left to right, top to bottom:\n\n# Plot 1\nmpg |&gt; ggplot(aes(x = displ, y = hwy)) +\n    geom_point() + \n    geom_smooth(color = \"blue\", se = FALSE)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n# Plot 2\nmpg |&gt; ggplot(aes(x = displ, y = hwy)) +\n    geom_point() + \n    geom_smooth(aes(group = drv), se = FALSE)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n# Plot 3\nmpg |&gt; ggplot(aes(x = displ, y = hwy)) +\n    geom_point(aes(color = drv)) + \n    geom_smooth(aes(color = drv), se = FALSE)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n# Plot 4\nmpg |&gt; ggplot(aes(x = displ, y = hwy)) +\n    geom_point(aes(color = drv)) + \n    geom_smooth(color = \"blue\", se = FALSE)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n# Plot 5\nmpg |&gt; ggplot(aes(x = displ, y = hwy)) +\n    geom_point() + \n    geom_smooth(aes(linetype = drv), color = \"blue\", se = FALSE)\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n# Plot 6\nmpg |&gt; ggplot(aes(x = displ, y = hwy)) +\n    geom_point(color = \"white\", size = 3) +\n    geom_point(aes(color = drv))",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Geometric Objects</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html",
+    "href": "visualize/09-layers/04-facets.html",
+    "title": "Facets",
+    "section": "",
+    "text": "Question 1\nFull Questions\nWhen you use facet on a continious variable, ggplot creates a graph for each unique value of that variable.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html#question-1",
+    "href": "visualize/09-layers/04-facets.html#question-1",
+    "title": "Facets",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you facet on a continuous variable?\n\n\nThe Solution\n\nmpg |&gt; ggplot(aes(x = hwy)) +\n    geom_bar() +\n    facet_wrap(~displ)\n\n\n\n\n\n\n\nlength(unique(mpg$displ))\n\n[1] 35",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html#question-2",
+    "href": "visualize/09-layers/04-facets.html#question-2",
+    "title": "Facets",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat do the empty cells in the plot below with facet_grid(drv ~ cyl) mean? How do the two plots below relate?\n\nggplot(mpg, aes(x = displ, y = hwy)) + \n  geom_point() + \n  facet_grid(drv ~ cyl, scales = \"free\")\n\n\n\n\n\n\n\nggplot(mpg) + \n  geom_point(aes(x = drv, y = cyl))\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe empty plots in indicate that there are no observations in the data set with the pair of values associated with drv & cyl. They relate with the second plot since this plot displays the different pairs of drv & cyl in the data set.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html#question-3",
+    "href": "visualize/09-layers/04-facets.html#question-3",
+    "title": "Facets",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat plots does the following code make? What does . do?\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy)) +\n  facet_grid(drv ~ .)\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy)) +\n  facet_grid(. ~ cyl)\n\n\n\nThe Solution\nThe plots make scatterplots split by either drv or cyl and displayed in a single column or row respectively. The . is what is aligning the scatterplots.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html#question-4",
+    "href": "visualize/09-layers/04-facets.html#question-4",
+    "title": "Facets",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nCompare the plot below with a plot using a color aesthetic mapping. What are the advantages to using faceting instead of the color aesthetic? What are the disadvantages? How might the balance change if you had a larger dataset?\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy)) + \n  facet_wrap(~ cyl, nrow = 2)\n\n\n\n\n\n\n\n\n\n\nThe Solution\nSome advantages to using facets instead of color mapping include:\n\nMore easily seeing the relationship of each group.\nIf there are many groups, having too many colors may the plot to become unclear.\n\nSome disadvantages include:\n\nNot seeing relationships within the whole dataset.\nSome groups may have very few points, which take up space and provides very little information.\n\nWith larger datasets, facets become more appealing since facets will more likely have more observations and plotting all observations into a single plot becomes more cluttered and less useful for inference.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html#question-6",
+    "href": "visualize/09-layers/04-facets.html#question-6",
+    "title": "Facets",
+    "section": "Question 6",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhich of the following plots makes it easier to compare engine size (displ) across cars with different drive trains? What does this say about when to place a faceting variable across rows or columns?\n\nggplot(mpg, aes(x = displ)) + \n  geom_histogram() + \n  facet_grid(drv ~ .)\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\nggplot(mpg, aes(x = displ)) + \n  geom_histogram() +\n  facet_grid(. ~ drv)\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe first plot is easier for comparision. When determining whether to facet across rows or columns, the dimensions of each plot and which axis care about more across the plots.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/04-facets.html#question-7",
+    "href": "visualize/09-layers/04-facets.html#question-7",
+    "title": "Facets",
+    "section": "Question 7",
+    "text": "Question 7\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRecreate the following plot using facet_wrap() instead of facet_grid(). How do the positions of the facet labels change?\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy)) +\n  facet_grid(drv ~ .)\n\n\n\n\n\n\n\n\n\n\nThe Solution\n\nggplot(mpg) + \n  geom_point(aes(x = displ, y = hwy)) +\n  facet_wrap(~drv, ncol = 1, strip.position = \"right\")\n\n\n\n\n\n\n\n\nBy default, facet_wrap puts labels on \"top\". Using strip.position we can change the position of the label.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
     "section": "",
-    "text": "Whole Game\nFull list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.",
-    "crumbs": [
-      "Progress Tracker"
-    ]
-  },
-  {
-    "objectID": "progress.html#whole-game",
-    "href": "progress.html#whole-game",
-    "title": "Progress Tracker",
-    "section": "",
-    "text": "Data Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises",
-    "crumbs": [
-      "Progress Tracker"
-    ]
-  },
-  {
-    "objectID": "progress.html#visualize",
-    "href": "progress.html#visualize",
-    "title": "Progress Tracker",
-    "section": "Visualize",
-    "text": "Visualize\n\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nCommunication",
+    "text": "Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.\n\nWhole Game\nData Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises\n\nVisualization\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nCommunication",
     "crumbs": [
       "Progress Tracker"
     ]
