@@ -1,0 +1,123 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Position Adjustments
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What is the problem with the following plot? How could you improve it?
+
+```{r}
+ggplot(mpg, aes(x = cty, y = hwy)) + 
+  geom_point()
+```
+
+### The Solution
+
+There is an overplotting issue with the plot above. This mean that we cannot properly see how many points are in each part of the plot. To fix it we can use `geom_jitter()` instead of `geom_point()`.
+
+```{r}
+ggplot(mpg, aes(x = cty, y = hwy)) + 
+  geom_jitter()
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What, if anything, is the difference between the two plots? Why?
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(position = "identity")
+```
+
+### The Solution
+
+There is no difference between the two plots . This is because the default value of the `position` argument is `"identity"`. Thus explicitly adding this argument does not change anything in the plot. 
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What parameters to `geom_jitter()` control the amount of jittering?
+
+### The Solution
+
+The `height` and `width` parameters control the level of vertical and horizontal respectively.  
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Compare and contrast `geom_jitter()` with `geom_count()`
+
+### The Solution
+
+`geom_jitter()` and `geom_count()` are both ways to create scatterplots that mitigate the issues associated with overplotting discrete data. The method that each use to achieve this goal differ. `geom_jitter()` create some random noise for each point while `geom_count()` sum the number of observations then maps that value to different sized points. 
+
+```{r}
+ggplot(mpg, aes(x = cty, y = hwy)) + 
+  geom_jitter()
+ggplot(mpg, aes(x = cty, y = hwy)) + 
+  geom_count()
+```
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What's the default position adjustment for `geom_boxplot()`? Create a visualization of the `mpg` dataset that demonstrates it.
+
+### The Solution
+
+The default position adjustment is `"dodge2"`, which is simillar to `"dodge"` except it "works without a grouping variable in a layer". Below is a boxplot that demonstrates this.
+
+```{r}
+mpg |> ggplot() + 
+  geom_boxplot(aes(x = class, y = hwy))
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/layers.html#exercises-4>

@@ -32,7 +32,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Geometric Objects
   - [x] Facets
   - [x] Statistical Transformations
-  - [ ] Position Adjustments
+  - [x] Position Adjustments
   - [ ] Coordinate Systems
 - [ ] Exploratory Data Analysis 
   - **Exercises:**
