@@ -937,11 +937,77 @@
     ]
   },
   {
+    "objectID": "visualize/09-layers/05-transformations.html",
+    "href": "visualize/09-layers/05-transformations.html",
+    "title": "Statistical Transformations",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Statistical Transformations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/05-transformations.html#question-1",
+    "href": "visualize/09-layers/05-transformations.html#question-1",
+    "title": "Statistical Transformations",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat is the default geom associated with stat_summary()? How could you rewrite code below to use that geom function instead of the stat function?\n\nggplot(diamonds) + \n  stat_summary(\n    aes(x = cut, y = depth),\n    fun.min = min,\n    fun.max = max,\n    fun = median\n  )\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe default geom for stat_summary() is \"pointrange\". To use geom_pointrange() instead of stat_summary, we add stat = \"summary\".\n\nggplot(diamonds) + \n  geom_pointrange(\n    aes(x = cut, y = depth),\n    stat = \"summary\",\n    fun.min = min,\n    fun.max = max,\n    fun = median\n  )",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Statistical Transformations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/05-transformations.html#question-2",
+    "href": "visualize/09-layers/05-transformations.html#question-2",
+    "title": "Statistical Transformations",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does geom_col() do?\n\n\nThe Solution\ngeom_col() makes a bar chart that represents each observation in the aesthetic. It differs from geom_bar() since col uses stat_identity() instead of stat_count().",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Statistical Transformations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/05-transformations.html#question-3",
+    "href": "visualize/09-layers/05-transformations.html#question-3",
+    "title": "Statistical Transformations",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMost geoms and stats come in pairs that are almost always used in concert. Make a list of all the pairs. What do they have in common?\n\n\nThe Solution\nThe stats that we have used that are paired are:\n\n\n\nGeom\nStat\n\n\n\n\ngeom_histogram()\nstat_bin()\n\n\ngeom_density()\nstat_density()\n\n\ngeom_bar()\nstat_count()\n\n\ngeom_smooth()\nstat_smooth()\n\n\ngeom_boxplot()\nstat_boxplot()\n\n\ngeom_col()\nstat_identity()\n\n\ngeom_pointrange()\nstat_summary()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Statistical Transformations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/05-transformations.html#question-4",
+    "href": "visualize/09-layers/05-transformations.html#question-4",
+    "title": "Statistical Transformations",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat variables does stat_smooth() compute? What arguments control its behaviour.\n\n\nThe Solution\nstat_smooth() computes the following:\n\nafter_stat(y) or after_stat(x): estimated values\nafter_stat(ymin) or after_stat(xmin): lower bound of the confidence band\nafter_stat(ymax) or after_stat(xmax) upper bound of the confidence band\nafter_stat(se): Standard error of the estimate\n\nThe following arguments control its behaviour:\n\nmethod\nformula\nn\nspan\nlevel\nmethod.args",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Statistical Transformations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/05-transformations.html#question-5",
+    "href": "visualize/09-layers/05-transformations.html#question-5",
+    "title": "Statistical Transformations",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nIn our proportion bar chart, we needed to set group = 1. Why? In other words, what is the problem with these two graphs?\n\nggplot(diamonds, aes(x = cut, y = after_stat(prop))) + \n  geom_bar()\n\n\n\n\n\n\n\nggplot(diamonds, aes(x = cut, fill = color, y = after_stat(prop))) + \n  geom_bar()\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe issue is that without group = 1, the plot is not actually displaying the proportion of the number of observation for each cut.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Statistical Transformations</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
     "section": "",
-    "text": "Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.\n\nWhole Game\nData Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises\n\nVisualization\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nCommunication",
+    "text": "Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.\n\nWhole Game\nData Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises\n\nVisualization\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nComunication\n\nExercises:\nLabels\nAnnotations\nScales\nThemes\nLayout\n\nTransform\nLogical Vectors\n\nExercises:\nComparisions\nBoolean Algebra\nSummaries\nConditional Transformations\n\nNumbers\n\nExercises:\nCounts\nNumeric Transformations\nGeneral Transformations\nNumeric Summaries\n\nStrings\n\nExercises:\nCreate a String\nCreate Many Strings From Data\nLetters\n\nRegular Expressions\n\nExercises:\nKey Functions\nPattern Details\nPractice\n\nFactors\n\nExercises:\nGeneral Social Survey\nModifying Factor Order\nModifying Factor Levels\n\nDates and Times\n\nExercises:\nCreating Date/Times\nDate-Time Components\nTime Spans\n\nMissing Values\nJoins\n\nExercises:\nKeys\nBasic Joins\nNon-equi joins\n\nImport\nSpreadsheets\n\nExercises:\nExcel\nGoogle Sheets\n\nDatabases\nArrow\nHierarchical Data\n\nExercises:\nUnnesting\nCase Studies\nJSON\n\nWeb Scraping\n\n(N/A) No Exercises\n\nProgram\nFunctions\n\nExercises:\nVector Functions\nData Frame Functions\nPlot Functions\nStyle\n\nIterations\nA Field Guide to Base R\n\nExercises:\nSelecting Multiple Elements with [\nSelecting a Single Element with $ and [[\n\nCommunicate\nQuarto\n\nExercises:\nQuarto Basics\nVisual Editor\nSources Editor\nCode Chunks\nFigures\nTables\nCaching",
     "crumbs": [
       "Progress Tracker"
     ]
