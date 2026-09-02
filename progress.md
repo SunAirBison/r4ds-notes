@@ -31,7 +31,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Aesthetic Mappings 
   - [x] Geometric Objects
   - [x] Facets
-  - [ ] Statistical Transformations
+  - [x] Statistical Transformations
   - [ ] Position Adjustments
   - [ ] Coordinate Systems
 - [ ] Exploratory Data Analysis 
