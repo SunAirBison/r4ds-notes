@@ -1003,6 +1003,72 @@
     ]
   },
   {
+    "objectID": "visualize/09-layers/06-position-adjustments.html",
+    "href": "visualize/09-layers/06-position-adjustments.html",
+    "title": "Position Adjustments",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Position Adjustments</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/06-position-adjustments.html#question-1",
+    "href": "visualize/09-layers/06-position-adjustments.html#question-1",
+    "title": "Position Adjustments",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat is the problem with the following plot? How could you improve it?\n\nggplot(mpg, aes(x = cty, y = hwy)) + \n  geom_point()\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThere is an overplotting issue with the plot above. This mean that we cannot properly see how many points are in each part of the plot. To fix it we can use geom_jitter() instead of geom_point().\n\nggplot(mpg, aes(x = cty, y = hwy)) + \n  geom_jitter()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Position Adjustments</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/06-position-adjustments.html#question-2",
+    "href": "visualize/09-layers/06-position-adjustments.html#question-2",
+    "title": "Position Adjustments",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat, if anything, is the difference between the two plots? Why?\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point()\n\n\n\n\n\n\n\nggplot(mpg, aes(x = displ, y = hwy)) +\n  geom_point(position = \"identity\")\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThere is no difference between the two plots . This is because the default value of the position argument is \"identity\". Thus explicitly adding this argument does not change anything in the plot.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Position Adjustments</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/06-position-adjustments.html#question-3",
+    "href": "visualize/09-layers/06-position-adjustments.html#question-3",
+    "title": "Position Adjustments",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat parameters to geom_jitter() control the amount of jittering?\n\n\nThe Solution\nThe height and width parameters control the level of vertical and horizontal respectively.",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Position Adjustments</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/06-position-adjustments.html#question-4",
+    "href": "visualize/09-layers/06-position-adjustments.html#question-4",
+    "title": "Position Adjustments",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nCompare and contrast geom_jitter() with geom_count()\n\n\nThe Solution\ngeom_jitter() and geom_count() are both ways to create scatterplots that mitigate the issues associated with overplotting discrete data. The method that each use to achieve this goal differ. geom_jitter() create some random noise for each point while geom_count() sum the number of observations then maps that value to different sized points.\n\nggplot(mpg, aes(x = cty, y = hwy)) + \n  geom_jitter()\n\n\n\n\n\n\n\nggplot(mpg, aes(x = cty, y = hwy)) + \n  geom_count()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Position Adjustments</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/06-position-adjustments.html#question-5",
+    "href": "visualize/09-layers/06-position-adjustments.html#question-5",
+    "title": "Position Adjustments",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat’s the default position adjustment for geom_boxplot()? Create a visualization of the mpg dataset that demonstrates it.\n\n\nThe Solution\nThe default position adjustment is \"dodge2\", which is simillar to \"dodge\" except it “works without a grouping variable in a layer”. Below is a boxplot that demonstrates this.\n\nmpg |&gt; ggplot() + \n  geom_boxplot(aes(x = class, y = hwy))",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Position Adjustments</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
