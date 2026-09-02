@@ -1,0 +1,147 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Statistical Transformations
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What is the default geom associated with `stat_summary()`? How could you rewrite code below to use that geom function instead of the stat function?
+
+```{r}
+ggplot(diamonds) + 
+  stat_summary(
+    aes(x = cut, y = depth),
+    fun.min = min,
+    fun.max = max,
+    fun = median
+  )
+```
+
+### The Solution
+
+The default geom for `stat_summary()` is `"pointrange"`. To use `geom_pointrange()` instead of `stat_summary`, we add `stat = "summary"`.
+
+```{r}
+ggplot(diamonds) + 
+  geom_pointrange(
+    aes(x = cut, y = depth),
+    stat = "summary",
+    fun.min = min,
+    fun.max = max,
+    fun = median
+  )
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+ 
+What does `geom_col()` do?
+
+### The Solution
+
+`geom_col()` makes a bar chart that represents each observation in the aesthetic. It differs from `geom_bar()` since col uses `stat_identity()` instead of `stat_count()`.
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Most geoms and stats come in pairs that are almost always used in concert. Make a list of all the pairs. What do they have in common?
+
+### The Solution
+
+The stats that we have used that are paired are:
+
+|        Geom         |       Stat        |
+| :-----------------: | :---------------: |
+| `geom_histogram()`  |   `stat_bin()`    |
+|  `geom_density()`   | `stat_density()`  |
+|    `geom_bar()`     |  `stat_count()`   |
+|   `geom_smooth()`   |  `stat_smooth()`  |
+|  `geom_boxplot()`   | `stat_boxplot()`  |
+|    `geom_col()`     | `stat_identity()` |
+| `geom_pointrange()` | `stat_summary()`  |
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What variables does `stat_smooth()` compute? What arguments control its behaviour.
+
+### The Solution
+
+`stat_smooth()` computes the following:
+
+- `after_stat(y)` or `after_stat(x)`: estimated values
+- `after_stat(ymin)` or `after_stat(xmin)`: lower bound of the confidence band
+- `after_stat(ymax)` or `after_stat(xmax)` upper bound of the confidence band
+- `after_stat(se)`: Standard error of the estimate
+
+The following arguments control its behaviour:
+
+- `method`
+- `formula`
+- `n`
+- `span`
+- `level`
+- `method.args`
+
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+In our proportion bar chart, we needed to set group = 1. Why? In other words, what is the problem with these two graphs?
+
+```{r}
+ggplot(diamonds, aes(x = cut, y = after_stat(prop))) + 
+  geom_bar()
+ggplot(diamonds, aes(x = cut, fill = color, y = after_stat(prop))) + 
+  geom_bar()
+```
+
+### The Solution
+
+The issue is that without group = 1, the plot is not actually displaying the proportion of the number of observation for each cut.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/layers.html#exercises-3>
