@@ -1,0 +1,88 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Coordinate Systems
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Turn a stacked bar chart into a pie chart using `coord_polar()`.
+
+### The Solution
+
+I used the bar chart from this section and turned it into a bar chart. 
+
+```{r}
+diamonds |> ggplot() + 
+  geom_bar(
+    mapping = aes(x = clarity, fill = cut), 
+    width = 1
+  ) + 
+  coord_polar()
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What's the difference between `coord_quickmap()` and `coord_map()`?
+
+### The Solution
+
+From looking at `?coord_map`, `coord_quickmap()` uses an approximation that "preserves straight lines" while `coord_map()` uses a 2d projection and may not preserve straight lines. 
+
+**Note:** As of writing this solution, `coord_sf()` is the preferred method to create maps instead of both `coord_quickmap()` and `coord_map()`
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What does the following plot tell you about the relationship between city and highway mpg? Why is `coord_fixed()` important? What does `geom_abline()` do?
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+  geom_point() + 
+  geom_abline() +
+  coord_fixed()
+```
+
+### The Solution
+
+This plot tells us that for all observations the highway mpg is greater than the city mpg. `geom_abline()` creates straight lines on the plot ($y = ax + b$). By default, it creates a line with the function $y = x$, where x and y are plot axes. `coord_fixed()` is important in keeping the units of both axes a fixed ratio, which helps with the clairity of `geom_abline()`. Below is a plot that omits `coord_fixed()` 
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+  geom_point() + 
+  geom_abline()
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/layers.html#exercises-5>

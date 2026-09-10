@@ -40,6 +40,7 @@ book:
         - visualize/09-layers/04-facets.qmd
         - visualize/09-layers/05-transformations.qmd
         - visualize/09-layers/06-position-adjustments.qmd
+        - visualize/09-layers/07-coordinate-systems.qmd
 
     - progress.md
 format:
