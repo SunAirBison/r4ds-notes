@@ -1069,6 +1069,50 @@
     ]
   },
   {
+    "objectID": "visualize/09-layers/07-coordinate-systems.html",
+    "href": "visualize/09-layers/07-coordinate-systems.html",
+    "title": "Coordinate Systems",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Coordinate Systems</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/07-coordinate-systems.html#question-1",
+    "href": "visualize/09-layers/07-coordinate-systems.html#question-1",
+    "title": "Coordinate Systems",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nTurn a stacked bar chart into a pie chart using coord_polar().\n\n\nThe Solution\nI used the bar chart from this section and turned it into a bar chart.\n\ndiamonds |&gt; ggplot() + \n  geom_bar(\n    mapping = aes(x = clarity, fill = cut), \n    width = 1\n  ) + \n  coord_polar()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Coordinate Systems</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/07-coordinate-systems.html#question-2",
+    "href": "visualize/09-layers/07-coordinate-systems.html#question-2",
+    "title": "Coordinate Systems",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat’s the difference between coord_quickmap() and coord_map()?\n\n\nThe Solution\nFrom looking at ?coord_map, coord_quickmap() uses an approximation that “preserves straight lines” while coord_map() uses a 2d projection and may not preserve straight lines.\nNote: As of writing this solution, coord_sf() is the preferred method to create maps instead of both coord_quickmap() and coord_map()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Coordinate Systems</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/09-layers/07-coordinate-systems.html#question-3",
+    "href": "visualize/09-layers/07-coordinate-systems.html#question-3",
+    "title": "Coordinate Systems",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does the following plot tell you about the relationship between city and highway mpg? Why is coord_fixed() important? What does geom_abline() do?\n\nggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +\n  geom_point() + \n  geom_abline() +\n  coord_fixed()\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThis plot tells us that for all observations the highway mpg is greater than the city mpg. geom_abline() creates straight lines on the plot (\\(y = ax + b\\)). By default, it creates a line with the function \\(y = x\\), where x and y are plot axes. coord_fixed() is important in keeping the units of both axes a fixed ratio, which helps with the clairity of geom_abline(). Below is a plot that omits coord_fixed()\n\nggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +\n  geom_point() + \n  geom_abline()",
+    "crumbs": [
+      "Layers",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Coordinate Systems</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
