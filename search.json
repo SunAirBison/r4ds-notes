@@ -1113,6 +1113,61 @@
     ]
   },
   {
+    "objectID": "visualize/10-eda/03-variation.html",
+    "href": "visualize/10-eda/03-variation.html",
+    "title": "Variation",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Variation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/03-variation.html#question-1",
+    "href": "visualize/10-eda/03-variation.html#question-1",
+    "title": "Variation",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nExplore the distribution of each of the x, y, and z variables in diamonds. What do you learn? Think about a diamond and how you might decide which dimension is the length, width, and depth.\n\n\nThe Solution\n\ndiamonds |&gt; ggplot() + geom_histogram(aes(x = x), binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot() + geom_histogram(aes(x = y), binwidth = 0.1)\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot() + geom_histogram(aes(x = z), binwidth = 0.1)\n\n\n\n\n\n\n\n\nFrom the histograms above we can see that y and z have similar distributions while x is significantly different. This makes me believe x is depth while y and z are interchangably length and width since diamonds typically have a symmetric shape on the face and are pointed on their “depth” side.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Variation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/03-variation.html#question-2",
+    "href": "visualize/10-eda/03-variation.html#question-2",
+    "title": "Variation",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nExplore the distribution of price. Do you discover anything unusual or surprising? (Hint: Carefully think about the binwidth and make sure you try a wide range of values.)\n\n\nThe Solution\nFirst lets look at some histograms of prices with different binwidths.\n\ndiamonds |&gt; ggplot(aes(x = price)) + geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot(aes(x = price)) + geom_histogram(binwidth = 15)\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot(aes(x = price)) + geom_histogram(binwidth = 10) \n\n\n\n\n\n\n\n\nWe can see that prices have a right skew. Using a smaller bin size reveals that there is a range of prices that are missing from the data. Using coord_fixed() allows us to get a closer look at the range.\n\ndiamonds |&gt; ggplot(aes(x = price)) + \n  geom_histogram(binwidth = 10) +\n  coord_fixed(xlim = c(1000, 2500))",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Variation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/03-variation.html#question-3",
+    "href": "visualize/10-eda/03-variation.html#question-3",
+    "title": "Variation",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nHow many diamonds are 0.99 carat? How many are 1 carat? What do you think is the cause of the difference.\n\n\nThe Solution\n\nwhich(diamonds$carat == 0.99) |&gt; length()\n\n[1] 23\n\nwhich(diamonds$carat == 1) |&gt; length()\n\n[1] 1558\n\n\nThere are 23 diamonds in the data set that are 0.99 carat and 1558 diamonds that are 1 carat. I believe that there are two main reasons for this. The first being the precision used to measure the diamonds may be worse for many observations, leading many diamonds to be rounded up or down to 1 carat. Another potential reason is that sellers would rather market diamonds as 1 carat instead of 0.99 and can use rounding to do so.\n\n# Dataset with diamonds with low carat values\nsmall &lt;- diamonds[diamonds$carat &lt; 3.5,]\n\nsmall |&gt; ggplot() +\n  geom_bar(aes(x = carat)) +\n  geom_vline(xintercept = c(1,2), color = \"red\", linetype = \"dashed\") +\n  geom_vline(xintercept = c(0.5, 1.5), color = \"blue\", linetype = \"dotted\")\n\n\n\n\n\n\n\n\nTaking a small look at diamonds with a low value for carat, there are more observation wiht “nicer” carat values compared to values such as 0.99.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Variation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/03-variation.html#question-4",
+    "href": "visualize/10-eda/03-variation.html#question-4",
+    "title": "Variation",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nCompare and contrast coord_cartesian() vs. xlim() or ylim() when zooming in on a histogram. What happens if you leave binwidth unset? What happens if you try and zoom so only half a bar shows?\n\n\nThe Solution\n\ndiamonds |&gt; ggplot(aes(x = price)) + \n  geom_histogram(binwidth = 10) +\n  coord_fixed(xlim = c(1000, 2500))\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot(aes(x = price)) + \n  geom_histogram() +\n  coord_cartesian(xlim = c(1000, 2500))\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot(aes(x = price)) + \n  geom_histogram() +\n  coord_cartesian(ylim = c(0, 2500)) # Fails to show top of bins\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\nWithout binwidth, the plot uses bins that would work for the full size plot. This also causes bins to be cut off if we do not include the full bin width in the zoomed in plot.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Variation</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
