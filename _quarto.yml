@@ -42,6 +42,10 @@ book:
         - visualize/09-layers/06-position-adjustments.qmd
         - visualize/09-layers/07-coordinate-systems.qmd
 
+    - part: "Exploratory Data Analysis"
+      chapters:
+        - visualize/10-eda/03-variation.qmd
+
     - progress.md
 format:
   html:

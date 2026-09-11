@@ -36,7 +36,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Coordinate Systems
 - [ ] Exploratory Data Analysis 
   - **Exercises:**
-  - [ ] Variation
+  - [x] Variation
   - [ ] Unusual Values
 - [ ] Comunication
   - **Exercises:**

@@ -1,0 +1,130 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Variation
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Explore the distribution of each of the `x`, `y`, and `z` variables in `diamonds`. What do you learn? Think about a diamond and how you might decide which dimension is the length, width, and depth.
+
+### The Solution
+
+```{r}
+diamonds |> ggplot() + geom_histogram(aes(x = x), binwidth = 0.1)
+diamonds |> ggplot() + geom_histogram(aes(x = y), binwidth = 0.1)
+diamonds |> ggplot() + geom_histogram(aes(x = z), binwidth = 0.1)
+```
+
+From the histograms above we can see that `y` and `z` have similar distributions while `x` is significantly different. This makes me believe `x` is depth while `y` and `z` are interchangably length and width since diamonds typically have a symmetric shape on the face and are pointed on their "depth" side.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Explore the distribution of `price`. Do you discover anything unusual or surprising? (Hint: Carefully think about the `binwidth` and make sure you try a wide range of values.)
+
+### The Solution
+
+First lets look at some histograms of prices with different binwidths.
+
+```{r}
+diamonds |> ggplot(aes(x = price)) + geom_histogram()
+diamonds |> ggplot(aes(x = price)) + geom_histogram(binwidth = 15)
+diamonds |> ggplot(aes(x = price)) + geom_histogram(binwidth = 10) 
+```
+
+We can see that prices have a right skew. Using a smaller bin size reveals that there is a range of prices that are missing from the data. Using `coord_fixed()` allows us to get a closer look at the range.
+
+```{r}
+diamonds |> ggplot(aes(x = price)) + 
+  geom_histogram(binwidth = 10) +
+  coord_fixed(xlim = c(1000, 2500))
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+How many diamonds are 0.99 carat? How many are 1 carat? What do you think is the cause of the difference.
+
+### The Solution
+
+```{r}
+which(diamonds$carat == 0.99) |> length()
+
+which(diamonds$carat == 1) |> length()
+```
+
+There are 23 diamonds in the data set that are 0.99 carat and 1558 diamonds that are 1 carat. I believe that there are two main reasons for this. The first being the precision used to measure the diamonds may be worse for many observations, leading many diamonds to be rounded up or down to 1 carat. Another potential reason is that sellers would rather market diamonds as 1 carat instead of 0.99 and can use rounding to do so. 
+
+```{r}
+# Dataset with diamonds with low carat values
+small <- diamonds[diamonds$carat < 3.5,]
+
+small |> ggplot() +
+  geom_bar(aes(x = carat)) +
+  geom_vline(xintercept = c(1,2), color = "red", linetype = "dashed") +
+  geom_vline(xintercept = c(0.5, 1.5), color = "blue", linetype = "dotted")
+```
+
+Taking a small look at diamonds with a low value for `carat`, there are more observation wiht "nicer" carat values compared to values such as 0.99.  
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Compare and contrast `coord_cartesian()` vs. `xlim()` or `ylim()` when zooming in on a histogram. What happens if you leave `binwidth` unset? What happens if you try and zoom so only half a bar shows?
+
+### The Solution
+
+```{r}
+diamonds |> ggplot(aes(x = price)) + 
+  geom_histogram(binwidth = 10) +
+  coord_fixed(xlim = c(1000, 2500))
+
+diamonds |> ggplot(aes(x = price)) + 
+  geom_histogram() +
+  coord_cartesian(xlim = c(1000, 2500))
+
+diamonds |> ggplot(aes(x = price)) + 
+  geom_histogram() +
+  coord_cartesian(ylim = c(0, 2500)) # Fails to show top of bins
+```
+
+Without binwidth, the plot uses bins that would work for the full size plot. This also causes bins to be cut off if we do not include the full bin width in the zoomed in plot.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/EDA.html#exercises>
