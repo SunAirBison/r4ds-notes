@@ -1168,6 +1168,50 @@
     ]
   },
   {
+    "objectID": "visualize/10-eda/04-unusual-values.html",
+    "href": "visualize/10-eda/04-unusual-values.html",
+    "title": "Unusual Values",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Unusual Values</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/04-unusual-values.html#question-1",
+    "href": "visualize/10-eda/04-unusual-values.html#question-1",
+    "title": "Unusual Values",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens to missing values in a histogram? What happens to missing values in a bar chart? Why is there a difference in how missing values are handled in histograms and bar charts\n\n\nThe Solution\n\nvals &lt;- c(rep(1, 10), rep(2, 9), NA, rep(3, 10)) |&gt; as.data.frame()\ncolnames(vals) &lt;- \"num\"\n\nvals |&gt; ggplot(aes(x = num)) +\n    geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\nWarning: Removed 1 row containing non-finite outside the scale range\n(`stat_bin()`).\n\n\n\n\n\n\n\n\nvals &lt;- c(rep(1, 10), rep(2, 9), NA, rep(3, 10)) |&gt; as.data.frame()\ncolnames(vals) &lt;- \"num\"\n\nvals |&gt; ggplot(aes(x = num)) +\n    geom_bar()\n\nWarning: Removed 1 row containing non-finite outside the scale range\n(`stat_count()`).\n\n\n\n\n\n\n\n\n\nBoth charts remove the missing value from the plot. From my own quick testing and looking at ?geom_bar and ?geom_histogram, I could not find any differences in the way both geoms (and stats) handle missing values. When doing further research geom_bar may have some options to add a bar to show the number of missing values.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Unusual Values</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/04-unusual-values.html#question-2",
+    "href": "visualize/10-eda/04-unusual-values.html#question-2",
+    "title": "Unusual Values",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does na.rm = TRUE do in mean() and sum()?\n\n\nThe Solution\nWhen na.rm = TRUE in mean(), it will skip missing values and does the calculation as if the missing value does not exist.\n\nvals &lt;- c(3,6,9, NA)\nmean(vals)\n\n[1] NA\n\nmean(vals, na.rm = TRUE)\n\n[1] 6\n\n\nFor sum() na.rm = TRUE does the same thing as above.\n\nsum(vals)\n\n[1] NA\n\nsum(vals, na.rm = TRUE)\n\n[1] 18",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Unusual Values</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/04-unusual-values.html#question-3",
+    "href": "visualize/10-eda/04-unusual-values.html#question-3",
+    "title": "Unusual Values",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRecreate the frequency plot of scheduled_dep_time colored by whether the flight was cancelled or not. Also facet by the cancelled variable. Experiment with different values of the scales variable in the faceting function to mitigate the effect of more non-cancelled flights than cancelled flights.\n\n\nThe Solution\nThere are four different values scales can take, all shown below\n\n# Tibble from example in this section in textbook\nflights13 &lt;- nycflights13::flights |&gt; \n  mutate(\n    cancelled = is.na(dep_time),\n    sched_hour = sched_dep_time %/% 100,\n    sched_min = sched_dep_time %% 100,\n    sched_dep_time = sched_hour + (sched_min / 60)\n  ) \n\n# default \"fixed\"\nflights13 |&gt;\n  ggplot(aes(x = sched_dep_time)) + \n  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + \n  facet_wrap(~ cancelled) \n\n\n\n\n\n\n\n# \"free\"\nflights13 |&gt;\n  ggplot(aes(x = sched_dep_time)) + \n  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + \n  facet_wrap(~ cancelled, scale = \"free\") \n\n\n\n\n\n\n\n# \"free_x\"\nflights13 |&gt;\n  ggplot(aes(x = sched_dep_time)) + \n  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + \n  facet_wrap(~ cancelled, scale = \"free_x\") \n\n\n\n\n\n\n\n# \"free_y\"\nflights13 |&gt;\n  ggplot(aes(x = sched_dep_time)) + \n  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + \n  facet_wrap(~ cancelled, scale = \"free_y\") \n\n\n\n\n\n\n\n\nBoth the \"free\" and \"free_y\" options both mitigate the issue with the number of observations, since both options change the scale of the axis measuring the number of flights.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Unusual Values</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
