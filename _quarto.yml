@@ -45,6 +45,7 @@ book:
     - part: "Exploratory Data Analysis"
       chapters:
         - visualize/10-eda/03-variation.qmd
+        - visualize/10-eda/04-unusual-values.qmd
 
     - progress.md
 format:

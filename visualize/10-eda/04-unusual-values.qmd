@@ -1,0 +1,128 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Unusual Values
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What happens to missing values in a histogram? What happens to missing values in a bar chart? Why is there a difference in how missing values are handled in histograms and bar charts
+
+### The Solution
+
+```{r}
+vals <- c(rep(1, 10), rep(2, 9), NA, rep(3, 10)) |> as.data.frame()
+colnames(vals) <- "num"
+
+vals |> ggplot(aes(x = num)) +
+    geom_histogram()
+
+vals <- c(rep(1, 10), rep(2, 9), NA, rep(3, 10)) |> as.data.frame()
+colnames(vals) <- "num"
+
+vals |> ggplot(aes(x = num)) +
+    geom_bar()
+```
+
+Both charts remove the missing value from the plot. From my own quick testing and looking at `?geom_bar` and `?geom_histogram`, I could not find any differences in the way both geoms (and stats) handle missing values. When doing further research `geom_bar` may have some options to add a bar to show the number of missing values.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What does `na.rm = TRUE` do in `mean()` and `sum()`?
+
+### The Solution
+
+When `na.rm = TRUE` in `mean()`, it will skip missing values and does the calculation as if the missing value does not exist.
+
+```{r}
+vals <- c(3,6,9, NA)
+mean(vals)
+mean(vals, na.rm = TRUE)
+```
+
+For `sum()` `na.rm = TRUE` does the same thing as above.
+
+```{r}
+sum(vals)
+sum(vals, na.rm = TRUE)
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Recreate the frequency plot of `scheduled_dep_time` colored by whether the flight was cancelled or not. Also facet by the `cancelled` variable. Experiment with different values of the `scales` variable in the faceting function to mitigate the effect of more non-cancelled flights than cancelled flights.
+
+### The Solution
+
+There are four different values `scales` can take, all shown below
+
+```{r}
+# Tibble from example in this section in textbook
+flights13 <- nycflights13::flights |> 
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = sched_dep_time %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + (sched_min / 60)
+  ) 
+
+# default "fixed"
+flights13 |>
+  ggplot(aes(x = sched_dep_time)) + 
+  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + 
+  facet_wrap(~ cancelled) 
+
+# "free"
+flights13 |>
+  ggplot(aes(x = sched_dep_time)) + 
+  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + 
+  facet_wrap(~ cancelled, scale = "free") 
+
+# "free_x"
+flights13 |>
+  ggplot(aes(x = sched_dep_time)) + 
+  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + 
+  facet_wrap(~ cancelled, scale = "free_x") 
+
+# "free_y"
+flights13 |>
+  ggplot(aes(x = sched_dep_time)) + 
+  geom_freqpoly(aes(color = cancelled), binwidth = 1/4) + 
+  facet_wrap(~ cancelled, scale = "free_y") 
+```
+
+Both the `"free"` and `"free_y"` options both mitigate the issue with the number of observations, since both options change the scale of the axis measuring the number of flights.
+
+:::
+
+[source]: <https://r4ds.hadley.nz/EDA.html#exercises-1>

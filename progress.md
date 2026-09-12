@@ -26,7 +26,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
 
 - ## Visualization
 
-- [ ] Layers
+- [x] Layers
   - **Exercises:**
   - [x] Aesthetic Mappings 
   - [x] Geometric Objects
@@ -34,10 +34,10 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Statistical Transformations
   - [x] Position Adjustments
   - [x] Coordinate Systems
-- [ ] Exploratory Data Analysis 
+- [x] Exploratory Data Analysis 
   - **Exercises:**
   - [x] Variation
-  - [ ] Unusual Values
+  - [x] Unusual Values
 - [ ] Comunication
   - **Exercises:**
   - [ ] Labels
