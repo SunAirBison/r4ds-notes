@@ -252,4 +252,157 @@ nycflights13::flights |>
 
 :::
 
+## 10.5.3 Two numerical Variables
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Instead of summarizing the conditional distribution with a boxplot, you could use a frequency polygon. What do you need to consider when using `cut_width()` vs `cut_number()`? How does that impact a visualization of the 2d distribution of `carat` and `price`?
+
+### The Solution
+
+When using `cut_width()`, you need to consider what bin lengths while in `cut_number()` you need to consider the number of bins. Depending on the number of bins or the bin width, the chart may not provide very much information or becomes difficult to interpret due to visual clutter.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Visualize the distribution of `carat`, partitioned by `price`.
+
+### The Solution
+
+```{r}
+# Dataset used in this section
+smaller <- diamonds |> 
+  filter(carat < 3)
+
+# Plot using cut_number
+smaller |>
+  ggplot(aes(x = carat)) +
+  geom_freqpoly(
+    aes(
+      group = cut_number(price, 10), 
+      color = cut_number(price, 10)
+      )
+    )
+
+# Plot using cut_width
+smaller |>
+  ggplot(aes(x = carat)) +
+  geom_freqpoly(
+    aes(
+      group = cut_width(price, 1000), 
+      color = cut_width(price, 1000)
+      ),
+      binwidth 
+    )
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+How does the price distribution of very large diamonds compare to small diamonds? Is it as you expect, or does it surprise you?
+
+### The Solution
+
+```{r}
+diamonds |> 
+  ggplot() +
+  geom_boxplot(
+    aes(
+      x = table,
+      y = price, 
+      group = cut_width(table, 1)
+      ),
+      orientation = "x"
+    )
+```
+
+Using `table` as data representing the size of the diamond, the price of diamonds increase as `table` increase until around 60, where it slightly decreases. This is somewhat surprising, but there are likely factors other than size (like clarity) that have an effect on price.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Combine two of the techniques you've learned to visualize the combined distribution of cut, carat, and price.
+
+### The Solution
+
+To show these three attributes, I will use both facets and cuts.
+
+```{r}
+diamonds |> 
+  ggplot(aes(x = carat, y = price)) +
+  geom_boxplot(
+    aes(group = cut_number(price, 10)),
+    orientation = "x"
+    ) +
+  facet_wrap(~cut, nrow = 1)
+```
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Two dimensional plots reveal outliers that are not visible in one dimensional plots. For example, some points in the following plot have an unusual combination of `x` and `y` values, which makes the points outliers even though their `x` and `y` values appear normal when examined separately. Why is a scatterplot a better display than a binned plot for this case?
+
+```{r}
+diamonds |> 
+  filter(x >= 4) |> 
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  coord_cartesian(xlim = c(4, 11), ylim = c(4, 11))
+```
+
+### The Solution
+
+A scatterplot is able to display ususal pairs, while a binned plot is unable to since it is a 1D plot. Most outliers in the plot would fit into a bin with many observations that are not outliers.
+
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Instead of creating boxes of equal width with `cut_width()`, we could create boxes that contain roughly equal number of points with `cut_number()`. What are the advantages and disadvantages of this approach?
+
+```{r}
+ggplot(smaller, aes(x = carat, y = price)) + 
+  geom_boxplot(aes(group = cut_number(carat, 20)), orientation = "x")
+```
+
+### The Solution
+
+Using `cut_number()` is faster than using `cut_width()`, since each dataset will have a differing scale, which requires you to first determine what lengths are appropriate. `cut_number()` will do the calculations for you.The main disadvantage is that the bins are harder to compare to one another, since with differing lengths inferences done on them are worse compared to even sized bins. 
+
+:::
+
 [source1]: <https://r4ds.hadley.nz/EDA.html#exercises-3>
