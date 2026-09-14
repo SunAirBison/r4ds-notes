@@ -38,6 +38,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - **Exercises:**
   - [x] Variation
   - [x] Unusual Values
+  - [x] Covariation
 - [ ] Comunication
   - **Exercises:**
   - [ ] Labels

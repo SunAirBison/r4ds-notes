@@ -1,0 +1,255 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Covariation
+
+## 10.5.1 A categorical and a numerical variable
+
+[Questions][source1]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Use what you've learned to improve the visualization of the departure times of cancelled vs. non-cancelled flights.
+
+### The Solution
+
+We can use a boxplot instead of a frequency chart for improved visualization.
+```{r}
+# Tibble from example in previous section (10.4)
+flights13 <- nycflights13::flights |> 
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = sched_dep_time %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + (sched_min / 60)
+  ) 
+
+flights13 |> ggplot() +
+    geom_boxplot(aes(y = sched_dep_time, x = cancelled)) 
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Based on EDA, what variable in the diamonds dataset appears to be most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationship lead to lower quality diamonds being more expensive?
+
+### The Solution
+
+First I looked at scatterplots of all the pairs of variables. The categorical variables (cut for example) did not give any useful information without jittering.
+```{r}
+# Scatterplots for continous variables
+pairs(price ~ carat + depth + table, data = diamonds)
+
+```
+
+From the above plots, there seems to be little to no change in price with a change in depth or table while there is an exponential relationship with price and carat.
+
+```{r}
+diamonds |> ggplot(aes(x = cut, y = price)) + geom_jitter()
+diamonds |> ggplot(aes(x = color, y = price)) + geom_jitter()
+diamonds |> ggplot(aes(x = clarity, y = price)) + geom_jitter()
+
+```
+
+From the scatterplots of the discrete variables, cut does not show a relationship other than the number of observations increase with cut quality. Color simillarly does not show a relationship with price. Clarity  however seems to have some points that increase with clarity and another set of points that increase up to VS1 then start to decrease. From this, the variable that seems to be the most important is **carat**.
+
+Next lets compare carat and cut.
+```{r}
+diamonds |> ggplot(aes(x = cut, y = carat)) + geom_boxplot()
+```
+
+Looking at the boxplot above, fair has the 3 largest outliers in carat in the whole data set. These extreme values are causing the mean carat of the fine cut quality category to be higher than expected. Thus when we look at plot between price and cut, fair cut diamonds will tend to have a higher mean price compared to the other cut qualties.
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Instead of exchanging the x and y variables, add `coord_flip` as a new layer to the vertical boxplot to create a horizontal one. How does this compare to exchanging the variables?
+
+### The Solution
+
+```{r}
+# Original plot with flipped x and y
+ggplot(mpg, aes(y = fct_reorder(class, hwy, median), x = hwy)) +
+  geom_boxplot()
+
+# Plot using new layer
+ggplot(mpg, aes(x = fct_reorder(class, hwy, median), y = hwy)) +
+  geom_boxplot() +
+  coord_flip() # New
+```
+
+From looking at the two plot, no differences seem to appear. Looking at `?coord_flip`, the plots are identical.
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+One problem with boxplots is that they were developed in an era of much smaller datasets and tend to display a prohibitively large number of “outlying values”. One approach to remedy this problem is the letter value plot. Install the lvplot package, and try using `geom_lv()` to display the distribution of price vs. cut. What do you learn? How do you interpret the plots?
+
+### The Solution
+
+```{r}
+diamonds |> ggplot(aes(x = cut, y = price)) + lvplot::geom_lv()
+```
+
+From this plot it is easier to see the skew of each of the plot and how heavy the tails of each cut is. We can see that since the boxes of fair are less wide at higher prices compared to the other cut qualities that there are less observations in those areas. 
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Create a visualization of diamond prices vs. a categorical variable from the diamonds dataset using `geom_violin()`, then a faceted `geom_histogram()`, then a colored `geom_freqpoly()`, and then a colored `geom_density()`. Compare and contrast the four plots. What are the pros and cons of each method of visualizing the distribution of a numerical variable based on the levels of a categorical variable?
+
+### The Solution
+
+```{r}
+# Base plot
+p <- diamonds |> ggplot(aes(x = price))
+
+p + geom_violin(aes(y = cut))
+p + geom_histogram(bins = 50) + facet_wrap(~ cut)
+p + geom_freqpoly(aes(color = cut))
+p + geom_density(aes(color = cut))
+```
+
+The violin plot is good at showing the changes in proportion of each of the levels in the area with the majority of the data points, but this plot does a poor job with showing small changes in the tail of each of the levels.
+
+With the histogram it is easy to see and compare the number of observation in each price bin; however it is hard to compare between factor levels since the number of obserations in each level may be vastly different. 
+
+The frequency polynomial plot does good job at showing how the number of observations changes as price increases. This plot however has an issue with showing the amount of values in the peaks. It is hard to determine if there is a large range where most observations are found or that a single price has many observation.
+
+The density plot is good at showing modality and where most of hte observations are, but simillarly to the violin plot it is difficult to see individual observations and smaller changes.
+
+:::
+
+<!-- Next Question -->
+## Question 6
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+If you have a small dataset, it’s sometimes useful to use `geom_jitter()` to avoid overplotting to more easily see the relationship between a continuous and categorical variable. The ggbeeswarm package provides a number of methods similar to `geom_jitter()`. List them and briefly describe what each one does.
+
+### The Solution
+
+From the ggbeeswarm [github page][https://github.com/eclarke/ggbeeswarm], it includes 2 methods: `geom_quasirandom` and `geom_beeswarm`. The github page describes `geom_quasirandom` as "Uses a van der Corput sequence or Tukey texturing (Tukey and Tukey “Strips displaying empirical distributions: I. textured dot strips”) to space the dots to avoid overplotting. This uses sherrillmix/vipor." `geom_beeswarm` uses another library, `beeswarm`, to do point-based offset. 
+
+:::
+
+## 10.5.2 Two categorical variables
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+How could you rescale the count dataset above to more clearly show the distribution of cut within color, or color within cut?
+
+### The Solution
+
+To more clearly show the distribution of cut / color pairs, we can use proportions instead of counts.
+
+```{r}
+diamonds |> 
+  count(color, cut) |> 
+  mutate(proportion = n / sum(n)) |>  
+  ggplot(aes(x = color, y = cut)) +
+  geom_tile(aes(fill = proportion))
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What different data insights do you get with a segmented bar chart if color is mapped to the `x` aesthetic and `cut` is mapped to the `fill` aesthetic? Calculate the counts that fall into each of the segments.
+
+### The Solution
+
+```{r}
+diamonds |>
+  ggplot() +
+  geom_bar(aes(x = x, fill = cut))
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Use `geom_tile()` together with dplyr to explore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?
+
+### The Solution
+
+```{r}
+nycflights13::flights |>  
+  group_by(month, dest) |>
+  mutate(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) |> # Remove cancelled flights
+  ggplot(aes(x = month, y = dest)) +
+  geom_tile(aes(fill = avg_dep_delay))
+```
+
+This plot becomes difficult to read due to the amount of destinations causing the text to overlap. Making the text smaller and increasing the height of the plot could fix this issue.
+
+```{r}
+#| fig.height: 16
+nycflights13::flights |>  
+  group_by(month, dest) |>
+  mutate(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) |> # Remove cancelled flights
+  ggplot(aes(x = month, y = dest)) +
+  geom_tile(aes(fill = avg_dep_delay)) +
+  theme(axis.text = element_text(size = 6))
+```
+
+:::
+
+[source1]: <https://r4ds.hadley.nz/EDA.html#exercises-3>

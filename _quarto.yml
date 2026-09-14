@@ -46,6 +46,7 @@ book:
       chapters:
         - visualize/10-eda/03-variation.qmd
         - visualize/10-eda/04-unusual-values.qmd
+        - visualize/10-eda/05-covariation.qmd
 
     - progress.md
 format:
