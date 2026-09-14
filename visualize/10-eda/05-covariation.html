@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Columns – Notebook</title>
+<title>Covariation – Notebook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../whole-game/03-data-transformation/05-groups.html" rel="next">
-<link href="../../whole-game/03-data-transformation/02-rows.html" rel="prev">
+<link href="../../progress.html" rel="next">
+<link href="../../visualize/10-eda/04-unusual-values.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -108,35 +108,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -149,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../whole-game/03-data-transformation/02-rows.html">Data Transformation</a></li><li class="breadcrumb-item"><a href="../../whole-game/03-data-transformation/03-columns.html"><span class="chapter-title">Columns</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../visualize/10-eda/03-variation.html">Exploratory Data Analysis</a></li><li class="breadcrumb-item"><a href="../../visualize/10-eda/05-covariation.html"><span class="chapter-title">Covariation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -238,7 +209,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../whole-game/03-data-transformation/03-columns.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Columns</span></a>
+  <a href="../../whole-game/03-data-transformation/03-columns.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Columns</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -325,7 +296,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../visualize/10-eda/05-covariation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Covariation</span></a>
+  <a href="../../visualize/10-eda/05-covariation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Covariation</span></a>
   </div>
 </li>
       </ul>
@@ -346,22 +317,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#a-categorical-and-a-numerical-variable" id="toc-a-categorical-and-a-numerical-variable" class="nav-link active" data-scroll-target="#a-categorical-and-a-numerical-variable">10.5.1 A categorical and a numerical variable</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
   <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
   <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
   <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
-  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a></li>
+  <li><a href="#two-categorical-variables" id="toc-two-categorical-variables" class="nav-link" data-scroll-target="#two-categorical-variables">10.5.2 Two categorical variables</a></li>
+  <li><a href="#question-1-1" id="toc-question-1-1" class="nav-link" data-scroll-target="#question-1-1">Question 1</a></li>
+  <li><a href="#question-2-1" id="toc-question-2-1" class="nav-link" data-scroll-target="#question-2-1">Question 2</a></li>
+  <li><a href="#question-3-1" id="toc-question-3-1" class="nav-link" data-scroll-target="#question-3-1">Question 3</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../whole-game/03-data-transformation/02-rows.html">Data Transformation</a></li><li class="breadcrumb-item"><a href="../../whole-game/03-data-transformation/03-columns.html"><span class="chapter-title">Columns</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../visualize/10-eda/03-variation.html">Exploratory Data Analysis</a></li><li class="breadcrumb-item"><a href="../../visualize/10-eda/05-covariation.html"><span class="chapter-title">Covariation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Columns</span></h1>
+<h1 class="title"><span class="chapter-title">Covariation</span></h1>
 <p class="subtitle lead">Exercise Solutions</p>
 </div>
 
@@ -379,13 +354,15 @@ window.Quarto = {
 </header>
 
 
-<p><a href="https://r4ds.hadley.nz/data-transform.html#exercises-1">Full Questions</a></p>
+<section id="a-categorical-and-a-numerical-variable" class="level2">
+<h2 class="anchored" data-anchor-id="a-categorical-and-a-numerical-variable">10.5.1 A categorical and a numerical variable</h2>
+<p><a href="https://r4ds.hadley.nz/EDA.html#exercises-3">Questions</a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading Packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- Next Question -->
+</section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
@@ -402,24 +379,29 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem">The Problem</h3>
-<p>Compare <code>dep_time</code>, <code>sched_dep_time</code> and <code>dep_delay</code>. How would you expect those three numbers to be related?</p>
+<p>Use what you’ve learned to improve the visualization of the departure times of cancelled vs.&nbsp;non-cancelled flights.</p>
 </section>
 <section id="the-solution" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution">The Solution</h3>
-<p>The relationship between the three columns should be:</p>
-<p><span class="math display">\[dep\_ time - sched\_ dep\_ time = dep\_ delay\]</span></p>
+<p>We can use a boxplot instead of a frequency chart for improved visualization.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(dep_time, sched_dep_time, dep_delay) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  dep_time sched_dep_time dep_delay
-     &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;
-1      517            515         2
-2      533            529         4
-3      542            540         2
-4      544            545        -1
-5      554            600        -6
-6      554            558        -4</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tibble from example in previous section (10.4)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>flights13 <span class="ot">&lt;-</span> nycflights13<span class="sc">::</span>flights <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cancelled =</span> <span class="fu">is.na</span>(dep_time),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sched_hour =</span> sched_dep_time <span class="sc">%/%</span> <span class="dv">100</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sched_min =</span> sched_dep_time <span class="sc">%%</span> <span class="dv">100</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sched_dep_time =</span> sched_hour <span class="sc">+</span> (sched_min <span class="sc">/</span> <span class="dv">60</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>flights13 <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> sched_dep_time, <span class="at">x =</span> cancelled)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -444,41 +426,62 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-1">The Problem</h3>
-<p>Brainstorm as many ways as possible to select <code>dep_time</code>, <code>dep_delay</code>, <code>arr_time</code>, and <code>arr_delay</code> from <code>flights</code>.</p>
+<p>Based on EDA, what variable in the diamonds dataset appears to be most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationship lead to lower quality diamonds being more expensive?</p>
 </section>
 <section id="the-solution-1" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-1">The Solution</h3>
-<p>Here are a table of possible ways that obtain these columns using <code>select()</code></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Method</th>
-<th>Pseudocode</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Select columns</td>
-<td><code>select(dep_time, dep_delay, arr_time, arr_delay</code></td>
-</tr>
-<tr class="even">
-<td>Remove columns</td>
-<td><code>select(-month, !year, ...)</code></td>
-</tr>
-<tr class="odd">
-<td>Select Range</td>
-<td><code>select(dep_time:arr_delay, -sched_dep_time, -sched_arr_time)</code></td>
-</tr>
-<tr class="even">
-<td>Remove Ranges</td>
-<td><code>select(!&lt;cols_before&gt;, -sched_dep_time, -sched_arr_time, !&lt;cols-after&gt;)</code></td>
-</tr>
-</tbody>
-</table>
+<p>First I looked at scatterplots of all the pairs of variables. The categorical variables (cut for example) did not give any useful information without jittering.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplots for continous variables</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(price <span class="sc">~</span> carat <span class="sc">+</span> depth <span class="sc">+</span> table, <span class="at">data =</span> diamonds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the above plots, there seems to be little to no change in price with a change in depth or table while there is an exponential relationship with price and carat.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> color, <span class="at">y =</span> price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> clarity, <span class="at">y =</span> price)) <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the scatterplots of the discrete variables, cut does not show a relationship other than the number of observations increase with cut quality. Color simillarly does not show a relationship with price. Clarity however seems to have some points that increase with clarity and another set of points that increase up to VS1 then start to decrease. From this, the variable that seems to be the most important is <strong>carat</strong>.</p>
+<p>Next lets compare carat and cut.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> carat)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at the boxplot above, fair has the 3 largest outliers in carat in the whole data set. These extreme values are causing the mean carat of the fine cut quality category to be higher than expected. Thus when we look at plot between price and cut, fair cut diamonds will tend to have a higher mean price compared to the other cut qualties.</p>
 </section>
 </div>
 </div>
@@ -501,49 +504,34 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem-2" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-2">The Problem</h3>
-<p>What happends if you specify the name of the same variable multiple times in a <code>select()</code> call?</p>
+<p>Instead of exchanging the x and y variables, add <code>coord_flip</code> as a new layer to the vertical boxplot to create a horizontal one. How does this compare to exchanging the variables?</p>
 </section>
 <section id="the-solution-2" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-2">The Solution</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(tailnum) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  tailnum
-  &lt;chr&gt;  
-1 N14228 
-2 N24211 
-3 N619AA 
-4 N804JB 
-5 N668DN 
-6 N39463 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(tailnum, tailnum) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  tailnum
-  &lt;chr&gt;  
-1 N14228 
-2 N24211 
-3 N619AA 
-4 N804JB 
-5 N668DN 
-6 N39463 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(tailnum, tailnum, tailnum) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 1
-  tailnum
-  &lt;chr&gt;  
-1 N14228 
-2 N24211 
-3 N619AA 
-4 N804JB 
-5 N668DN 
-6 N39463 </code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original plot with flipped x and y</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fct_reorder</span>(class, hwy, median), <span class="at">x =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>Repeating the same column multiple times does not change the output of select.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot using new layer</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(class, hwy, median), <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="co"># New</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From looking at the two plot, no differences seem to appear. Looking at <code>?coord_flip</code>, the plots are identical.</p>
 </section>
 </div>
 </div>
@@ -566,29 +554,21 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem-3" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-3">The Problem</h3>
-<p>What does the <code>any_of()</code> function do? Why might it be helpful in conjunction with this vector?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"dep_delay"</span>, <span class="st">"arr_delay"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>One problem with boxplots is that they were developed in an era of much smaller datasets and tend to display a prohibitively large number of “outlying values”. One approach to remedy this problem is the letter value plot. Install the lvplot package, and try using <code>geom_lv()</code> to display the distribution of price vs.&nbsp;cut. What do you learn? How do you interpret the plots?</p>
 </section>
 <section id="the-solution-3" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-3">The Solution</h3>
-<p><code>any_of()</code> (from <code>tidyselect</code>) checks if it first argument is one of the values stored in the second argument. We can use it with <code>variables</code> to make our <code>select()</code> function call easier to read, reuse, or modify later.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can change variables if we changes to the select</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">any_of</span>(variables)) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-   year month   day dep_delay arr_delay
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1  2013     1     1         2        11
-2  2013     1     1         4        20
-3  2013     1     1         2        33
-4  2013     1     1        -1       -18
-5  2013     1     1        -6       -25
-6  2013     1     1        -4        12</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">y =</span> price)) <span class="sc">+</span> lvplot<span class="sc">::</span><span class="fu">geom_lv</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
+</div>
+<p>From this plot it is easier to see the skew of each of the plot and how heavy the tails of each cut is. We can see that since the boxes of fair are less wide at higher prices compared to the other cut qualities that there are less observations in those areas.</p>
 </section>
 </div>
 </div>
@@ -611,30 +591,54 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem-4" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-4">The Problem</h3>
-<p>Does the result of running the following code surprise you? How do the select helpers deal with upper and lower case by default? How can you change that default?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"TIME"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 6
-   dep_time sched_dep_time arr_time sched_arr_time air_time time_hour          
-      &lt;int&gt;          &lt;int&gt;    &lt;int&gt;          &lt;int&gt;    &lt;dbl&gt; &lt;dttm&gt;             
- 1      517            515      830            819      227 2013-01-01 05:00:00
- 2      533            529      850            830      227 2013-01-01 05:00:00
- 3      542            540      923            850      160 2013-01-01 05:00:00
- 4      544            545     1004           1022      183 2013-01-01 05:00:00
- 5      554            600      812            837      116 2013-01-01 06:00:00
- 6      554            558      740            728      150 2013-01-01 05:00:00
- 7      555            600      913            854      158 2013-01-01 06:00:00
- 8      557            600      709            723       53 2013-01-01 06:00:00
- 9      557            600      838            846      140 2013-01-01 06:00:00
-10      558            600      753            745      138 2013-01-01 06:00:00
-# ℹ 336,766 more rows</code></pre>
-</div>
-</div>
+<p>Create a visualization of diamond prices vs.&nbsp;a categorical variable from the diamonds dataset using <code>geom_violin()</code>, then a faceted <code>geom_histogram()</code>, then a colored <code>geom_freqpoly()</code>, and then a colored <code>geom_density()</code>. Compare and contrast the four plots. What are the pros and cons of each method of visualizing the distribution of a numerical variable based on the levels of a categorical variable?</p>
 </section>
 <section id="the-solution-4" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-4">The Solution</h3>
-<p>Running the code did surprise me with the amount of columns it returned. By default, select helpers (<code>contains()</code>) are case insensitive. To change this, we add the argument <code>ignore.case = FALSE</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base plot</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">y =</span> cut))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> cut)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_freqpoly</span>(<span class="fu">aes</span>(<span class="at">color =</span> cut))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">color =</span> cut))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The violin plot is good at showing the changes in proportion of each of the levels in the area with the majority of the data points, but this plot does a poor job with showing small changes in the tail of each of the levels.</p>
+<p>With the histogram it is easy to see and compare the number of observation in each price bin; however it is hard to compare between factor levels since the number of obserations in each level may be vastly different.</p>
+<p>The frequency polynomial plot does good job at showing how the number of observations changes as price increases. This plot however has an issue with showing the amount of values in the peaks. It is hard to determine if there is a large range where most observations are found or that a single price has many observation.</p>
+<p>The density plot is good at showing modality and where most of hte observations are, but simillarly to the violin plot it is difficult to see individual observations and smaller changes.</p>
 </section>
 </div>
 </div>
@@ -657,42 +661,22 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem-5" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-5">The Problem</h3>
-<p>Rename <code>air_time</code> to <code>air_time_min</code> and move it to the beginning of the data frame.</p>
+<p>If you have a small dataset, it’s sometimes useful to use <code>geom_jitter()</code> to avoid overplotting to more easily see the relationship between a continuous and categorical variable. The ggbeeswarm package provides a number of methods similar to <code>geom_jitter()</code>. List them and briefly describe what each one does.</p>
 </section>
 <section id="the-solution-5" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-5">The Solution</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">air_time_min =</span> air_time) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(air_time_min, <span class="at">.before =</span> year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 19
-   air_time_min  year month   day dep_time sched_dep_time dep_delay arr_time
-          &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
- 1          227  2013     1     1      517            515         2      830
- 2          227  2013     1     1      533            529         4      850
- 3          160  2013     1     1      542            540         2      923
- 4          183  2013     1     1      544            545        -1     1004
- 5          116  2013     1     1      554            600        -6      812
- 6          150  2013     1     1      554            558        -4      740
- 7          158  2013     1     1      555            600        -5      913
- 8           53  2013     1     1      557            600        -3      709
- 9          140  2013     1     1      557            600        -3      838
-10          138  2013     1     1      558            600        -2      753
-# ℹ 336,766 more rows
-# ℹ 11 more variables: sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;,
-#   flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, distance &lt;dbl&gt;,
-#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-</div>
+<p>From the ggbeeswarm [github page][https://github.com/eclarke/ggbeeswarm], it includes 2 methods: <code>geom_quasirandom</code> and <code>geom_beeswarm</code>. The github page describes <code>geom_quasirandom</code> as “Uses a van der Corput sequence or Tukey texturing (Tukey and Tukey “Strips displaying empirical distributions: I. textured dot strips”) to space the dots to avoid overplotting. This uses sherrillmix/vipor.” <code>geom_beeswarm</code> uses another library, <code>beeswarm</code>, to do point-based offset.</p>
 </section>
 </div>
 </div>
 </div>
+</section>
+<section id="two-categorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="two-categorical-variables">10.5.2 Two categorical variables</h2>
 <!-- Next Question -->
 </section>
-<section id="question-7" class="level2">
-<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<section id="question-1-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1-1">Question 1</h2>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -707,39 +691,117 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <section id="the-problem-6" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-6">The Problem</h3>
-<p>Why doesn’t the following work, and what does the error mean?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tailnum) <span class="sc">|&gt;</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(arr_delay)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in `arrange()`:</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ In argument: `..1 = arr_delay`.</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Caused by error:</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ! object 'arr_delay' not found</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>How could you rescale the count dataset above to more clearly show the distribution of cut within color, or color within cut?</p>
 </section>
 <section id="the-solution-6" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-6">The Solution</h3>
-<p>The issue is that during the select function call, we remove all columns except for <code>tailnum</code>, so when we try to arrange by <code>arr_delay</code>, it does not exist in the table we piped into it. To fix this issue, we just need to swap the order of <code>select</code> and <code>arrange</code>.</p>
+<p>To more clearly show the distribution of cut / color pairs, we can use proportions instead of counts.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(arr_delay) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tailnum)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 336,776 × 1
-   tailnum
-   &lt;chr&gt;  
- 1 N843VA 
- 2 N840VA 
- 3 N851UA 
- 4 N3KCAA 
- 5 N551AS 
- 6 N24212 
- 7 N3760C 
- 8 N806UA 
- 9 N805JB 
-10 N855VA 
-# ℹ 336,766 more rows</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(color, cut) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span>  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> color, <span class="at">y =</span> cut)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> proportion))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Next Question -->
+</section>
+<section id="question-2-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-2-1">Question 2</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-7" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-7">The Problem</h3>
+<p>What different data insights do you get with a segmented bar chart if color is mapped to the <code>x</code> aesthetic and <code>cut</code> is mapped to the <code>fill</code> aesthetic? Calculate the counts that fall into each of the segments.</p>
+</section>
+<section id="the-solution-7" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-7">The Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">fill =</span> cut))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Next Question -->
+</section>
+<section id="question-3-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-3-1">Question 3</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-8" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-8">The Problem</h3>
+<p>Use <code>geom_tile()</code> together with dplyr to explore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?</p>
+</section>
+<section id="the-solution-8" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-8">The Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nycflights13<span class="sc">::</span>flights <span class="sc">|&gt;</span>  </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, dest) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_dep_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co"># Remove cancelled flights</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> dest)) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_dep_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This plot becomes difficult to read due to the amount of destinations causing the text to overlap. Making the text smaller and increasing the height of the plot could fix this issue.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nycflights13<span class="sc">::</span>flights <span class="sc">|&gt;</span>  </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month, dest) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_dep_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="co"># Remove cancelled flights</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> dest)) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_dep_delay)) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-covariation_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1153,13 +1215,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../whole-game/03-data-transformation/02-rows.html" class="pagination-link" aria-label="Rows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Rows</span></span>
+      <a href="../../visualize/10-eda/04-unusual-values.html" class="pagination-link" aria-label="Unusual Values">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unusual Values</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../whole-game/03-data-transformation/05-groups.html" class="pagination-link" aria-label="Groups">
-        <span class="nav-page-text"><span class="chapter-title">Groups</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../progress.html" class="pagination-link" aria-label="Progress Tracker">
+        <span class="nav-page-text">Progress Tracker</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1212,11 +1212,132 @@
     ]
   },
   {
+    "objectID": "visualize/10-eda/05-covariation.html",
+    "href": "visualize/10-eda/05-covariation.html",
+    "title": "Covariation",
+    "section": "",
+    "text": "10.5.1 A categorical and a numerical variable\nQuestions\n# Loading Packages\nlibrary(tidyverse)",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-1",
+    "href": "visualize/10-eda/05-covariation.html#question-1",
+    "title": "Covariation",
+    "section": "Question 1",
+    "text": "Question 1\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nUse what you’ve learned to improve the visualization of the departure times of cancelled vs. non-cancelled flights.\n\n\nThe Solution\nWe can use a boxplot instead of a frequency chart for improved visualization.\n\n# Tibble from example in previous section (10.4)\nflights13 &lt;- nycflights13::flights |&gt; \n  mutate(\n    cancelled = is.na(dep_time),\n    sched_hour = sched_dep_time %/% 100,\n    sched_min = sched_dep_time %% 100,\n    sched_dep_time = sched_hour + (sched_min / 60)\n  ) \n\nflights13 |&gt; ggplot() +\n    geom_boxplot(aes(y = sched_dep_time, x = cancelled))",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-2",
+    "href": "visualize/10-eda/05-covariation.html#question-2",
+    "title": "Covariation",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nBased on EDA, what variable in the diamonds dataset appears to be most important for predicting the price of a diamond? How is that variable correlated with cut? Why does the combination of those two relationship lead to lower quality diamonds being more expensive?\n\n\nThe Solution\nFirst I looked at scatterplots of all the pairs of variables. The categorical variables (cut for example) did not give any useful information without jittering.\n\n# Scatterplots for continous variables\npairs(price ~ carat + depth + table, data = diamonds)\n\n\n\n\n\n\n\n\nFrom the above plots, there seems to be little to no change in price with a change in depth or table while there is an exponential relationship with price and carat.\n\ndiamonds |&gt; ggplot(aes(x = cut, y = price)) + geom_jitter()\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot(aes(x = color, y = price)) + geom_jitter()\n\n\n\n\n\n\n\ndiamonds |&gt; ggplot(aes(x = clarity, y = price)) + geom_jitter()\n\n\n\n\n\n\n\n\nFrom the scatterplots of the discrete variables, cut does not show a relationship other than the number of observations increase with cut quality. Color simillarly does not show a relationship with price. Clarity however seems to have some points that increase with clarity and another set of points that increase up to VS1 then start to decrease. From this, the variable that seems to be the most important is carat.\nNext lets compare carat and cut.\n\ndiamonds |&gt; ggplot(aes(x = cut, y = carat)) + geom_boxplot()\n\n\n\n\n\n\n\n\nLooking at the boxplot above, fair has the 3 largest outliers in carat in the whole data set. These extreme values are causing the mean carat of the fine cut quality category to be higher than expected. Thus when we look at plot between price and cut, fair cut diamonds will tend to have a higher mean price compared to the other cut qualties.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-3",
+    "href": "visualize/10-eda/05-covariation.html#question-3",
+    "title": "Covariation",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nInstead of exchanging the x and y variables, add coord_flip as a new layer to the vertical boxplot to create a horizontal one. How does this compare to exchanging the variables?\n\n\nThe Solution\n\n# Original plot with flipped x and y\nggplot(mpg, aes(y = fct_reorder(class, hwy, median), x = hwy)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n# Plot using new layer\nggplot(mpg, aes(x = fct_reorder(class, hwy, median), y = hwy)) +\n  geom_boxplot() +\n  coord_flip() # New\n\n\n\n\n\n\n\n\nFrom looking at the two plot, no differences seem to appear. Looking at ?coord_flip, the plots are identical.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-4",
+    "href": "visualize/10-eda/05-covariation.html#question-4",
+    "title": "Covariation",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nOne problem with boxplots is that they were developed in an era of much smaller datasets and tend to display a prohibitively large number of “outlying values”. One approach to remedy this problem is the letter value plot. Install the lvplot package, and try using geom_lv() to display the distribution of price vs. cut. What do you learn? How do you interpret the plots?\n\n\nThe Solution\n\ndiamonds |&gt; ggplot(aes(x = cut, y = price)) + lvplot::geom_lv()\n\n\n\n\n\n\n\n\nFrom this plot it is easier to see the skew of each of the plot and how heavy the tails of each cut is. We can see that since the boxes of fair are less wide at higher prices compared to the other cut qualities that there are less observations in those areas.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-5",
+    "href": "visualize/10-eda/05-covariation.html#question-5",
+    "title": "Covariation",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nCreate a visualization of diamond prices vs. a categorical variable from the diamonds dataset using geom_violin(), then a faceted geom_histogram(), then a colored geom_freqpoly(), and then a colored geom_density(). Compare and contrast the four plots. What are the pros and cons of each method of visualizing the distribution of a numerical variable based on the levels of a categorical variable?\n\n\nThe Solution\n\n# Base plot\np &lt;- diamonds |&gt; ggplot(aes(x = price))\n\np + geom_violin(aes(y = cut))\n\n\n\n\n\n\n\np + geom_histogram(bins = 50) + facet_wrap(~ cut)\n\n\n\n\n\n\n\np + geom_freqpoly(aes(color = cut))\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\np + geom_density(aes(color = cut))\n\n\n\n\n\n\n\n\nThe violin plot is good at showing the changes in proportion of each of the levels in the area with the majority of the data points, but this plot does a poor job with showing small changes in the tail of each of the levels.\nWith the histogram it is easy to see and compare the number of observation in each price bin; however it is hard to compare between factor levels since the number of obserations in each level may be vastly different.\nThe frequency polynomial plot does good job at showing how the number of observations changes as price increases. This plot however has an issue with showing the amount of values in the peaks. It is hard to determine if there is a large range where most observations are found or that a single price has many observation.\nThe density plot is good at showing modality and where most of hte observations are, but simillarly to the violin plot it is difficult to see individual observations and smaller changes.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-6",
+    "href": "visualize/10-eda/05-covariation.html#question-6",
+    "title": "Covariation",
+    "section": "Question 6",
+    "text": "Question 6\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nIf you have a small dataset, it’s sometimes useful to use geom_jitter() to avoid overplotting to more easily see the relationship between a continuous and categorical variable. The ggbeeswarm package provides a number of methods similar to geom_jitter(). List them and briefly describe what each one does.\n\n\nThe Solution\nFrom the ggbeeswarm [github page][https://github.com/eclarke/ggbeeswarm], it includes 2 methods: geom_quasirandom and geom_beeswarm. The github page describes geom_quasirandom as “Uses a van der Corput sequence or Tukey texturing (Tukey and Tukey “Strips displaying empirical distributions: I. textured dot strips”) to space the dots to avoid overplotting. This uses sherrillmix/vipor.” geom_beeswarm uses another library, beeswarm, to do point-based offset.",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#two-categorical-variables",
+    "href": "visualize/10-eda/05-covariation.html#two-categorical-variables",
+    "title": "Covariation",
+    "section": "10.5.2 Two categorical variables",
+    "text": "10.5.2 Two categorical variables",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-1-1",
+    "href": "visualize/10-eda/05-covariation.html#question-1-1",
+    "title": "Covariation",
+    "section": "Question 1",
+    "text": "Question 1\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nHow could you rescale the count dataset above to more clearly show the distribution of cut within color, or color within cut?\n\n\nThe Solution\nTo more clearly show the distribution of cut / color pairs, we can use proportions instead of counts.\n\ndiamonds |&gt; \n  count(color, cut) |&gt; \n  mutate(proportion = n / sum(n)) |&gt;  \n  ggplot(aes(x = color, y = cut)) +\n  geom_tile(aes(fill = proportion))",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-2-1",
+    "href": "visualize/10-eda/05-covariation.html#question-2-1",
+    "title": "Covariation",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat different data insights do you get with a segmented bar chart if color is mapped to the x aesthetic and cut is mapped to the fill aesthetic? Calculate the counts that fall into each of the segments.\n\n\nThe Solution\n\ndiamonds |&gt;\n  ggplot() +\n  geom_bar(aes(x = x, fill = cut))",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/10-eda/05-covariation.html#question-3-1",
+    "href": "visualize/10-eda/05-covariation.html#question-3-1",
+    "title": "Covariation",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nUse geom_tile() together with dplyr to explore how average flight departure delays vary by destination and month of year. What makes the plot difficult to read? How could you improve it?\n\n\nThe Solution\n\nnycflights13::flights |&gt;  \n  group_by(month, dest) |&gt;\n  mutate(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) |&gt; # Remove cancelled flights\n  ggplot(aes(x = month, y = dest)) +\n  geom_tile(aes(fill = avg_dep_delay))\n\n\n\n\n\n\n\n\nThis plot becomes difficult to read due to the amount of destinations causing the text to overlap. Making the text smaller and increasing the height of the plot could fix this issue.\n\nnycflights13::flights |&gt;  \n  group_by(month, dest) |&gt;\n  mutate(avg_dep_delay = mean(dep_delay, na.rm = TRUE)) |&gt; # Remove cancelled flights\n  ggplot(aes(x = month, y = dest)) +\n  geom_tile(aes(fill = avg_dep_delay)) +\n  theme(axis.text = element_text(size = 6))",
+    "crumbs": [
+      "Exploratory Data Analysis",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Covariation</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
     "section": "",
-    "text": "Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.\n\nWhole Game\nData Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises\n\nVisualization\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\n\nComunication\n\nExercises:\nLabels\nAnnotations\nScales\nThemes\nLayout\n\nTransform\nLogical Vectors\n\nExercises:\nComparisions\nBoolean Algebra\nSummaries\nConditional Transformations\n\nNumbers\n\nExercises:\nCounts\nNumeric Transformations\nGeneral Transformations\nNumeric Summaries\n\nStrings\n\nExercises:\nCreate a String\nCreate Many Strings From Data\nLetters\n\nRegular Expressions\n\nExercises:\nKey Functions\nPattern Details\nPractice\n\nFactors\n\nExercises:\nGeneral Social Survey\nModifying Factor Order\nModifying Factor Levels\n\nDates and Times\n\nExercises:\nCreating Date/Times\nDate-Time Components\nTime Spans\n\nMissing Values\nJoins\n\nExercises:\nKeys\nBasic Joins\nNon-equi joins\n\nImport\nSpreadsheets\n\nExercises:\nExcel\nGoogle Sheets\n\nDatabases\nArrow\nHierarchical Data\n\nExercises:\nUnnesting\nCase Studies\nJSON\n\nWeb Scraping\n\n(N/A) No Exercises\n\nProgram\nFunctions\n\nExercises:\nVector Functions\nData Frame Functions\nPlot Functions\nStyle\n\nIterations\nA Field Guide to Base R\n\nExercises:\nSelecting Multiple Elements with [\nSelecting a Single Element with $ and [[\n\nCommunicate\nQuarto\n\nExercises:\nQuarto Basics\nVisual Editor\nSources Editor\nCode Chunks\nFigures\nTables\nCaching",
+    "text": "Full list of exercises that I have completed. The list will be updated overtime with the next couple of exercises.\n\nWhole Game\nData Visualization\n\nExercises:\nFirst Steps\nVisualizing Distributions\nVisualizing Relationships\nSaving your plots\n\nWorkflow Basics\nData Transformation\n\nExercises:\nRows\nColumns\nGroups\n\nWorkflow: Code Style\nData Tidying\nWorkflow: Scripts and Projects\n\n(Skip) using VSCode, not RStudio\n\nData Import\nWorkflow: Getting Help\n\n(N/A) no exercises\n\nVisualization\nLayers\n\nExercises:\nAesthetic Mappings\nGeometric Objects\nFacets\nStatistical Transformations\nPosition Adjustments\nCoordinate Systems\n\nExploratory Data Analysis\n\nExercises:\nVariation\nUnusual Values\nCovariation\n\nComunication\n\nExercises:\nLabels\nAnnotations\nScales\nThemes\nLayout\n\nTransform\nLogical Vectors\n\nExercises:\nComparisions\nBoolean Algebra\nSummaries\nConditional Transformations\n\nNumbers\n\nExercises:\nCounts\nNumeric Transformations\nGeneral Transformations\nNumeric Summaries\n\nStrings\n\nExercises:\nCreate a String\nCreate Many Strings From Data\nLetters\n\nRegular Expressions\n\nExercises:\nKey Functions\nPattern Details\nPractice\n\nFactors\n\nExercises:\nGeneral Social Survey\nModifying Factor Order\nModifying Factor Levels\n\nDates and Times\n\nExercises:\nCreating Date/Times\nDate-Time Components\nTime Spans\n\nMissing Values\nJoins\n\nExercises:\nKeys\nBasic Joins\nNon-equi joins\n\nImport\nSpreadsheets\n\nExercises:\nExcel\nGoogle Sheets\n\nDatabases\nArrow\nHierarchical Data\n\nExercises:\nUnnesting\nCase Studies\nJSON\n\nWeb Scraping\n\n(N/A) No Exercises\n\nProgram\nFunctions\n\nExercises:\nVector Functions\nData Frame Functions\nPlot Functions\nStyle\n\nIterations\nA Field Guide to Base R\n\nExercises:\nSelecting Multiple Elements with [\nSelecting a Single Element with $ and [[\n\nCommunicate\nQuarto\n\nExercises:\nQuarto Basics\nVisual Editor\nSources Editor\nCode Chunks\nFigures\nTables\nCaching",
     "crumbs": [
       "Progress Tracker"
     ]
