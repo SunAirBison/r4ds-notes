@@ -41,7 +41,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Covariation
 - [ ] Comunication
   - **Exercises:**
-  - [ ] Labels
+  - [x] Labels
   - [ ] Annotations
   - [ ] Scales
   - [ ] Themes

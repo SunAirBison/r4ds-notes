@@ -1,0 +1,78 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Labels
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Create one plot on the fuel economy data with customized `title`, `subtitle`, `caption`, `x`, `y`, and `color` labels.
+
+### The Solution
+
+```{r}
+mpg |> ggplot() +
+    geom_point(
+        aes(x = displ, y = cty, color = manufacturer), 
+        size = 4) +
+    labs(
+        title = "Fuel efficiency tend to increase with engine displacement",
+        subtitle = "Chevrolet Cars with high engine displacement have significant difference to other manufacturers",
+        caption = "Data availible at https://fueleconomy.gov/",
+        x = "Engine Displacement (Litres)",
+        y = "City Miles per Gallon",
+        color = "Car Manufacturer"
+    )
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Recreate the plot found in this section's exercises using the fuel economy data.
+
+### The Solution
+
+Note the change in the size of the points to better match the original plot and needing labels for both `color` and `shape`.
+
+```{r}
+mpg |> ggplot(aes(x = cty, y = hwy)) +
+    geom_point(
+        aes(color = drv, shape = drv),
+        size = 2
+        ) +
+    labs(
+        x = "City MPG",
+        y = "Highway MPG",
+        color = "Type of drive train",
+        shape = "Type of drive train"
+    )
+```
+
+:::
+
+
+
+[source]: <https://r4ds.hadley.nz/communication.html#exercises>

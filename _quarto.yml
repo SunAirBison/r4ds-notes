@@ -48,6 +48,10 @@ book:
         - visualize/10-eda/04-unusual-values.qmd
         - visualize/10-eda/05-covariation.qmd
 
+    - part: Communcation
+      chapters:
+        - visualize/11-communication/02-labels.qmd
+
     - progress.md
 format:
   html:
