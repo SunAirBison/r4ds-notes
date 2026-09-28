@@ -1410,6 +1410,105 @@
     ]
   },
   {
+    "objectID": "visualize/11-communication/02-labels.html",
+    "href": "visualize/11-communication/02-labels.html",
+    "title": "Labels",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Labels</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/02-labels.html#question-1",
+    "href": "visualize/11-communication/02-labels.html#question-1",
+    "title": "Labels",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nCreate one plot on the fuel economy data with customized title, subtitle, caption, x, y, and color labels.\n\n\nThe Solution\n\nmpg |&gt; ggplot() +\n    geom_point(\n        aes(x = displ, y = cty, color = manufacturer), \n        size = 4) +\n    labs(\n        title = \"Fuel efficiency tend to increase with engine displacement\",\n        subtitle = \"Chevrolet Cars with high engine displacement have significant difference to other manufacturers\",\n        caption = \"Data availible at https://fueleconomy.gov/\",\n        x = \"Engine Displacement (Litres)\",\n        y = \"City Miles per Gallon\",\n        color = \"Car Manufacturer\"\n    )",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Labels</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/02-labels.html#question-2",
+    "href": "visualize/11-communication/02-labels.html#question-2",
+    "title": "Labels",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nRecreate the plot found in this section’s exercises using the fuel economy data.\n\n\nThe Solution\nNote the change in the size of the points to better match the original plot and needing labels for both color and shape.\n\nmpg |&gt; ggplot(aes(x = cty, y = hwy)) +\n    geom_point(\n        aes(color = drv, shape = drv),\n        size = 2\n        ) +\n    labs(\n        x = \"City MPG\",\n        y = \"Highway MPG\",\n        color = \"Type of drive train\",\n        shape = \"Type of drive train\"\n    )",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Labels</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/03-annotations.html",
+    "href": "visualize/11-communication/03-annotations.html",
+    "title": "Annotations",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Annotations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/03-annotations.html#question-1",
+    "href": "visualize/11-communication/03-annotations.html#question-1",
+    "title": "Annotations",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nUse geom_text() with infinite positions to place text at the four corners of the plot.\n\n\nThe Solution\nTo put text in the four corners, we put the coordinates of each label to Inf or -Inf respectively. To see thetext in\n\nlabel_info &lt;- data.frame(\n  x = c(Inf, Inf, -Inf, -Inf),\n  y = c(Inf, -Inf, Inf, -Inf),\n  text = c(\"Top-R\", \"Bot-R\", \"Top-L\", \"Bot-L\"),\n  hjust = c(1.1, 1.1, -0.1, -0.1),\n  vjust = c(1.1, -0.1, 1.1, -0.1)  \n)\n\n# Save plot for next question\np &lt;- mpg |&gt; ggplot() +\n  geom_point(\n    aes(x = hwy, y = cty, color = drv)\n  ) +\n  geom_label(\n    data = label_info, \n    aes(\n      x = x, \n      y = y, \n      label = text,\n      hjust = hjust,\n      vjust = vjust\n    )\n  ) + \n  # Add limits to simplify next question\n  xlim(0, 50) +\n  ylim(0, 40)\n\np",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Annotations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/03-annotations.html#question-2",
+    "href": "visualize/11-communication/03-annotations.html#question-2",
+    "title": "Annotations",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nUse annotate() to add a point geom in the middle of your last plot without having to create a tibble. Customize the shape, size or color of the point.\n\n\nThe Solution\n\np + annotate(\n    \"point\",\n    x = 25, \n    y = 20,\n    color = \"black\",\n    size = 4,\n    alpha = 0.5\n    )",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Annotations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/03-annotations.html#question-3",
+    "href": "visualize/11-communication/03-annotations.html#question-3",
+    "title": "Annotations",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nHow do labels with geom_text() interact with faceting? How can you add a label to a single facet? How can you put a different label in each facet?\n\n\nThe Solution\nWhen just adding geom_label naively, it adds every label to every faceted plot.\n\nlabel_facet &lt;- data.frame(\n  x = c(20,30,40),\n  y = c(20,30,40),\n  text = c(\"test1\", \"test2\", \"test3\")\n)\n\nmpg |&gt; ggplot() +\n  geom_point(aes(x = hwy, y = cty)) + \n  facet_wrap(~drv) +\n  geom_label(\n    data = label_facet,\n    aes(x = x, y = y, label = text)\n  )\n\n\n\n\n\n\n\n\nTo get different labels on each of the faceted plots, the data frame containing labels needs to match the column names of the plotted data and include the faceted column. This allows us to put labels on a single plot as well, by only putting a single facet group in the label data frame.\n\nlabel_facet &lt;- data.frame(\n  hwy = c(20,30,40), # x and y need to match mpg columns\n  cty = c(20,30,40),\n  drv = c(\"4\", \"4\", \"r\"), # State which plot we want the label in \n  text = c(\"test1\", \"test2\", \"test3\")\n)\n\nmpg |&gt; ggplot() +\n  geom_point(aes(x = hwy, y = cty)) + \n  facet_wrap(~drv) +\n  geom_label(\n    data = label_facet,\n    aes(x = hwy, y = cty, label = text)\n  )",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Annotations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/03-annotations.html#question-4",
+    "href": "visualize/11-communication/03-annotations.html#question-4",
+    "title": "Annotations",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat arguments to geom_label() control the appearance of the background box?\n\n\nThe Solution\nFrom checking ?geom_label, the following arguments change the box the text is displayed in:\n\nlabel.padding\nlabel.r\nlabel.size\nborder.colour / border.color\nsize.unit\ninherit.aes",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Annotations</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/03-annotations.html#question-5",
+    "href": "visualize/11-communication/03-annotations.html#question-5",
+    "title": "Annotations",
+    "section": "Question 5",
+    "text": "Question 5\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat are the four arguments to arrow()? How do they work? Create a series of plots that demonstrate the most important options.\n\n\nThe Solution\nThe four arguments of arrow() are: angle, length, end, and type.\nangle changes the angle of the arrow head, in degrees.\n\nmpg |&gt; ggplot() +\n  annotate(\n    \"segment\",\n    x = 1, y = 3,\n    xend = 4, yend = 4,\n    color = \"red\",\n    arrow = arrow(angle = 90)\n  ) +\n  annotate(\n    \"segment\",\n    x = 1, y = 1,\n    xend = 4, yend = 2,\n    color = \"blue\",\n    arrow = arrow(angle = 20)\n  ) +\n  xlim(0,5) + ylim(0,5)\n\n\n\n\n\n\n\n\nlength changes the size of the arrow head.\n\nmpg |&gt; ggplot() +\n  annotate(\n    \"segment\",\n    x = 1, y = 3,\n    xend = 4, yend = 4,\n    color = \"red\",\n    arrow = arrow(length = unit(0.25, \"inches\"))\n  ) +\n  annotate(\n    \"segment\",\n    x = 1, y = 1,\n    xend = 4, yend = 2,\n    color = \"blue\",\n    arrow = arrow(length = unit(20, \"mm\"))\n  ) +\n  xlim(0,5) + ylim(0,5)\n\n\n\n\n\n\n\n\nend changes which sides of the line has the arrow head.\n\nmpg |&gt; ggplot() +\n  annotate(\n    \"segment\",\n    x = 1, y = 3,\n    xend = 4, yend = 4,\n    color = \"red\",\n    arrow = arrow(end = \"last\")\n  ) +\n  annotate(\n    \"segment\",\n    x = 1, y = 1,\n    xend = 4, yend = 2,\n    color = \"blue\",\n    arrow = arrow(end = \"first\")\n  ) +\n  annotate(\n    \"segment\",\n    x = 1, y = 2,\n    xend = 4, yend = 3,\n    color = \"purple\",\n    arrow = arrow(end = \"both\")\n  ) +  \n  xlim(0,5) + ylim(0,5)\n\n\n\n\n\n\n\n\ntype changes the head of the arrow from being filled or not.\n\nmpg |&gt; ggplot() +\n  annotate(\n    \"segment\",\n    x = 1, y = 3,\n    xend = 4, yend = 4,\n    color = \"red\",\n    arrow = arrow(type = \"open\")\n  ) +\n  annotate(\n    \"segment\",\n    x = 1, y = 1,\n    xend = 4, yend = 2,\n    color = \"blue\",\n    arrow = arrow(type = \"closed\")\n  ) +\n  xlim(0,5) + ylim(0,5)",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Annotations</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
