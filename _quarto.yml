@@ -51,6 +51,7 @@ book:
     - part: Communcation
       chapters:
         - visualize/11-communication/02-labels.qmd
+        - visualize/11-communication/03-annotations.qmd
 
     - progress.md
 format:

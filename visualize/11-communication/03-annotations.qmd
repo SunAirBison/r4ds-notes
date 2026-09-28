@@ -1,0 +1,270 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Annotations
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Use `geom_text()` with infinite positions to place text at the four corners of the plot.
+
+### The Solution
+
+To put text in the four corners, we put the coordinates of each label to `Inf` or `-Inf` respectively. To see thetext in
+
+```{r}
+label_info <- data.frame(
+  x = c(Inf, Inf, -Inf, -Inf),
+  y = c(Inf, -Inf, Inf, -Inf),
+  text = c("Top-R", "Bot-R", "Top-L", "Bot-L"),
+  hjust = c(1.1, 1.1, -0.1, -0.1),
+  vjust = c(1.1, -0.1, 1.1, -0.1)  
+)
+
+# Save plot for next question
+p <- mpg |> ggplot() +
+  geom_point(
+    aes(x = hwy, y = cty, color = drv)
+  ) +
+  geom_label(
+    data = label_info, 
+    aes(
+      x = x, 
+      y = y, 
+      label = text,
+      hjust = hjust,
+      vjust = vjust
+    )
+  ) + 
+  # Add limits to simplify next question
+  xlim(0, 50) +
+  ylim(0, 40)
+
+p 
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Use `annotate()` to add a point geom in the middle of your last plot without having to create a tibble. Customize the shape, size or color of the point.
+
+### The Solution
+
+```{r}
+
+p + annotate(
+    "point",
+    x = 25, 
+    y = 20,
+    color = "black",
+    size = 4,
+    alpha = 0.5
+    )
+```
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+How do labels with `geom_text()` interact with faceting? How can you add a label to a single facet? How can you put a different label in each facet?
+
+### The Solution
+
+When just adding `geom_label` naively, it adds every label to every faceted plot.
+
+```{r}
+label_facet <- data.frame(
+  x = c(20,30,40),
+  y = c(20,30,40),
+  text = c("test1", "test2", "test3")
+)
+
+mpg |> ggplot() +
+  geom_point(aes(x = hwy, y = cty)) + 
+  facet_wrap(~drv) +
+  geom_label(
+    data = label_facet,
+    aes(x = x, y = y, label = text)
+  )
+
+```
+
+To get different labels on each of the faceted plots, the data frame containing labels needs to match the column names of the plotted data and include the faceted column. This allows us to put labels on a single plot as well, by only putting a single facet group in the label data frame. 
+
+```{r}
+label_facet <- data.frame(
+  hwy = c(20,30,40), # x and y need to match mpg columns
+  cty = c(20,30,40),
+  drv = c("4", "4", "r"), # State which plot we want the label in 
+  text = c("test1", "test2", "test3")
+)
+
+mpg |> ggplot() +
+  geom_point(aes(x = hwy, y = cty)) + 
+  facet_wrap(~drv) +
+  geom_label(
+    data = label_facet,
+    aes(x = hwy, y = cty, label = text)
+  )
+```
+
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What arguments to `geom_label()` control the appearance of the background box?
+
+### The Solution
+
+From checking `?geom_label`, the following arguments change the box the text is displayed in:
+
+- `label.padding`
+- `label.r`
+- `label.size`
+- `border.colour` / `border.color`
+- `size.unit`
+- `inherit.aes`
+
+:::
+
+<!-- Next Question -->
+## Question 5
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What are the four arguments to `arrow()`? How do they work? Create a series of plots that demonstrate the most important options.
+
+### The Solution
+
+The four arguments of `arrow()` are: `angle`, `length`, `end`, and `type`.
+
+
+`angle` changes the angle of the arrow head, in degrees.
+```{r}
+mpg |> ggplot() +
+  annotate(
+    "segment",
+    x = 1, y = 3,
+    xend = 4, yend = 4,
+    color = "red",
+    arrow = arrow(angle = 90)
+  ) +
+  annotate(
+    "segment",
+    x = 1, y = 1,
+    xend = 4, yend = 2,
+    color = "blue",
+    arrow = arrow(angle = 20)
+  ) +
+  xlim(0,5) + ylim(0,5)
+```
+
+`length` changes the size of the arrow head.
+```{r}
+mpg |> ggplot() +
+  annotate(
+    "segment",
+    x = 1, y = 3,
+    xend = 4, yend = 4,
+    color = "red",
+    arrow = arrow(length = unit(0.25, "inches"))
+  ) +
+  annotate(
+    "segment",
+    x = 1, y = 1,
+    xend = 4, yend = 2,
+    color = "blue",
+    arrow = arrow(length = unit(20, "mm"))
+  ) +
+  xlim(0,5) + ylim(0,5)
+```
+
+`end` changes which sides of the line has the arrow head.
+
+```{r}
+mpg |> ggplot() +
+  annotate(
+    "segment",
+    x = 1, y = 3,
+    xend = 4, yend = 4,
+    color = "red",
+    arrow = arrow(end = "last")
+  ) +
+  annotate(
+    "segment",
+    x = 1, y = 1,
+    xend = 4, yend = 2,
+    color = "blue",
+    arrow = arrow(end = "first")
+  ) +
+  annotate(
+    "segment",
+    x = 1, y = 2,
+    xend = 4, yend = 3,
+    color = "purple",
+    arrow = arrow(end = "both")
+  ) +  
+  xlim(0,5) + ylim(0,5)
+```
+
+
+
+`type` changes the head of the arrow from being filled or not.
+```{r}
+mpg |> ggplot() +
+  annotate(
+    "segment",
+    x = 1, y = 3,
+    xend = 4, yend = 4,
+    color = "red",
+    arrow = arrow(type = "open")
+  ) +
+  annotate(
+    "segment",
+    x = 1, y = 1,
+    xend = 4, yend = 2,
+    color = "blue",
+    arrow = arrow(type = "closed")
+  ) +
+  xlim(0,5) + ylim(0,5)
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/communication.html#exercises-1>

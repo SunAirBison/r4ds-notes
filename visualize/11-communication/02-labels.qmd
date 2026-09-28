@@ -73,6 +73,4 @@ mpg |> ggplot(aes(x = cty, y = hwy)) +
 
 :::
 
-
-
 [source]: <https://r4ds.hadley.nz/communication.html#exercises>
