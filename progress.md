@@ -42,8 +42,8 @@ Full list of exercises that I have completed. The list will be updated overtime 
 - [ ] Comunication
   - **Exercises:**
   - [x] Labels
-  - [ ] Annotations
-  - [ ] Scales
+  - [x] Annotations
+  - [x] Scales
   - [ ] Themes
   - [ ] Layout
 

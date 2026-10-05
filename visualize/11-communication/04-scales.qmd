@@ -1,0 +1,142 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Scales
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Why doesn't the following code override the default scale?
+
+```{r}
+df <- tibble(
+  x = rnorm(10000),
+  y = rnorm(10000)
+)
+
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  scale_color_gradient(low = "white", high = "red") +
+  coord_fixed()
+```
+
+### The Solution
+
+The code above doesn't change the gradient color since `scale_color_gradient()` is for changing the gradient for lines. To get the desired outcome we need to use `scale_fill_gradient()` instead.
+
+```{r}
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  scale_fill_gradient(low = "white", high = "red") + 
+  coord_fixed()
+```
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What is the first argument to every scale? How does it compare to `labs()`?
+
+### The Solution
+
+The first argument to every scale is `name` with a default argument of `waiver()`. `waiver()` is also the default for all the arguments in `lab()`.
+
+:::
+
+<!-- Next Question -->
+## Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Change the display of the presidential terms by:
+
+a. Combining the two variants that customize colors and x axis breaks. (Other plots in textbook)
+b. Improving the display of the y axis.
+c. Labelling each term with the name of the president
+d. Adding informative plot labels.
+e. Placing breaks every 4 years.
+
+### The Solution
+
+
+
+```{r}
+#| height: 250px
+dat <- presidential |> mutate(id = 33 + row_number())
+
+# Creating vector of 4 year periods starting on (1953
+terms <- date("1953-01-20") + years(x = 1:16 * 4)
+
+# combine presidential starts with 4 year periods
+p_breaks <- c(terms, presidential$start) |> unique() 
+
+presidential |>
+    ggplot(aes(x = start, y = dat$id, color = party)) +
+    geom_point() +
+    geom_segment(aes(xend = end, yend = dat$id)) +
+    # Combining textbook plots (and add custom breaks)
+    scale_x_date(name = NULL, breaks = p_breaks, date_labels = "'%y") +
+    scale_color_manual(values = c(Republican = "#E81B23", Democratic = "#00AEF3")) +
+    # Adding breaks for each term
+    scale_y_continuous(name = "President Num.", breaks = 33:45) +
+    # Adding Name Labels
+    geom_label(
+        data = dat,
+        aes(x = end, y = id, label = name)
+    )
+```
+
+:::
+
+<!-- Next Question -->
+## Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+First create the following plot. Then, modify the code using `override.aes` to make the legend easier to see.
+
+```{r}
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(color = cut), alpha = 1/20)
+```
+
+
+### The Solution
+
+To make the legend more clear, I removed the transparancy and increased the size of the points in legend.
+
+```{r}
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(color = cut), alpha = 1/20) +
+  guides(color = guide_legend(override.aes = list(alpha = 1, size = 4)))
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/communication.html#exercises-2>
