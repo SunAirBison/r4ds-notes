@@ -44,7 +44,7 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Labels
   - [x] Annotations
   - [x] Scales
-  - [ ] Themes
+  - [x] Themes
   - [ ] Layout
 
 - ## Transform

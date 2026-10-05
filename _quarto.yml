@@ -53,6 +53,7 @@ book:
         - visualize/11-communication/02-labels.qmd
         - visualize/11-communication/03-annotations.qmd
         - visualize/11-communication/04-scales.qmd
+        - visualize/11-communication/05-themes.qmd
 
     - progress.md
 format:
