@@ -1564,6 +1564,39 @@
     ]
   },
   {
+    "objectID": "visualize/11-communication/05-themes.html",
+    "href": "visualize/11-communication/05-themes.html",
+    "title": "Themes",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Themes</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/05-themes.html#question-1",
+    "href": "visualize/11-communication/05-themes.html#question-1",
+    "title": "Themes",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nPick a theme offered by the ggthemes package and apply it to the last plot you made.\n\n\nThe Solution\n\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(aes(color = cut), alpha = 1/20) +\n  guides(color = guide_legend(override.aes = list(alpha = 1, size = 4))) +\n  theme_wsj()",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Themes</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/05-themes.html#question-2",
+    "href": "visualize/11-communication/05-themes.html#question-2",
+    "title": "Themes",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nMake the axis labels of your plot blue and bolded.\n\n\nThe Solution\n\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(aes(color = cut), alpha = 1/20) +\n  guides(color = guide_legend(override.aes = list(alpha = 1, size = 4))) + \n  theme(axis.title = element_text(color = \"blue\"))",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Themes</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
