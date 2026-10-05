@@ -1,0 +1,78 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Layout
+
+[Full Questions][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(patchwork)
+```
+
+<!-- Next Question -->
+## Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What happens if you omit the parentheses in the following plot layout. Can you explain why this happens?
+
+```{r}
+#| output: false
+p1 <- ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  labs(title = "Plot 1")
+p2 <- ggplot(mpg, aes(x = drv, y = hwy)) + 
+  geom_boxplot() + 
+  labs(title = "Plot 2")
+p3 <- ggplot(mpg, aes(x = cty, y = hwy)) + 
+  geom_point() + 
+  labs(title = "Plot 3")
+
+(p1 | p2) / p3
+```
+
+### The Solution
+
+```{r}
+p1 | p2 / p3
+```
+
+Omitting the brackets causes the `|` to be used first. This made the `p1` take the left half while `p2` and `p3` share the right half of the plot.
+
+:::
+
+<!-- Next Question -->
+## Question 2
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Using the three plots from the previous exercise, recreate the following patchwork (check textbook for plot).
+
+### The Solution
+
+To recreate the plot, we to add additional titles to each plot. To do this, we use `plot_annotation()` from the `patchwork` libary.
+
+```{r}
+p1 / (p2 | p3) +
+  plot_annotation(
+    tag_levels = c("A", "B", "C"),
+    tag_prefix = "Fig. ",
+    tag_suffix = ":"
+  )
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/communication.html#exercises-4>

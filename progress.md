@@ -39,13 +39,13 @@ Full list of exercises that I have completed. The list will be updated overtime 
   - [x] Variation
   - [x] Unusual Values
   - [x] Covariation
-- [ ] Comunication
+- [x] Comunication
   - **Exercises:**
   - [x] Labels
   - [x] Annotations
   - [x] Scales
   - [x] Themes
-  - [ ] Layout
+  - [x] Layout
 
 - ## Transform
 
