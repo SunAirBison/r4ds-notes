@@ -1509,6 +1509,61 @@
     ]
   },
   {
+    "objectID": "visualize/11-communication/04-scales.html",
+    "href": "visualize/11-communication/04-scales.html",
+    "title": "Scales",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Scales</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/04-scales.html#question-1",
+    "href": "visualize/11-communication/04-scales.html#question-1",
+    "title": "Scales",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhy doesn’t the following code override the default scale?\n\ndf &lt;- tibble(\n  x = rnorm(10000),\n  y = rnorm(10000)\n)\n\nggplot(df, aes(x, y)) +\n  geom_hex() +\n  scale_color_gradient(low = \"white\", high = \"red\") +\n  coord_fixed()\n\n\n\n\n\n\n\n\n\n\nThe Solution\nThe code above doesn’t change the gradient color since scale_color_gradient() is for changing the gradient for lines. To get the desired outcome we need to use scale_fill_gradient() instead.\n\nggplot(df, aes(x, y)) +\n  geom_hex() +\n  scale_fill_gradient(low = \"white\", high = \"red\") + \n  coord_fixed()",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Scales</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/04-scales.html#question-2",
+    "href": "visualize/11-communication/04-scales.html#question-2",
+    "title": "Scales",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat is the first argument to every scale? How does it compare to labs()?\n\n\nThe Solution\nThe first argument to every scale is name with a default argument of waiver(). waiver() is also the default for all the arguments in lab().",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Scales</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/04-scales.html#question-3",
+    "href": "visualize/11-communication/04-scales.html#question-3",
+    "title": "Scales",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nChange the display of the presidential terms by:\n\nCombining the two variants that customize colors and x axis breaks. (Other plots in textbook)\nImproving the display of the y axis.\nLabelling each term with the name of the president\nAdding informative plot labels.\nPlacing breaks every 4 years.\n\n\n\nThe Solution\n\ndat &lt;- presidential |&gt; mutate(id = 33 + row_number())\n\n# Creating vector of 4 year periods starting on (1953\nterms &lt;- date(\"1953-01-20\") + years(x = 1:16 * 4)\n\n# combine presidential starts with 4 year periods\np_breaks &lt;- c(terms, presidential$start) |&gt; unique() \n\npresidential |&gt;\n    ggplot(aes(x = start, y = dat$id, color = party)) +\n    geom_point() +\n    geom_segment(aes(xend = end, yend = dat$id)) +\n    # Combining textbook plots (and add custom breaks)\n    scale_x_date(name = NULL, breaks = p_breaks, date_labels = \"'%y\") +\n    scale_color_manual(values = c(Republican = \"#E81B23\", Democratic = \"#00AEF3\")) +\n    # Adding breaks for each term\n    scale_y_continuous(name = \"President Num.\", breaks = 33:45) +\n    # Adding Name Labels\n    geom_label(\n        data = dat,\n        aes(x = end, y = id, label = name)\n    )",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Scales</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/04-scales.html#question-4",
+    "href": "visualize/11-communication/04-scales.html#question-4",
+    "title": "Scales",
+    "section": "Question 4",
+    "text": "Question 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nFirst create the following plot. Then, modify the code using override.aes to make the legend easier to see.\n\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(aes(color = cut), alpha = 1/20)\n\n\n\n\n\n\n\n\n\n\nThe Solution\nTo make the legend more clear, I removed the transparancy and increased the size of the points in legend.\n\nggplot(diamonds, aes(x = carat, y = price)) +\n  geom_point(aes(color = cut), alpha = 1/20) +\n  guides(color = guide_legend(override.aes = list(alpha = 1, size = 4)))",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Scales</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",

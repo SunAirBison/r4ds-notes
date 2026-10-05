@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Variation – Notebook</title>
+<title>Scales – Notebook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../visualize/10-eda/04-unusual-values.html" rel="next">
-<link href="../../visualize/09-layers/07-coordinate-systems.html" rel="prev">
+<link href="../../progress.html" rel="next">
+<link href="../../visualize/11-communication/03-annotations.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../visualize/10-eda/03-variation.html">Exploratory Data Analysis</a></li><li class="breadcrumb-item"><a href="../../visualize/10-eda/03-variation.html"><span class="chapter-title">Variation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../visualize/11-communication/02-labels.html">Communcation</a></li><li class="breadcrumb-item"><a href="../../visualize/11-communication/04-scales.html"><span class="chapter-title">Scales</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../visualize/10-eda/03-variation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Variation</span></a>
+  <a href="../../visualize/10-eda/03-variation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Variation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -322,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../visualize/11-communication/04-scales.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Scales</span></a>
+  <a href="../../visualize/11-communication/04-scales.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Scales</span></a>
   </div>
 </li>
       </ul>
@@ -353,9 +353,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../visualize/10-eda/03-variation.html">Exploratory Data Analysis</a></li><li class="breadcrumb-item"><a href="../../visualize/10-eda/03-variation.html"><span class="chapter-title">Variation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../visualize/11-communication/02-labels.html">Communcation</a></li><li class="breadcrumb-item"><a href="../../visualize/11-communication/04-scales.html"><span class="chapter-title">Scales</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Variation</span></h1>
+<h1 class="title"><span class="chapter-title">Scales</span></h1>
 <p class="subtitle lead">Exercise Solutions</p>
 </div>
 
@@ -373,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><a href="https://r4ds.hadley.nz/EDA.html#exercises">Full Questions</a></p>
+<p><a href="https://r4ds.hadley.nz/communication.html#exercises-2">Full Questions</a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading Packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -395,37 +395,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem">The Problem</h3>
-<p>Explore the distribution of each of the <code>x</code>, <code>y</code>, and <code>z</code> variables in <code>diamonds</code>. What do you learn? Think about a diamond and how you might decide which dimension is the length, width, and depth.</p>
+<p>Why doesn’t the following code override the default scale?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>() <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-scales_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="the-solution" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution">The Solution</h3>
+<p>The code above doesn’t change the gradient color since <code>scale_color_gradient()</code> is for changing the gradient for lines. To get the desired outcome we need to use <code>scale_fill_gradient()</code> instead.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> x), <span class="at">binwidth =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> y), <span class="at">binwidth =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> z), <span class="at">binwidth =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04-scales_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>From the histograms above we can see that <code>y</code> and <code>z</code> have similar distributions while <code>x</code> is significantly different. This makes me believe <code>x</code> is depth while <code>y</code> and <code>z</code> are interchangably length and width since diamonds typically have a symmetric shape on the face and are pointed on their “depth” side.</p>
 </section>
 </div>
 </div>
@@ -448,53 +453,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-1">The Problem</h3>
-<p>Explore the distribution of <code>price</code>. Do you discover anything unusual or surprising? (Hint: Carefully think about the <code>binwidth</code> and make sure you try a wide range of values.)</p>
+<p>What is the first argument to every scale? How does it compare to <code>labs()</code>?</p>
 </section>
 <section id="the-solution-1" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-1">The Solution</h3>
-<p>First lets look at some histograms of prices with different binwidths.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We can see that prices have a right skew. Using a smaller bin size reveals that there is a range of prices that are missing from the data. Using <code>coord_fixed()</code> allows us to get a closer look at the range.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2500</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>The first argument to every scale is <code>name</code> with a default argument of <code>waiver()</code>. <code>waiver()</code> is also the default for all the arguments in <code>lab()</code>.</p>
 </section>
 </div>
 </div>
@@ -517,38 +480,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem-2" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-2">The Problem</h3>
-<p>How many diamonds are 0.99 carat? How many are 1 carat? What do you think is the cause of the difference.</p>
+<p>Change the display of the presidential terms by:</p>
+<ol type="a">
+<li>Combining the two variants that customize colors and x axis breaks. (Other plots in textbook)</li>
+<li>Improving the display of the y axis.</li>
+<li>Labelling each term with the name of the president</li>
+<li>Adding informative plot labels.</li>
+<li>Placing breaks every 4 years.</li>
+</ol>
 </section>
 <section id="the-solution-2" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-2">The Solution</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(diamonds<span class="sc">$</span>carat <span class="sc">==</span> <span class="fl">0.99</span>) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 23</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(diamonds<span class="sc">$</span>carat <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">length</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1558</code></pre>
-</div>
-</div>
-<p>There are 23 diamonds in the data set that are 0.99 carat and 1558 diamonds that are 1 carat. I believe that there are two main reasons for this. The first being the precision used to measure the diamonds may be worse for many observations, leading many diamonds to be rounded up or down to 1 carat. Another potential reason is that sellers would rather market diamonds as 1 carat instead of 0.99 and can use rounding to do so.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset with diamonds with low carat values</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>small <span class="ot">&lt;-</span> diamonds[diamonds<span class="sc">$</span>carat <span class="sc">&lt;</span> <span class="fl">3.5</span>,]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>small <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> carat)) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">1.5</span>), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linetype =</span> <span class="st">"dotted"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell" height="250px">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> presidential <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">33</span> <span class="sc">+</span> <span class="fu">row_number</span>())</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating vector of 4 year periods starting on (1953</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>terms <span class="ot">&lt;-</span> <span class="fu">date</span>(<span class="st">"1953-01-20"</span>) <span class="sc">+</span> <span class="fu">years</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span> <span class="sc">*</span> <span class="dv">4</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># combine presidential starts with 4 year periods</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>p_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(terms, presidential<span class="sc">$</span>start) <span class="sc">|&gt;</span> <span class="fu">unique</span>() </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>presidential <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> start, <span class="at">y =</span> dat<span class="sc">$</span>id, <span class="at">color =</span> party)) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> end, <span class="at">yend =</span> dat<span class="sc">$</span>id)) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combining textbook plots (and add custom breaks)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_date</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">breaks =</span> p_breaks, <span class="at">date_labels =</span> <span class="st">"'%y"</span>) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Republican =</span> <span class="st">"#E81B23"</span>, <span class="at">Democratic =</span> <span class="st">"#00AEF3"</span>)) <span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adding breaks for each term</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"President Num."</span>, <span class="at">breaks =</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">45</span>) <span class="sc">+</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adding Name Labels</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> dat,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> end, <span class="at">y =</span> id, <span class="at">label =</span> name)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04-scales_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Taking a small look at diamonds with a low value for <code>carat</code>, there are more observation wiht “nicer” carat values compared to values such as 0.99.</p>
 </section>
 </div>
 </div>
@@ -571,49 +544,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem-3" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-3">The Problem</h3>
-<p>Compare and contrast <code>coord_cartesian()</code> vs.&nbsp;<code>xlim()</code> or <code>ylim()</code> when zooming in on a histogram. What happens if you leave <code>binwidth</code> unset? What happens if you try and zoom so only half a bar shows?</p>
+<p>First create the following plot. Then, modify the code using <code>override.aes</code> to make the legend easier to see.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cut), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-scales_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="the-solution-3" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-3">The Solution</h3>
+<p>To make the legend more clear, I removed the transparancy and increased the size of the points in legend.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2500</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x =</span> carat, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cut), <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">4</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">2500</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> price)) <span class="sc">+</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2500</span>)) <span class="co"># Fails to show top of bins</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="03-variation_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="04-scales_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Without binwidth, the plot uses bins that would work for the full size plot. This also causes bins to be cut off if we do not include the full bin width in the zoomed in plot.</p>
 </section>
 </div>
 </div>
@@ -1025,13 +983,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../visualize/09-layers/07-coordinate-systems.html" class="pagination-link" aria-label="Coordinate Systems">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Coordinate Systems</span></span>
+      <a href="../../visualize/11-communication/03-annotations.html" class="pagination-link" aria-label="Annotations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Annotations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../visualize/10-eda/04-unusual-values.html" class="pagination-link" aria-label="Unusual Values">
-        <span class="nav-page-text"><span class="chapter-title">Unusual Values</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../progress.html" class="pagination-link" aria-label="Progress Tracker">
+        <span class="nav-page-text">Progress Tracker</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
