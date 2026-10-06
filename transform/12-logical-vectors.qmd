@@ -1,0 +1,319 @@
+---
+subtitle: Exercise Solutions
+execute:
+  warnings: false
+  message: false
+number-sections: false
+---
+
+# Logical Vectors
+
+[Textbook Section][source]
+
+```{r libs}
+#| output: false
+# Loading Packages
+library(tidyverse)
+library(nycflights13)
+library(palmerpenguins)
+```
+
+## 12.2 Comparisons
+
+<!-- Next Question -->
+### Question 1
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+How does `dplyr::near()` work? Type `near` to see the source code. Is `sqrt(2)^2` near 2?
+
+### The Solution
+
+```{r}
+near
+```
+
+`near` functions by checking if the absolute difference between the two values is less than a tolerance, where the default is `.Machine$double.eps^0.5` = `r .Machine$double.eps^0.5`, 
+
+```{r}
+near(2, sqrt(2)^2)
+```
+
+`sqrt(2)^2` is near 2.
+
+:::
+
+<!-- Next Question -->
+### Question 2 
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Use `mutate()`, `is.na()`, and `count()` together to describe how the missing values in `dep_time`, `sched_dep_time`, and `dep_delay` are connected 
+
+### The Solution
+
+```{r}
+flights |>
+    mutate(
+        miss_dep_time = is.na(dep_time),
+        miss_sched_dep = is.na(sched_dep_time),
+        miss_dep_delay = is.na(dep_delay)
+    ) |> 
+    count(miss_dep_time, miss_sched_dep, miss_dep_delay)
+```
+
+From the tibble of counts above, there are no missing values in the `miss_sched_dep` column. Every row that has missing value in the `dep_time` column also has a missing value in `dep_delay` and vice versa. 
+
+:::
+
+## 12.3 Boolean Algebra
+
+<!-- Next Question -->
+### Question 1 
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Find all flights where `arr_delay`  is missing but `dep_delay` is not. Find all flights where neither `arr_time` nor `sched_arr_time` are missing, but `arr_delay` is.
+
+### The Solution
+
+Note the statement A nor B is equivalent to (not A) and (not B).
+
+```{r}
+
+f1 <- flights |> filter(is.na(arr_delay) & !is.na(dep_delay))
+f2 <- flights |> 
+    filter(
+        !(is.na(arr_time)) & 
+        !(is.na(sched_arr_time)) & 
+        is.na(arr_delay)
+    )
+count(f1)
+count(f2)
+```
+
+:::
+
+There are `r count(f1)` flights that follow the first statement and `r count(f2)` flights that follow the second statement.
+
+<!-- Next Question -->
+### Question 2 
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+How many flights have a missing `dep_time`? What other variables are missing in these rows? What might these rows represent?
+
+### The Solution
+
+```{r}
+f3 <- flights |> filter(is.na(dep_time))
+
+```
+
+There are `r count(f3)` flights that have a missing `dep_time`. The columns `dep_delay` and `arr_time` are are also missing in these rows. These rows could represent flights that did not depart, would mean the flights would not have a departure delay or an arrival time.
+
+:::
+
+<!-- Next Question -->
+### Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Assuming that a missing `dep_time` implies that a flights is cancelled, look at the number of cancelled flights per day. Is there a pattern? Is there a connection between the proportion of cancelled flights and the average delay of non-cancelled flights?
+
+### The Solution
+
+```{r}
+f4 <- mutate(f3, date = paste(year, month, day, sep = "-")) |>
+    group_by(date) |>
+    count() |>
+    arrange(desc(n))
+head(f4)
+
+f5 <- flights |> 
+    filter(!is.na(dep_time)) |>
+    mutate(date = paste(year, month, day, sep = "-")) |>
+    group_by(date) |>
+    summarize(
+        avg_dep_delay = mean(dep_delay),
+        # Get number of non-cancelled flights
+        num_flown_flights = sum(dep_delay == dep_delay) 
+        )
+
+left_join(f4,f5) |>
+    mutate(prop_cancelled = n / (n + num_flown_flights)) |>
+    ggplot(aes(x = avg_dep_delay, y = prop_cancelled)) + 
+    geom_point() + 
+    geom_smooth()
+```
+
+There are a high number of flights cancelled during dates that are typical for severe weather conditions (heavy snow and rain). From the plot above there seems to be a positive relationship between the average departure delay and the proportion of cancelled flights.
+
+:::
+
+## 12.4 Summaries
+
+<!-- Next Question -->
+### Question 1  
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What will `sum(is.na(x))` tell you? How about `mean(is.na(x))`?
+
+### The Solution
+
+`sum(is.na(x))` will tell you the total number of elements of `x` that are missing. `mean(is.na(x))` will tell you the proportion of missing values in all elements`x`.
+
+```{r}
+# Note x contains 4 NAs and 10 elements in total.
+x <- c(NA, 1, 2, 3, NA, NA, 4, 5, NA, -10)
+
+sum(is.na(x))
+
+mean(is.na(x))
+```
+
+:::
+
+<!-- Next Question -->
+### Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+What does `prod()` return when applied to a logical vector? What logical summary function is it equivalent to? What does `min()` return when applied to a logical vector? What logical summary function is it equivalent to? Read the documentation and perform a few experiments.
+
+### The Solution
+
+When given a logical vector, `prod()` and `min()` handles `TRUE` as if it were `1` and `FALSE` as if it were `1`. This causes both to be equivalent to the function `all()`, since both will only equal `1` (ie `TRUE`) if all elements in the vector are `TRUE`, 0 (ie `FALSE`) otherwise.
+```{r}
+# prod
+prod(c(TRUE, TRUE))
+prod(c(FALSE, TRUE))
+prod(c(FALSE, FALSE))
+
+# min
+min(c(TRUE, TRUE))
+min(c(FALSE, TRUE))
+min(c(FALSE, FALSE))
+
+# all
+all(c(TRUE, TRUE))
+all(c(FALSE, TRUE))
+all(c(FALSE, FALSE))
+```
+
+:::
+ 
+## 12.5 Conditional Transformations
+
+<!-- Next Question -->
+### Question 1 
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+A number is even if it's divisible by two, which in R you can find out with `x %% 2 == 0`. Use this fact and if_else() to determine whether each number between 0 and 20 is even or odd.
+
+### The Solution
+
+```{r}
+x <- c(1, 2, 3, 5, 7, 11, 13)
+if_else(x %% 2 == 0, "even", "odd")
+```
+
+:::
+
+<!-- Next Question -->
+### Question 2 
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Given a vector of days like "x <- c("Monday", "Saturday", "Wednesday")", use an if_else() statement to label them as weekends or weekdays.
+
+### The Solution
+
+Assume all days are capitalized.
+
+```{r}
+days <- c(
+        "Monday", "Tuesday", "Wednesday", 
+        "Thusday", "Friday", "Saturday", "Sunday" )
+
+if_else(days %in% c("Sunday", "Saturday"), "Weekend", "Weekday")
+```
+
+:::
+
+<!-- Next Question -->
+### Question 3
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+Use `if_else()` to compute the absolute value of a numeric vector called `x`.
+
+### The Solution
+
+```{r}
+x <- c(-1, 10, -2.4, 0, 0, 11)
+
+if_else(x > 0, x, -x)
+```
+
+:::
+
+<!-- Next Question -->
+### Question 4
+
+::: {.callout-note title='Note' collapse='false'}
+
+### The Problem
+
+When a `case_when()` statement that uses the `month` and `day` columns from `flights` to label a selection of important US holidays (e.g., New Years Day, 4th of July, Thanksgiving, and Christmas). First create a logical column that is either `TRUE` or `FALSE`, and then create a character column that either gives the name of the holiday or is `NA`.
+
+### The Solution
+
+```{r}
+flights |> 
+    mutate(
+        is_holiday = case_when(
+        month == 1 & day == 1 ~ TRUE,   # New Years Day
+        month == 7 & day == 4 ~ TRUE,   # 4th of July
+        month == 12 & day == 25 ~ TRUE, # Christmas Day
+        month == 11 & day == 26 ~ TRUE, # 2026 US Thanksgiving
+        .default = FALSE
+        ),
+        holiday = case_when(
+        month == 1 & day == 1 ~ "New Years Day",
+        month == 7 & day == 4 ~ "4th of July",
+        month == 12 & day == 25 ~ "Christmas Day",
+        month == 11 & day == 26 ~ "2026 US Thanksgiving",
+        .default = NA
+        ),
+    ) |>
+    relocate(is_holiday, holiday) |>
+    group_by(holiday) |>
+    count()
+```
+
+:::
+
+[source]: <https://r4ds.hadley.nz/logicals.html>

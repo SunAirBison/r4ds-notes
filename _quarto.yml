@@ -48,7 +48,7 @@ book:
         - visualize/10-eda/04-unusual-values.qmd
         - visualize/10-eda/05-covariation.qmd
 
-    - part: Communcation
+    - part: "Communcation"
       chapters:
         - visualize/11-communication/02-labels.qmd
         - visualize/11-communication/03-annotations.qmd
@@ -56,7 +56,10 @@ book:
         - visualize/11-communication/05-themes.qmd
         - visualize/11-communication/06-layout.qmd
 
+    - transform/12-logical-vectors.qmd
+
     - progress.md
+
 format:
   html:
     callout-icon: false

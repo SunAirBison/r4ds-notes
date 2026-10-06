@@ -49,12 +49,12 @@ Full list of exercises that I have completed. The list will be updated overtime 
 
 - ## Transform
 
-- [ ] Logical Vectors
+- [x] Logical Vectors
   - **Exercises:**
-  - [ ] Comparisions
-  - [ ] Boolean Algebra
-  - [ ] Summaries
-  - [ ] Conditional Transformations
+  - [x] Comparisions
+  - [x] Boolean Algebra
+  - [x] Summaries
+  - [x] Conditional Transformations
 - [ ] Numbers
   - **Exercises:**
   - [ ] Counts 
