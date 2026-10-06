@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Import – Notebook</title>
+<title>Logical Vectors – Notebook</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../visualize/09-layers/02-aesthetics.html" rel="next">
-<link href="../whole-game/05-data-tidying.html" rel="prev">
+<link href="../progress.html" rel="next">
+<link href="../visualize/11-communication/06-layout.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../whole-game/07-data-import.html"><span class="chapter-title">Data Import</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../transform/12-logical-vectors.html"><span class="chapter-title">Logical Vectors</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../whole-game/07-data-import.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Data Import</span></a>
+  <a href="../whole-game/07-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data Import</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../transform/12-logical-vectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Logical Vectors</span></a>
+  <a href="../transform/12-logical-vectors.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Logical Vectors</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -358,12 +358,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#question-1" id="toc-question-1" class="nav-link active" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#comparisons" id="toc-comparisons" class="nav-link active" data-scroll-target="#comparisons">12.2 Comparisons</a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
   <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  </ul></li>
+  <li><a href="#boolean-algebra" id="toc-boolean-algebra" class="nav-link" data-scroll-target="#boolean-algebra">12.3 Boolean Algebra</a>
+  <ul class="collapse">
+  <li><a href="#question-1-1" id="toc-question-1-1" class="nav-link" data-scroll-target="#question-1-1">Question 1</a></li>
+  <li><a href="#question-2-1" id="toc-question-2-1" class="nav-link" data-scroll-target="#question-2-1">Question 2</a></li>
   <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  </ul></li>
+  <li><a href="#summaries" id="toc-summaries" class="nav-link" data-scroll-target="#summaries">12.4 Summaries</a>
+  <ul class="collapse">
+  <li><a href="#question-1-2" id="toc-question-1-2" class="nav-link" data-scroll-target="#question-1-2">Question 1</a></li>
+  <li><a href="#question-3-1" id="toc-question-3-1" class="nav-link" data-scroll-target="#question-3-1">Question 3</a></li>
+  </ul></li>
+  <li><a href="#conditional-transformations" id="toc-conditional-transformations" class="nav-link" data-scroll-target="#conditional-transformations">12.5 Conditional Transformations</a>
+  <ul class="collapse">
+  <li><a href="#question-1-3" id="toc-question-1-3" class="nav-link" data-scroll-target="#question-1-3">Question 1</a></li>
+  <li><a href="#question-2-2" id="toc-question-2-2" class="nav-link" data-scroll-target="#question-2-2">Question 2</a></li>
+  <li><a href="#question-3-2" id="toc-question-3-2" class="nav-link" data-scroll-target="#question-3-2">Question 3</a></li>
   <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
-  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
-  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -372,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Data Import</span></h1>
+<h1 class="title"><span class="chapter-title">Logical Vectors</span></h1>
 <p class="subtitle lead">Exercise Solutions</p>
 </div>
 
@@ -390,14 +407,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><a href="https://r4ds.hadley.nz/data-import.html#exercises">Full Questions</a></p>
+<p><a href="https://r4ds.hadley.nz/logicals.html">Textbook Section</a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading Packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<section id="comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="comparisons">12.2 Comparisons</h2>
 <!-- Next Question -->
-<section id="question-1" class="level2">
-<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<section id="question-1" class="level3">
+<h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -412,19 +433,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem">The Problem</h3>
-<p>What function would you use to read a file where fields were separated with “|”?</p>
+<p>How does <code>dplyr::near()</code> work? Type <code>near</code> to see the source code. Is <code>sqrt(2)^2</code> near 2?</p>
 </section>
 <section id="the-solution" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution">The Solution</h3>
-<p>I would use <code>read_delim(delim = '|')</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>near</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, y, tol = .Machine$double.eps^0.5) 
+{
+    abs(x - y) &lt; tol
+}
+&lt;bytecode: 0x256cd800&gt;
+&lt;environment: namespace:dplyr&gt;</code></pre>
+</div>
+</div>
+<p><code>near</code> functions by checking if the absolute difference between the two values is less than a tolerance, where the default is <code>.Machine$double.eps^0.5</code> = 1.4901161^{-8},</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">near</span>(<span class="dv">2</span>, <span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p><code>sqrt(2)^2</code> is near 2.</p>
 </section>
 </div>
 </div>
 </div>
 <!-- Next Question -->
 </section>
-<section id="question-2" class="level2">
-<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<section id="question-2" class="level3">
+<h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -439,19 +478,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-1">The Problem</h3>
-<p>Apart from <code>file</code>, <code>skip</code>, and <code>comment</code>, what other arguments do <code>read_csv()</code> and <code>read_tsv</code> have in common?</p>
+<p>Use <code>mutate()</code>, <code>is.na()</code>, and <code>count()</code> together to describe how the missing values in <code>dep_time</code>, <code>sched_dep_time</code>, and <code>dep_delay</code> are connected</p>
 </section>
 <section id="the-solution-1" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-1">The Solution</h3>
-<p>The arguments of <code>read_csv()</code> and <code>read_tsv()</code> are identical, with the same defaults.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">miss_dep_time =</span> <span class="fu">is.na</span>(dep_time),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">miss_sched_dep =</span> <span class="fu">is.na</span>(sched_dep_time),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">miss_dep_delay =</span> <span class="fu">is.na</span>(dep_delay)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(miss_dep_time, miss_sched_dep, miss_dep_delay)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  miss_dep_time miss_sched_dep miss_dep_delay      n
+  &lt;lgl&gt;         &lt;lgl&gt;          &lt;lgl&gt;           &lt;int&gt;
+1 FALSE         FALSE          FALSE          328521
+2 TRUE          FALSE          TRUE             8255</code></pre>
+</div>
+</div>
+<p>From the tibble of counts above, there are no missing values in the <code>miss_sched_dep</code> column. Every row that has missing value in the <code>dep_time</code> column also has a missing value in <code>dep_delay</code> and vice versa.</p>
 </section>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="boolean-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="boolean-algebra">12.3 Boolean Algebra</h2>
 <!-- Next Question -->
-</section>
-<section id="question-3" class="level2">
-<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<section id="question-1-1" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-1">Question 1</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -466,19 +524,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem-2" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-2">The Problem</h3>
-<p>What are the most important arguments to <code>read_fwf()</code>?</p>
+<p>Find all flights where <code>arr_delay</code> is missing but <code>dep_delay</code> is not. Find all flights where neither <code>arr_time</code> nor <code>sched_arr_time</code> are missing, but <code>arr_delay</code> is.</p>
 </section>
 <section id="the-solution-2" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-2">The Solution</h3>
-<p>The most important arguments to read fixed-width files using <code>read_fwf()</code> are the <code>file</code> we want to read and <code>col_positions</code>, how the entries of the file are separated.</p>
+<p>Note the statement A nor B is equivalent to (not A) and (not B).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(arr_delay) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(dep_delay))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span>(<span class="fu">is.na</span>(arr_time)) <span class="sc">&amp;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="sc">!</span>(<span class="fu">is.na</span>(sched_arr_time)) <span class="sc">&amp;</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(arr_delay)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(f1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+      n
+  &lt;int&gt;
+1  1175</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(f2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+      n
+  &lt;int&gt;
+1   717</code></pre>
+</div>
+</div>
 </section>
 </div>
 </div>
 </div>
+<p>There are 1175 flights that follow the first statement and 717 flights that follow the second statement.</p>
 <!-- Next Question -->
 </section>
-<section id="question-4" class="level2">
-<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<section id="question-2-1" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-1">Question 2</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -493,40 +575,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <section id="the-problem-3" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-3">The Problem</h3>
-<p>To read the following text into a data frame, what argument to <code>read_csv()</code> do you need to specify? <code>"x,y\n1,'a,b'"</code></p>
+<p>How many flights have a missing <code>dep_time</code>? What other variables are missing in these rows? What might these rows represent?</p>
 </section>
 <section id="the-solution-3" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-3">The Solution</h3>
-<p>To read the text above, we need to change the default of the argument from <code>quote = "\""</code> to <code>quote = "\'"</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding I() due to readr 2.2.0 changes</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">I</span>(<span class="st">"x,y</span><span class="sc">\n</span><span class="st">1,'a,b'"</span>), <span class="at">quote =</span> <span class="st">"</span><span class="sc">\'</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1 Columns: 2
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): y
-dbl (1): x
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(dep_time))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-      x y    
-  &lt;dbl&gt; &lt;chr&gt;
-1     1 a,b  </code></pre>
-</div>
-</div>
+<p>There are 8255 flights that have a missing <code>dep_time</code>. The columns <code>dep_delay</code> and <code>arr_time</code> are are also missing in these rows. These rows could represent flights that did not depart, would mean the flights would not have a departure delay or an arrival time.</p>
 </section>
 </div>
 </div>
 </div>
 <!-- Next Question -->
 </section>
-<section id="question-5" class="level2">
-<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<section id="question-3" class="level3">
+<h3 class="anchored" data-anchor-id="question-3">Question 3</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -541,34 +605,67 @@ dbl (1): x
 <div class="callout-body-container callout-body">
 <section id="the-problem-4" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-4">The Problem</h3>
-<p>Identify what is wrong with each of the following inline CSV files.</p>
+<p>Assuming that a missing <code>dep_time</code> implies that a flights is cancelled, look at the number of cancelled flights per day. Is there a pattern? Is there a connection between the proportion of cancelled flights and the average delay of non-cancelled flights?</p>
 </section>
 <section id="the-solution-4" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-4">The Solution</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observations have more columns than expected</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"a,b</span><span class="sc">\n</span><span class="st">1,2,3</span><span class="sc">\n</span><span class="st">4,5,6"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows have more and less entries than columns </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"a,b,c</span><span class="sc">\n</span><span class="st">1,2</span><span class="sc">\n</span><span class="st">1,2,3,4"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional quotation mark </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"a,b</span><span class="sc">\n\"</span><span class="st">1"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># I do not see anything wrong with this file</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"a,b</span><span class="sc">\n</span><span class="st">1,2</span><span class="sc">\n</span><span class="st">a,b"</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># File is not separated by commas</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"a;b</span><span class="sc">\n</span><span class="st">1;3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>f4 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(f3, <span class="at">date =</span> <span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(f4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+# Groups:   date [6]
+  date           n
+  &lt;chr&gt;      &lt;int&gt;
+1 2013-2-8     472
+2 2013-2-9     393
+3 2013-5-23    221
+4 2013-12-10   204
+5 2013-9-12    192
+6 2013-3-6     180</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>f5 <span class="ot">&lt;-</span> flights <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_time)) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">"-"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(date) <span class="sc">|&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">avg_dep_delay =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get number of non-cancelled flights</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">num_flown_flights =</span> <span class="fu">sum</span>(dep_delay <span class="sc">==</span> dep_delay) </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(f4,f5) <span class="sc">|&gt;</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">prop_cancelled =</span> n <span class="sc">/</span> (n <span class="sc">+</span> num_flown_flights)) <span class="sc">|&gt;</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_dep_delay, <span class="at">y =</span> prop_cancelled)) <span class="sc">+</span> </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(date)`
+`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="12-logical-vectors_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There are a high number of flights cancelled during dates that are typical for severe weather conditions (heavy snow and rain). From the plot above there seems to be a positive relationship between the average departure delay and the proportion of cancelled flights.</p>
 </section>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="summaries" class="level2">
+<h2 class="anchored" data-anchor-id="summaries">12.4 Summaries</h2>
 <!-- Next Question -->
-</section>
-<section id="question-6" class="level2">
-<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<section id="question-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-2">Question 1</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -583,87 +680,256 @@ dbl (1): x
 <div class="callout-body-container callout-body">
 <section id="the-problem-5" class="level3">
 <h3 class="anchored" data-anchor-id="the-problem-5">The Problem</h3>
-<p>Practice referring to non-syntactic names in the following data frame by:</p>
-<ol type="a">
-<li>Extracting the variable called 1.</li>
-<li>Plotting a scatterplot of 1 vs.&nbsp;2.</li>
-<li>Creating a new column called 3, which is 2 divided by 1.</li>
-<li>Renaming the columns to one, two, and three.</li>
-</ol>
+<p>What will <code>sum(is.na(x))</code> tell you? How about <code>mean(is.na(x))</code>?</p>
 </section>
 <section id="the-solution-5" class="level3">
 <h3 class="anchored" data-anchor-id="the-solution-5">The Solution</h3>
+<p><code>sum(is.na(x))</code> will tell you the total number of elements of <code>x</code> that are missing. <code>mean(is.na(x))</code> will tell you the proportion of missing values in all elements<code>x</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>annoying <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (a)</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>annoying <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note x contains 4 NAs and 10 elements in total.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="cn">NA</span>, <span class="sc">-</span><span class="dv">10</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 1
-     `1`
-   &lt;int&gt;
- 1     1
- 2     2
- 3     3
- 4     4
- 5     5
- 6     6
- 7     7
- 8     8
- 9     9
-10    10</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (b)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>annoying <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="07-data-import_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (c)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>annoying <span class="ot">&lt;-</span> annoying <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="st">`</span><span class="at">3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="sc">/</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>annoying</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">is.na</span>(x))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-     `1`   `2`   `3`
-   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1     1  2.33  2.33
- 2     2  4.50  2.25
- 3     3  7.02  2.34
- 4     4  6.81  1.70
- 5     5 10.6   2.13
- 6     6 10.8   1.79
- 7     7 15.0   2.14
- 8     8 16.0   2.00
- 9     9 16.6   1.85
-10    10 20.5   2.05</code></pre>
+<pre><code>[1] 0.4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (d)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>annoying <span class="sc">|&gt;</span> <span class="fu">select</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">one =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">two =</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">three =</span> <span class="st">`</span><span class="at">3</span><span class="st">`</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Next Question -->
+</section>
+<section id="question-3-1" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-1">Question 3</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-6" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-6">The Problem</h3>
+<p>What does <code>prod()</code> return when applied to a logical vector? What logical summary function is it equivalent to? What does <code>min()</code> return when applied to a logical vector? What logical summary function is it equivalent to? Read the documentation and perform a few experiments.</p>
+</section>
+<section id="the-solution-6" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-6">The Solution</h3>
+<p>When given a logical vector, <code>prod()</code> and <code>min()</code> handles <code>TRUE</code> as if it were <code>1</code> and <code>FALSE</code> as if it were <code>1</code>. This causes both to be equivalent to the function <code>all()</code>, since both will only equal <code>1</code> (ie <code>TRUE</code>) if all elements in the vector are <code>TRUE</code>, 0 (ie <code>FALSE</code>) otherwise.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prod</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 3
-     one   two three
-   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1     1  2.33  2.33
- 2     2  4.50  2.25
- 3     3  7.02  2.34
- 4     4  6.81  1.70
- 5     5 10.6   2.13
- 6     6 10.8   1.79
- 7     7 15.0   2.14
- 8     8 16.0   2.00
- 9     9 16.6   1.85
-10    10 20.5   2.05</code></pre>
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="conditional-transformations" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-transformations">12.5 Conditional Transformations</h2>
+<!-- Next Question -->
+<section id="question-1-3" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-3">Question 1</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-7" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-7">The Problem</h3>
+<p>A number is even if it’s divisible by two, which in R you can find out with <code>x %% 2 == 0</code>. Use this fact and if_else() to determine whether each number between 0 and 20 is even or odd.</p>
+</section>
+<section id="the-solution-7" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-7">The Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"even"</span>, <span class="st">"odd"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "odd"  "even" "odd"  "odd"  "odd"  "odd"  "odd" </code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Next Question -->
+</section>
+<section id="question-2-2" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-2">Question 2</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-8" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-8">The Problem</h3>
+<p>Given a vector of days like “x &lt;- c(”Monday”, “Saturday”, “Wednesday”)“, use an if_else() statement to label them as weekends or weekdays.</p>
+</section>
+<section id="the-solution-8" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-8">The Solution</h3>
+<p>Assume all days are capitalized.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Thusday"</span>, <span class="st">"Friday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Sunday"</span> )</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(days <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Sunday"</span>, <span class="st">"Saturday"</span>), <span class="st">"Weekend"</span>, <span class="st">"Weekday"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Weekday" "Weekday" "Weekday" "Weekday" "Weekday" "Weekend" "Weekend"</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Next Question -->
+</section>
+<section id="question-3-2" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-2">Question 3</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-9" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-9">The Problem</h3>
+<p>Use <code>if_else()</code> to compute the absolute value of a numeric vector called <code>x</code>.</p>
+</section>
+<section id="the-solution-9" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-9">The Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>, <span class="sc">-</span><span class="fl">2.4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">11</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> <span class="dv">0</span>, x, <span class="sc">-</span>x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1.0 10.0  2.4  0.0  0.0 11.0</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Next Question -->
+</section>
+<section id="question-4" class="level3">
+<h3 class="anchored" data-anchor-id="question-4">Question 4</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<section id="the-problem-10" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-10">The Problem</h3>
+<p>When a <code>case_when()</code> statement that uses the <code>month</code> and <code>day</code> columns from <code>flights</code> to label a selection of important US holidays (e.g., New Years Day, 4th of July, Thanksgiving, and Christmas). First create a logical column that is either <code>TRUE</code> or <code>FALSE</code>, and then create a character column that either gives the name of the holiday or is <code>NA</code>.</p>
+</section>
+<section id="the-solution-10" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution-10">The Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">is_holiday =</span> <span class="fu">case_when</span>(</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="cn">TRUE</span>,   <span class="co"># New Years Day</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">7</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="cn">TRUE</span>,   <span class="co"># 4th of July</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">12</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">25</span> <span class="sc">~</span> <span class="cn">TRUE</span>, <span class="co"># Christmas Day</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">11</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">26</span> <span class="sc">~</span> <span class="cn">TRUE</span>, <span class="co"># 2026 US Thanksgiving</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> <span class="cn">FALSE</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">holiday =</span> <span class="fu">case_when</span>(</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"New Years Day"</span>,</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">7</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"4th of July"</span>,</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">12</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">25</span> <span class="sc">~</span> <span class="st">"Christmas Day"</span>,</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>        month <span class="sc">==</span> <span class="dv">11</span> <span class="sc">&amp;</span> day <span class="sc">==</span> <span class="dv">26</span> <span class="sc">~</span> <span class="st">"2026 US Thanksgiving"</span>,</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> <span class="cn">NA</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">relocate</span>(is_holiday, holiday) <span class="sc">|&gt;</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(holiday) <span class="sc">|&gt;</span></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+# Groups:   holiday [5]
+  holiday                   n
+  &lt;chr&gt;                 &lt;int&gt;
+1 2026 US Thanksgiving    989
+2 4th of July             737
+3 Christmas Day           719
+4 New Years Day           842
+5 &lt;NA&gt;                 333489</code></pre>
 </div>
 </div>
 </section>
@@ -672,6 +938,7 @@ dbl (1): x
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1077,13 +1344,13 @@ dbl (1): x
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../whole-game/05-data-tidying.html" class="pagination-link" aria-label="Data Tidying">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Data Tidying</span></span>
+      <a href="../visualize/11-communication/06-layout.html" class="pagination-link" aria-label="Layout">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Layout</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../visualize/09-layers/02-aesthetics.html" class="pagination-link" aria-label="Aesthetic Mappings">
-        <span class="nav-page-text"><span class="chapter-title">Aesthetic Mappings</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../progress.html" class="pagination-link" aria-label="Progress Tracker">
+        <span class="nav-page-text">Progress Tracker</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

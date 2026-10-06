@@ -1597,6 +1597,89 @@
     ]
   },
   {
+    "objectID": "visualize/11-communication/06-layout.html",
+    "href": "visualize/11-communication/06-layout.html",
+    "title": "Layout",
+    "section": "",
+    "text": "Question 1\nFull Questions",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Layout</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/06-layout.html#question-1",
+    "href": "visualize/11-communication/06-layout.html#question-1",
+    "title": "Layout",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\n\nThe Problem\nWhat happens if you omit the parentheses in the following plot layout. Can you explain why this happens?\n\np1 &lt;- ggplot(mpg, aes(x = displ, y = hwy)) + \n  geom_point() + \n  labs(title = \"Plot 1\")\np2 &lt;- ggplot(mpg, aes(x = drv, y = hwy)) + \n  geom_boxplot() + \n  labs(title = \"Plot 2\")\np3 &lt;- ggplot(mpg, aes(x = cty, y = hwy)) + \n  geom_point() + \n  labs(title = \"Plot 3\")\n\n(p1 | p2) / p3\n\n\n\nThe Solution\n\np1 | p2 / p3\n\n\n\n\n\n\n\n\nOmitting the brackets causes the | to be used first. This made the p1 take the left half while p2 and p3 share the right half of the plot.",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Layout</span>"
+    ]
+  },
+  {
+    "objectID": "visualize/11-communication/06-layout.html#question-2",
+    "href": "visualize/11-communication/06-layout.html#question-2",
+    "title": "Layout",
+    "section": "Question 2",
+    "text": "Question 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nUsing the three plots from the previous exercise, recreate the following patchwork (check textbook for plot).\n\n\nThe Solution\nTo recreate the plot, we to add additional titles to each plot. To do this, we use plot_annotation() from the patchwork libary.\n\np1 / (p2 | p3) +\n  plot_annotation(\n    tag_levels = c(\"A\", \"B\", \"C\"),\n    tag_prefix = \"Fig. \",\n    tag_suffix = \":\"\n  )",
+    "crumbs": [
+      "Communcation",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Layout</span>"
+    ]
+  },
+  {
+    "objectID": "transform/12-logical-vectors.html",
+    "href": "transform/12-logical-vectors.html",
+    "title": "Logical Vectors",
+    "section": "",
+    "text": "12.2 Comparisons\nTextbook Section",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Logical Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "transform/12-logical-vectors.html#comparisons",
+    "href": "transform/12-logical-vectors.html#comparisons",
+    "title": "Logical Vectors",
+    "section": "",
+    "text": "Question 1\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nHow does dplyr::near() work? Type near to see the source code. Is sqrt(2)^2 near 2?\n\n\nThe Solution\n\nnear\n\nfunction (x, y, tol = .Machine$double.eps^0.5) \n{\n    abs(x - y) &lt; tol\n}\n&lt;bytecode: 0x256cd800&gt;\n&lt;environment: namespace:dplyr&gt;\n\n\nnear functions by checking if the absolute difference between the two values is less than a tolerance, where the default is .Machine$double.eps^0.5 = 1.4901161^{-8},\n\nnear(2, sqrt(2)^2)\n\n[1] TRUE\n\n\nsqrt(2)^2 is near 2.\n\n\n\n\n\n\n\nQuestion 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nUse mutate(), is.na(), and count() together to describe how the missing values in dep_time, sched_dep_time, and dep_delay are connected\n\n\nThe Solution\n\nflights |&gt;\n    mutate(\n        miss_dep_time = is.na(dep_time),\n        miss_sched_dep = is.na(sched_dep_time),\n        miss_dep_delay = is.na(dep_delay)\n    ) |&gt; \n    count(miss_dep_time, miss_sched_dep, miss_dep_delay)\n\n# A tibble: 2 × 4\n  miss_dep_time miss_sched_dep miss_dep_delay      n\n  &lt;lgl&gt;         &lt;lgl&gt;          &lt;lgl&gt;           &lt;int&gt;\n1 FALSE         FALSE          FALSE          328521\n2 TRUE          FALSE          TRUE             8255\n\n\nFrom the tibble of counts above, there are no missing values in the miss_sched_dep column. Every row that has missing value in the dep_time column also has a missing value in dep_delay and vice versa.",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Logical Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "transform/12-logical-vectors.html#boolean-algebra",
+    "href": "transform/12-logical-vectors.html#boolean-algebra",
+    "title": "Logical Vectors",
+    "section": "12.3 Boolean Algebra",
+    "text": "12.3 Boolean Algebra\n\n\nQuestion 1\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nFind all flights where arr_delay is missing but dep_delay is not. Find all flights where neither arr_time nor sched_arr_time are missing, but arr_delay is.\n\n\nThe Solution\nNote the statement A nor B is equivalent to (not A) and (not B).\n\nf1 &lt;- flights |&gt; filter(is.na(arr_delay) & !is.na(dep_delay))\nf2 &lt;- flights |&gt; \n    filter(\n        !(is.na(arr_time)) & \n        !(is.na(sched_arr_time)) & \n        is.na(arr_delay)\n    )\ncount(f1)\n\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1  1175\n\ncount(f2)\n\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1   717\n\n\n\n\n\n\nThere are 1175 flights that follow the first statement and 717 flights that follow the second statement.\n\n\n\nQuestion 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nHow many flights have a missing dep_time? What other variables are missing in these rows? What might these rows represent?\n\n\nThe Solution\n\nf3 &lt;- flights |&gt; filter(is.na(dep_time))\n\nThere are 8255 flights that have a missing dep_time. The columns dep_delay and arr_time are are also missing in these rows. These rows could represent flights that did not depart, would mean the flights would not have a departure delay or an arrival time.\n\n\n\n\n\n\n\nQuestion 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nAssuming that a missing dep_time implies that a flights is cancelled, look at the number of cancelled flights per day. Is there a pattern? Is there a connection between the proportion of cancelled flights and the average delay of non-cancelled flights?\n\n\nThe Solution\n\nf4 &lt;- mutate(f3, date = paste(year, month, day, sep = \"-\")) |&gt;\n    group_by(date) |&gt;\n    count() |&gt;\n    arrange(desc(n))\nhead(f4)\n\n# A tibble: 6 × 2\n# Groups:   date [6]\n  date           n\n  &lt;chr&gt;      &lt;int&gt;\n1 2013-2-8     472\n2 2013-2-9     393\n3 2013-5-23    221\n4 2013-12-10   204\n5 2013-9-12    192\n6 2013-3-6     180\n\nf5 &lt;- flights |&gt; \n    filter(!is.na(dep_time)) |&gt;\n    mutate(date = paste(year, month, day, sep = \"-\")) |&gt;\n    group_by(date) |&gt;\n    summarize(\n        avg_dep_delay = mean(dep_delay),\n        # Get number of non-cancelled flights\n        num_flown_flights = sum(dep_delay == dep_delay) \n        )\n\nleft_join(f4,f5) |&gt;\n    mutate(prop_cancelled = n / (n + num_flown_flights)) |&gt;\n    ggplot(aes(x = avg_dep_delay, y = prop_cancelled)) + \n    geom_point() + \n    geom_smooth()\n\nJoining with `by = join_by(date)`\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThere are a high number of flights cancelled during dates that are typical for severe weather conditions (heavy snow and rain). From the plot above there seems to be a positive relationship between the average departure delay and the proportion of cancelled flights.",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Logical Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "transform/12-logical-vectors.html#summaries",
+    "href": "transform/12-logical-vectors.html#summaries",
+    "title": "Logical Vectors",
+    "section": "12.4 Summaries",
+    "text": "12.4 Summaries\n\n\nQuestion 1\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat will sum(is.na(x)) tell you? How about mean(is.na(x))?\n\n\nThe Solution\nsum(is.na(x)) will tell you the total number of elements of x that are missing. mean(is.na(x)) will tell you the proportion of missing values in all elementsx.\n\n# Note x contains 4 NAs and 10 elements in total.\nx &lt;- c(NA, 1, 2, 3, NA, NA, 4, 5, NA, -10)\n\nsum(is.na(x))\n\n[1] 4\n\nmean(is.na(x))\n\n[1] 0.4\n\n\n\n\n\n\n\n\n\nQuestion 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhat does prod() return when applied to a logical vector? What logical summary function is it equivalent to? What does min() return when applied to a logical vector? What logical summary function is it equivalent to? Read the documentation and perform a few experiments.\n\n\nThe Solution\nWhen given a logical vector, prod() and min() handles TRUE as if it were 1 and FALSE as if it were 1. This causes both to be equivalent to the function all(), since both will only equal 1 (ie TRUE) if all elements in the vector are TRUE, 0 (ie FALSE) otherwise.\n\n# prod\nprod(c(TRUE, TRUE))\n\n[1] 1\n\nprod(c(FALSE, TRUE))\n\n[1] 0\n\nprod(c(FALSE, FALSE))\n\n[1] 0\n\n# min\nmin(c(TRUE, TRUE))\n\n[1] 1\n\nmin(c(FALSE, TRUE))\n\n[1] 0\n\nmin(c(FALSE, FALSE))\n\n[1] 0\n\n# all\nall(c(TRUE, TRUE))\n\n[1] TRUE\n\nall(c(FALSE, TRUE))\n\n[1] FALSE\n\nall(c(FALSE, FALSE))\n\n[1] FALSE",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Logical Vectors</span>"
+    ]
+  },
+  {
+    "objectID": "transform/12-logical-vectors.html#conditional-transformations",
+    "href": "transform/12-logical-vectors.html#conditional-transformations",
+    "title": "Logical Vectors",
+    "section": "12.5 Conditional Transformations",
+    "text": "12.5 Conditional Transformations\n\n\nQuestion 1\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nA number is even if it’s divisible by two, which in R you can find out with x %% 2 == 0. Use this fact and if_else() to determine whether each number between 0 and 20 is even or odd.\n\n\nThe Solution\n\nx &lt;- c(1, 2, 3, 5, 7, 11, 13)\nif_else(x %% 2 == 0, \"even\", \"odd\")\n\n[1] \"odd\"  \"even\" \"odd\"  \"odd\"  \"odd\"  \"odd\"  \"odd\" \n\n\n\n\n\n\n\n\n\nQuestion 2\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nGiven a vector of days like “x &lt;- c(”Monday”, “Saturday”, “Wednesday”)“, use an if_else() statement to label them as weekends or weekdays.\n\n\nThe Solution\nAssume all days are capitalized.\n\ndays &lt;- c(\n        \"Monday\", \"Tuesday\", \"Wednesday\", \n        \"Thusday\", \"Friday\", \"Saturday\", \"Sunday\" )\n\nif_else(days %in% c(\"Sunday\", \"Saturday\"), \"Weekend\", \"Weekday\")\n\n[1] \"Weekday\" \"Weekday\" \"Weekday\" \"Weekday\" \"Weekday\" \"Weekend\" \"Weekend\"\n\n\n\n\n\n\n\n\n\nQuestion 3\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nUse if_else() to compute the absolute value of a numeric vector called x.\n\n\nThe Solution\n\nx &lt;- c(-1, 10, -2.4, 0, 0, 11)\n\nif_else(x &gt; 0, x, -x)\n\n[1]  1.0 10.0  2.4  0.0  0.0 11.0\n\n\n\n\n\n\n\n\n\nQuestion 4\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\n\nThe Problem\nWhen a case_when() statement that uses the month and day columns from flights to label a selection of important US holidays (e.g., New Years Day, 4th of July, Thanksgiving, and Christmas). First create a logical column that is either TRUE or FALSE, and then create a character column that either gives the name of the holiday or is NA.\n\n\nThe Solution\n\nflights |&gt; \n    mutate(\n        is_holiday = case_when(\n        month == 1 & day == 1 ~ TRUE,   # New Years Day\n        month == 7 & day == 4 ~ TRUE,   # 4th of July\n        month == 12 & day == 25 ~ TRUE, # Christmas Day\n        month == 11 & day == 26 ~ TRUE, # 2026 US Thanksgiving\n        .default = FALSE\n        ),\n        holiday = case_when(\n        month == 1 & day == 1 ~ \"New Years Day\",\n        month == 7 & day == 4 ~ \"4th of July\",\n        month == 12 & day == 25 ~ \"Christmas Day\",\n        month == 11 & day == 26 ~ \"2026 US Thanksgiving\",\n        .default = NA\n        ),\n    ) |&gt;\n    relocate(is_holiday, holiday) |&gt;\n    group_by(holiday) |&gt;\n    count()\n\n# A tibble: 5 × 2\n# Groups:   holiday [5]\n  holiday                   n\n  &lt;chr&gt;                 &lt;int&gt;\n1 2026 US Thanksgiving    989\n2 4th of July             737\n3 Christmas Day           719\n4 New Years Day           842\n5 &lt;NA&gt;                 333489",
+    "crumbs": [
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Logical Vectors</span>"
+    ]
+  },
+  {
     "objectID": "progress.html",
     "href": "progress.html",
     "title": "Progress Tracker",
